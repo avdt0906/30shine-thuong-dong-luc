@@ -192,22 +192,46 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
   <span><b>Số liệu đang cập nhật giữa kỳ, chưa phải số chốt.</b> Tháng 9 mới đi được 18/30 ngày — thứ hạng và người/salon nhận thưởng gần như chắc chắn còn thay đổi khi chạy lại sau 30/09/2026.</span>
 </div>
 
-<!-- ============ TAB 1 — PENDING ============ -->
+<!-- ============ TAB 1 — ĐẶT LỊCH 30 PHÚT + FEEDBACK TIÊU CỰC ============ -->
 <section data-tab="t1">
-  <div class="card">
-    <div class="head">
-      <div><h2>Top 10 Salon đặt lịch trước 30 phút</h2><p>Ngân sách 15.000.000đ · Top 1–5: 2.000.000đ/salon · Top 6–10: 1.000.000đ/salon</p></div>
-      <span class="pill-pending">⏸ Đang chờ xác nhận nguồn dữ liệu</span>
+  <div class="callout">
+    <span class="ic">ℹ️</span>
+    <span><b>2/3 điều kiện đã có số liệu thật (cập nhật 18/09/2026).</b> (1) Đặt lịch trước ≥30 phút = giờ hẹn thật (<span class="hib">dated_book</span>+<span class="hib">HourFrame</span>) trừ lúc đặt (<span class="hib">created_date</span>), tính trên khách đặt lịch trước. (2) Feedback tiêu cực ≤0,29% = số ticket CSKH (loại "đánh giá nhầm", loại nguồn Tablet) ÷ lượt khách trong kỳ, nguồn <span class="hib">bi.cskh_feedback_dakenh</span> (công thức mượn từ báo cáo tuần GĐKV, ngưỡng gốc ở đó là 0,35%). Salon phải đạt <b>CẢ 2</b> điều kiện mới được vào Top 10. Còn <b>tỷ lệ chờ lâu ≤5%</b> vẫn chưa có nguồn dữ liệu, chưa áp dụng.</span>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="l">Ngân sách</div><div class="v nums">15 triệu</div><div class="s">đã dùng đủ 10/10 suất</div></div>
+    <div class="kpi"><div class="l">Đạt đặt lịch ≥30p (sàn 43%)</div><div class="v pos nums" id="k1-pass-datlich">–</div><div class="s">trên 56 salon Công ty</div></div>
+    <div class="kpi"><div class="l">Đạt feedback ≤0,29%</div><div class="v pos nums" id="k1-pass-feedback">–</div><div class="s">trên 56 salon Công ty</div></div>
+    <div class="kpi big"><div class="l">Đạt cả 2 điều kiện</div><div class="v pos nums" id="k1-pass-both">–</div><div class="s">nhóm đủ điều kiện xét Top 10</div></div>
+  </div>
+
+  <div class="card leaderboard">
+    <div class="head"><div><h2>🏆 Top 10 Salon nhận thưởng</h2><p>Top 1–5: 2.000.000đ/salon · Top 6–10: 1.000.000đ/salon — trong nhóm đạt cả 2 điều kiện, xếp theo % đặt lịch 30 phút</p></div></div>
+    <div class="table-scroll">
+      <table class="dt" id="datlich-top10-table">
+        <thead><tr><th>#</th><th>Salon</th><th>GĐKV</th><th class="num">% Đặt lịch ≥30p</th><th class="num">% Feedback tiêu cực</th><th class="num">Thưởng</th></tr></thead>
+        <tbody></tbody>
+      </table>
     </div>
-    <div class="bignote">
-      <div class="icon">🔎</div>
-      <p>Đã thử tính bằng dữ liệu hệ thống nhưng ra số lệch quá xa so với ngưỡng chương trình — <b>chưa đủ tin cậy để xếp hạng và chi thưởng</b>. Cần bên MKT/BI xác nhận lại nguồn/công thức trước khi đưa số liệu vào đây.</p>
-      <ul>
-        <li><b>Đặt lịch trước ≥ 30 phút:</b> công thức thử (giờ hẹn trừ giờ đặt lịch trong hệ thống) ra tỷ lệ <span class="hi nums" style="background:var(--orange-soft);color:var(--orange);padding:0 4px;border-radius:4px;">0,2% – 6,9%</span> theo salon — thấp hơn rất nhiều so với ngưỡng tối thiểu <b class="nums">43%</b> của chương trình. Nghi bên đề xuất tiêu chí đang đo theo nguồn/cách khác (vd kênh đặt lịch riêng qua app/hotline).</li>
-        <li><b>Tỷ lệ feedback tiêu cực ≤ 0,29%:</b> chưa xác định được bảng/công thức chuẩn nào trong hệ thống dữ liệu khớp đúng ngưỡng này.</li>
-        <li><b>Tỷ lệ chờ lâu ≤ 5%:</b> tương tự, chưa có nguồn dữ liệu định lượng — hiện chỉ ghi nhận qua feedback định tính trong checklist vận hành hằng ngày.</li>
-      </ul>
-      <p>Tab này sẽ được điền ngay khi có xác nhận nguồn dữ liệu chuẩn.</p>
+  </div>
+
+  <div class="card">
+    <div class="head"><div><h2>20 salon dẫn đầu — đặt lịch 30 phút</h2><p>% khách đặt lịch trước ≥30 phút, trong nhóm khách có đặt lịch trước (T9 tính đến 18/09) · viền xanh lá = đạt cả feedback ≤0,29%</p></div></div>
+    <div class="chart-wrap"><svg id="chart-datlich" role="img" aria-label="Biểu đồ tỷ lệ đặt lịch trước 30 phút theo salon"></svg></div>
+  </div>
+
+  <div class="card">
+    <div class="head"><div><h2>Toàn bộ 56 salon Công ty</h2><p>Xếp theo tỷ lệ đặt trước ≥30 phút giảm dần</p></div></div>
+    <div class="table-controls">
+      <input type="text" id="datlich-search" placeholder="Tìm salon hoặc GĐKV…">
+      <span class="count" id="datlich-count"></span>
+    </div>
+    <div class="table-scroll tall">
+      <table class="dt" id="datlich-table">
+        <thead><tr><th>#</th><th>Salon</th><th>GĐKV</th><th class="num">% Đặt lịch ≥30p</th><th>Đạt sàn 43%</th><th class="num">% Feedback tiêu cực</th><th>Đạt ≤0,29%</th><th class="num">Thưởng</th></tr></thead>
+        <tbody></tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -335,6 +359,64 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
 <script>
 (function(){
   "use strict";
+
+  var TIEUCHI1_CSV = `salon_id,salon_name,gdkv,booking_dat_truoc,dat_du_30p,ty_le_datlich_pct,feedback_tieu_cuc_soluong,luot_khach,ty_le_feedback_pct,dat_nguong_feedback_029,xep_hang_combined,thuong_vnd
+184,36 N1 BD,Nguyễn Việt Cường,320,247,77.19,2,621,0.322,N,,0
+72,113 THD AG,Tống Xuân Quyền,62,46,74.19,0,425,0.0,Y,1,2000000
+143,10 TP,Nguyễn Như Quỳnh,625,458,73.28,1,1067,0.094,Y,2,2000000
+194,90 NH,Đoàn Trung Đức,304,221,72.70,6,749,0.801,N,,0
+245,55A NVL,Đoàn Trung Đức,426,309,72.54,4,769,0.52,N,,0
+230,290 QT TH,Nguyễn Thị Huệ,83,57,68.67,1,375,0.267,Y,3,2000000
+182,186 DTH,Tống Xuân Quyền,720,492,68.33,2,1243,0.161,Y,4,2000000
+146,109 TQH,Đoàn Trung Đức,647,441,68.16,2,1283,0.156,Y,5,2000000
+12,12 LDT,Trịnh Văn Quang,514,346,67.32,4,991,0.404,N,,0
+145,237 NTT,Tống Xuân Quyền,1085,718,66.18,6,1926,0.312,N,,0
+147,99 TSN,Nguyễn Thanh Sang,746,493,66.09,7,1530,0.458,N,,0
+249,1146 KVC,Nguyễn Việt Cường,242,159,65.70,3,596,0.503,N,,0
+144,168 NVC,Nguyễn Như Quỳnh,842,551,65.44,1,1428,0.07,Y,6,1000000
+200,39 HBT,Phan Thị Hồng Gấm,587,382,65.08,5,940,0.532,N,,0
+197,65 CD,Đoàn Trung Đức,182,118,64.84,4,598,0.669,N,,0
+212,58 NVC NA,Nguyễn Thị Huệ,132,85,64.39,2,506,0.395,N,,0
+240,68 LN NA,Nguyễn Thị Huệ,80,51,63.75,2,432,0.463,N,,0
+179,50BT4 NPC LD,Phan Thị Hồng Gấm,489,311,63.60,8,1098,0.729,N,,0
+302,362 NGT BN,Nguyễn Như Quỳnh,280,176,62.86,5,1279,0.391,N,,0
+193,145 THT,Nguyễn Thanh Sang,1195,750,62.76,6,1871,0.321,N,,0
+274,32 NAT,Trịnh Văn Quang,217,136,62.67,2,528,0.379,N,,0
+11,8 CVL,Nguyễn Thanh Sang,639,397,62.13,10,1262,0.792,N,,0
+44,103 TN,Nguyễn Việt Cường,1177,731,62.11,2,2419,0.083,Y,7,1000000
+239,186 QT,Nguyễn Như Quỳnh,95,59,62.11,0,287,0.0,Y,8,1000000
+22,927 HG,Nguyễn Thanh Sang,914,565,61.82,3,1573,0.191,Y,9,1000000
+20,382 NT,Đoàn Trung Đức,953,585,61.39,4,1807,0.221,Y,10,1000000
+233,595 BT TH,Nguyễn Thị Huệ,123,75,60.98,0,402,0.0,Y,11,0
+65,255 NAN,Nguyễn Việt Cường,398,241,60.55,4,886,0.451,N,,0
+187,116 TK,Đoàn Trung Đức,774,468,60.47,0,1748,0.0,Y,12,0
+141,236 DBT,Tống Xuân Quyền,521,313,60.08,5,1077,0.464,N,,0
+188,190 HB,Nguyễn Thanh Sang,392,235,59.95,3,812,0.369,N,,0
+45,25 TD,Tống Xuân Quyền,592,352,59.46,1,1408,0.071,Y,13,0
+58,730 TL10,Nguyễn Thanh Sang,684,406,59.36,5,1330,0.376,N,,0
+47,708 LTT,Nguyễn Thanh Sang,243,143,58.85,3,612,0.49,N,,0
+231,304 NT TH,Nguyễn Thị Huệ,119,70,58.82,2,360,0.556,N,,0
+196,202 DC,Phan Thị Hồng Gấm,553,325,58.77,3,946,0.317,N,,0
+192,264 LLQ,Phan Thị Hồng Gấm,413,239,57.87,5,734,0.681,N,,0
+2,346 KT,Phan Thị Hồng Gấm,373,215,57.64,5,744,0.672,N,,0
+69,312 LVS,Nguyễn Thanh Sang,704,400,56.82,9,1525,0.59,N,,0
+201,4 LQD BN,Nguyễn Như Quỳnh,76,43,56.58,1,350,0.286,Y,14,0
+46,483 TN,Trịnh Văn Quang,372,210,56.45,4,854,0.468,N,,0
+51,420 HTP,Tống Xuân Quyền,624,351,56.25,9,1422,0.633,N,,0
+199,7 DTP LA,Tống Xuân Quyền,84,47,55.95,4,435,0.92,N,,0
+204,401/1 NDT,Nguyễn Việt Cường,277,154,55.60,7,640,1.094,N,,0
+21,575 AC,Nguyễn Thanh Sang,537,296,55.12,9,1100,0.818,N,,0
+63,29 HB,Nguyễn Việt Cường,382,210,54.97,14,1007,1.39,N,,0
+228,62 LH,Đoàn Trung Đức,292,160,54.79,2,599,0.334,N,,0
+247,1371 PVT,Nguyễn Việt Cường,163,89,54.60,0,555,0.0,Y,15,0
+61,1180 QT,Trịnh Văn Quang,356,194,54.49,6,755,0.795,N,,0
+244,11 PKT,Nguyễn Như Quỳnh,170,90,52.94,4,633,0.632,N,,0
+60,80 PL BD,Nguyễn Việt Cường,337,170,50.45,3,991,0.303,N,,0
+232,80 TP TH,Nguyễn Thị Huệ,83,41,49.40,5,429,1.166,N,,0
+210,148 TD,Phan Thị Hồng Gấm,194,95,48.97,3,529,0.567,N,,0
+106,76 PVH,Trịnh Văn Quang,217,105,48.39,1,641,0.156,Y,16,0
+250,173 TN,Phan Thị Hồng Gấm,393,186,47.33,3,806,0.372,N,,0
+85,363 LNQ TN,Phan Thị Hồng Gấm,96,44,45.83,9,663,1.357,N,,0`;
 
   var SALON_CSV = `salon_id,salon_name,gdkv,kh_lan2_t9_tho,kh_lan2_t9_quydoi30ngay,kh_lan2_tb_t6_t8,ty_le_tang_truong_tho_pct,ty_le_tang_truong_quydoi_pct,xep_hang,thuong_vnd
 193,145 THT,Nguyễn Thanh Sang GDKV,67,111.67,87.33,-23.28,27.86,1,1000000
@@ -887,6 +969,18 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
     return rows;
   }
 
+  var datlichRows = parseCSV(TIEUCHI1_CSV).map(function(r){
+    return {
+      salonId: r.salon_id, salonName: r.salon_name, gdkv: r.gdkv,
+      bookingDatTruoc: parseInt(r.booking_dat_truoc,10), datDu30p: parseInt(r.dat_du_30p,10),
+      pct: parseFloat(r.ty_le_datlich_pct),
+      fbCount: parseInt(r.feedback_tieu_cuc_soluong,10), luotKhach: parseInt(r.luot_khach,10),
+      fbPct: parseFloat(r.ty_le_feedback_pct), datFeedback: r.dat_nguong_feedback_029 === "Y",
+      xepHang: r.xep_hang_combined ? parseInt(r.xep_hang_combined,10) : null,
+      thuong: parseInt(r.thuong_vnd,10)
+    };
+  });
+
   var salonRows = parseCSV(SALON_CSV).map(function(r){
     return {
       salonId: r.salon_id, salonName: r.salon_name, gdkv: r.gdkv,
@@ -941,6 +1035,109 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
       if (btn.dataset.tab === "t3" && !initialized.t3){ initNvTab(); initialized.t3 = true; }
     });
   });
+
+  /* ================= TAB 1 ================= */
+  function initDatlichTab(){
+    var passDatlich = datlichRows.filter(function(r){ return r.pct >= 43; }).length;
+    var passFeedback = datlichRows.filter(function(r){ return r.datFeedback; }).length;
+    var qualified = datlichRows.filter(function(r){ return r.xepHang; }).sort(function(a,b){ return a.xepHang-b.xepHang; });
+
+    document.getElementById("k1-pass-datlich").textContent = passDatlich + " / " + datlichRows.length;
+    document.getElementById("k1-pass-feedback").textContent = passFeedback + " / " + datlichRows.length;
+    document.getElementById("k1-pass-both").textContent = qualified.length + " / " + datlichRows.length;
+
+    var top10 = qualified.slice(0,10);
+    var tbTop10 = document.querySelector("#datlich-top10-table tbody");
+    tbTop10.innerHTML = "";
+    top10.forEach(function(r){
+      var tr = document.createElement("tr");
+      tr.className = podiumClass(r.xepHang);
+      var rankCell = r.xepHang<=3
+        ? '<span class="rank-big '+rankBigClass(r.xepHang)+'">'+r.xepHang+'</span>'
+        : '<span class="rank">'+r.xepHang+'</span>';
+      tr.innerHTML =
+        '<td>'+rankCell+'</td>'+
+        '<td>'+(r.xepHang<=3?'<span class="medal-badge">'+medal(r.xepHang)+'</span>':'')+r.salonName+'</td>'+
+        '<td>'+shortGdkv(r.gdkv)+'</td>'+
+        '<td class="num" style="color:var(--blue)"><b>'+fmtNum2(r.pct)+'%</b></td>'+
+        '<td class="num" style="color:var(--green)">'+fmtNum2(r.fbPct)+'%</td>'+
+        '<td class="num"><span class="prize-tag '+rankBigClass(r.xepHang)+'">'+fmtVnd(r.thuong)+'</span></td>';
+      tbTop10.appendChild(tr);
+    });
+
+    drawDatlichChart(datlichRows.slice(0,20));
+    renderDatlichTable(datlichRows);
+
+    document.getElementById("datlich-search").addEventListener("input", function(e){
+      var q = e.target.value.trim().toLowerCase();
+      var filtered = datlichRows.filter(function(r){
+        return r.salonName.toLowerCase().indexOf(q) > -1 || r.gdkv.toLowerCase().indexOf(q) > -1;
+      });
+      renderDatlichTable(filtered);
+    });
+  }
+
+  function renderDatlichTable(rows){
+    var tbody = document.querySelector("#datlich-table tbody");
+    tbody.innerHTML = "";
+    rows.forEach(function(r, i){
+      var tr = document.createElement("tr");
+      if (r.thuong > 0) tr.className = "win";
+      tr.innerHTML =
+        '<td>'+(i+1)+'</td>'+
+        '<td>'+r.salonName+'</td>'+
+        '<td>'+shortGdkv(r.gdkv)+'</td>'+
+        '<td class="num"><b>'+fmtNum2(r.pct)+'%</b></td>'+
+        '<td>'+(r.pct>=43 ? '<span class="pill-dat">✓ Đạt</span>' : '<span class="pill-khongdat">✗</span>')+'</td>'+
+        '<td class="num">'+fmtNum2(r.fbPct)+'%</td>'+
+        '<td>'+(r.datFeedback ? '<span class="pill-dat">✓ Đạt</span>' : '<span class="pill-khongdat">✗</span>')+'</td>'+
+        '<td class="num">'+fmtVnd(r.thuong)+'</td>';
+      tbody.appendChild(tr);
+    });
+    document.getElementById("datlich-count").textContent = rows.length + " / " + datlichRows.length + " salon";
+  }
+
+  function drawDatlichChart(rows){
+    var svg = document.getElementById("chart-datlich");
+    var W = 720, rowH = 22, gap=6;
+    var leftLabelW = 150, rightLabelW = 54;
+    var H = rows.length*(rowH+gap) + 10;
+    var plotW = W - leftLabelW - rightLabelW;
+    var maxPct = Math.ceil(Math.max.apply(null, rows.map(function(r){ return r.pct; }))/10)*10;
+    var scale = plotW / maxPct;
+
+    svg.setAttribute("viewBox","0 0 "+W+" "+H);
+    svg.setAttribute("width","100%"); svg.setAttribute("height", H);
+    var ns = "http://www.w3.org/2000/svg";
+    function el(tag, attrs){ var e = document.createElementNS(ns,tag); for(var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+
+    rows.forEach(function(r, i){
+      var y = 6 + i*(rowH+gap);
+      var w = r.pct * scale;
+
+      var label = el("text",{x:leftLabelW-10, y:y+rowH*0.7, "text-anchor":"end","font-size":11.5});
+      label.setAttribute("class", i<10 ? "strong" : "");
+      label.textContent = r.salonName;
+      svg.appendChild(label);
+
+      var bar = el("rect",{x:leftLabelW, y:y, width:Math.max(w,1.5), height:rowH-6, rx:4, fill:"var(--blue)", class:"bar-hit"});
+      if (r.datFeedback) bar.setAttribute("stroke","var(--green)"), bar.setAttribute("stroke-width","2");
+      bar.addEventListener("mousemove", function(evt){
+        showTip(evt, "<b>"+r.salonName+"</b> ("+shortGdkv(r.gdkv)+")<br>"+
+          "Đặt lịch ≥30p: <b>"+fmtNum2(r.pct)+"%</b><br>"+
+          "Feedback tiêu cực: <b>"+fmtNum2(r.fbPct)+"%</b> ("+(r.datFeedback?"đạt ≤0,29%":"không đạt")+")"+
+          (r.thuong>0 ? "<br>Thưởng: <b>"+fmtVnd(r.thuong)+"</b>" : ""));
+      });
+      bar.addEventListener("mouseleave", hideTip);
+      svg.appendChild(bar);
+
+      var val = el("text",{x:leftLabelW+w+6, y:y+rowH*0.7, "font-size":11.5, fill:"var(--blue)", "font-weight":700});
+      val.textContent = fmtNum2(r.pct)+"%";
+      svg.appendChild(val);
+    });
+  }
+
+  initDatlichTab();
 
   /* ================= TAB 2 ================= */
   function initSalonTab(){
