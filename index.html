@@ -1052,10 +1052,17 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
     document.getElementById("k1-pass-datlich").textContent = passDatlich + " / " + datlichRows.length;
     document.getElementById("k1-pass-feedback").textContent = passFeedback + " / " + datlichRows.length;
     document.getElementById("k1-pass-both").textContent = qualified.length + " / " + datlichRows.length;
+    var spentK1 = datlichRows.reduce(function(s,r){ return s+r.thuong; },0);
+    document.getElementById("k1-budget-used").textContent = "đã dùng " + fmtVnd(spentK1) + " / 15.000.000đ";
 
     var top10 = qualified.slice(0,10);
     var tbTop10 = document.querySelector("#datlich-top10-table tbody");
     tbTop10.innerHTML = "";
+    if (top10.length === 0){
+      var trEmpty = document.createElement("tr");
+      trEmpty.innerHTML = '<td colspan="6" style="text-align:center;color:var(--text-faint);padding:18px 12px;">Chưa có salon nào đạt cả 2 điều kiện — chưa phát sinh thưởng ở thời điểm này.</td>';
+      tbTop10.appendChild(trEmpty);
+    }
     top10.forEach(function(r){
       var tr = document.createElement("tr");
       tr.className = podiumClass(r.xepHang);
