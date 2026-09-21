@@ -197,18 +197,18 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
 
   <div class="callout">
     <span class="ic">⚠️</span>
-    <span><b>Chưa salon nào đạt sàn 43% tại thời điểm 20/09</b> — sát nhất là 10 TP với 40,80% (thiếu 20/30 ngày). Nhiều khả năng sẽ vượt ngưỡng khi tháng kết thúc. Bảng/biểu đồ dưới đây vẫn xếp hạng theo % cao nhất để theo dõi tiến độ, chưa áp cứng điều kiện "đạt sàn 43%" vào Top 10 (chỉ gate theo điều kiện feedback).</span>
+    <span><b>Chưa salon nào đạt sàn 43% tại thời điểm 20/09</b> — sát nhất là 10 TP với 40,80% (thiếu 20/30 ngày). Salon phải đạt <b>CẢ 2</b> điều kiện (≥43% đặt lịch VÀ ≤0,29% feedback tiêu cực) mới được thưởng — hiện <b>chưa salon nào đạt sàn 43%</b> nên toàn bộ thưởng tiêu chí này = 0đ. Nhiều khả năng sẽ có salon vượt ngưỡng khi tháng kết thúc, dashboard sẽ tự cập nhật lại khi đó.</span>
   </div>
 
   <div class="kpi-grid">
-    <div class="kpi"><div class="l">Ngân sách</div><div class="v nums">15 triệu</div><div class="s">đã dùng đủ 10/10 suất</div></div>
+    <div class="kpi"><div class="l">Ngân sách</div><div class="v nums">15 triệu</div><div class="s" id="k1-budget-used">–</div></div>
     <div class="kpi"><div class="l">Đạt đặt lịch ≥30p (sàn 43%)</div><div class="v pos nums" id="k1-pass-datlich">–</div><div class="s">trên 56 salon Công ty — xem cảnh báo trên</div></div>
     <div class="kpi"><div class="l">Đạt feedback ≤0,29%</div><div class="v pos nums" id="k1-pass-feedback">–</div><div class="s">trên 56 salon Công ty</div></div>
-    <div class="kpi big"><div class="l">Đạt feedback (gate Top 10)</div><div class="v pos nums" id="k1-pass-both">–</div><div class="s">nhóm đủ điều kiện xét Top 10</div></div>
+    <div class="kpi big"><div class="l">Đạt CẢ 2 điều kiện</div><div class="v pos nums" id="k1-pass-both">–</div><div class="s">nhóm đủ điều kiện nhận thưởng</div></div>
   </div>
 
   <div class="card leaderboard">
-    <div class="head"><div><h2>🏆 Top 10 Salon nhận thưởng</h2><p>Top 1–5: 2.000.000đ/salon · Top 6–10: 1.000.000đ/salon — trong nhóm đạt cả 2 điều kiện, xếp theo % đặt lịch 30 phút</p></div></div>
+    <div class="head"><div><h2>🏆 Top 10 Salon nhận thưởng</h2><p>Top 1–5: 2.000.000đ/salon · Top 6–10: 1.000.000đ/salon — chỉ salon đạt CẢ 2 điều kiện (≥43% và ≤0,29%) mới được thưởng</p></div></div>
     <div class="table-scroll">
       <table class="dt" id="datlich-top10-table">
         <thead><tr><th>#</th><th>Salon</th><th>GĐKV</th><th class="num">% Đặt lịch ≥30p</th><th class="num">% Feedback tiêu cực</th><th class="num">Thưởng</th></tr></thead>
