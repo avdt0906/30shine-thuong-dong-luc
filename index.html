@@ -1505,13 +1505,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
 
   /* ================= TAB 1 ================= */
   function initDatlichTab(){
-    var passDatlich = datlichRows.filter(function(r){ return r.pct >= 43; }).length;
-    var passFeedback = datlichRows.filter(function(r){ return r.datFeedback; }).length;
     var qualified = datlichRows.filter(function(r){ return r.xepHang; }).sort(function(a,b){ return a.xepHang-b.xepHang; });
-
-    document.getElementById("k1-pass-datlich").textContent = passDatlich + " / " + datlichRows.length;
-    document.getElementById("k1-pass-feedback").textContent = passFeedback + " / " + datlichRows.length;
-    document.getElementById("k1-pass-both").textContent = qualified.length + " / " + datlichRows.length;
 
     var top10 = qualified.slice(0,10);
     var tbTop10 = document.querySelector("#datlich-top10-table tbody");
