@@ -348,7 +348,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
   </div>
 
   <div class="card">
-    <div class="head"><div><h2>Toàn bộ 56 salon Công ty</h2><p>Xếp theo % tăng trưởng quy đổi giảm dần</p></div></div>
+    <div class="head"><div><h2>Toàn bộ 56 salon Công ty</h2><p>Xếp theo % tăng trưởng (so với TB T6–T8) giảm dần</p></div></div>
     <div class="table-controls">
       <input type="text" id="salon-search" placeholder="Tìm salon hoặc GĐKV…">
       <span class="count" id="salon-count"></span>
@@ -1647,7 +1647,6 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
         '<td>'+shortGdkv(r.gdkv)+'</td>'+
         '<td class="num">'+fmtInt(r.khTho)+'</td>'+
         '<td class="num">'+fmtNum2(r.khTb)+'</td>'+
-        '<td class="num" style="color:'+(r.ttTho>=0?'var(--blue)':'var(--orange)')+'">'+fmtPct(r.ttTho,true)+'</td>'+
         '<td class="num" style="color:'+(r.ttQuydoi>=0?'var(--blue)':'var(--orange)')+'"><b>'+fmtPct(r.ttQuydoi,true)+'</b></td>'+
         '<td class="num">'+fmtVnd(r.thuong)+'</td>';
       tbody.appendChild(tr);
