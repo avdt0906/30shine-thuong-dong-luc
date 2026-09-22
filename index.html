@@ -77,7 +77,7 @@ header.hd .meta b{color:var(--text); font-weight:600;}
 .callout .hi{background:var(--orange-soft); color:var(--orange); padding:0 4px; border-radius:4px; font-weight:600;}
 .callout .hib{background:var(--blue-soft); color:var(--blue); padding:0 4px; border-radius:4px; font-weight:600;}
 
-section[data-tab]{display:flex; flex-direction:column; gap:28px;}
+section[data-tab] > * + *{margin-top:28px;}
 .card{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px 22px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:14px;}
 .card .head{display:flex; justify-content:space-between; align-items:flex-end; gap:10px; flex-wrap:wrap;}
 .card h2{font-size:16.5px; font-weight:600;}
