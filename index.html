@@ -1481,33 +1481,37 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
       });
     });
 
-    function renderFull(list){
-      var tbody = document.querySelector("#" + prefix + "-table tbody");
-      tbody.innerHTML = "";
-      list.forEach(function(r){
-        var tr = document.createElement("tr");
-        if (r.thuong>0) tr.className = "win";
-        tr.innerHTML =
-          '<td>'+r.bang+'</td>'+
-          '<td>'+r.salonName+'</td>'+
-          '<td>'+shortGdkv(r.gdkv)+'</td>'+
-          '<td class="num">'+fmtVnd(r.aovT9)+'</td>'+
-          '<td class="num">'+fmtVnd(r.aovTb)+'</td>'+
-          '<td class="num" style="color:'+(r.pct>=0?'var(--blue)':'var(--orange)')+'"><b>'+fmtPct(r.pct,true)+'</b></td>'+
-          '<td>'+(r.datMin ? '<span class="pill-dat">✓ Đạt</span>' : '<span class="pill-khongdat">✗</span>')+'</td>'+
-          '<td class="num">'+fmtVnd(r.thuong)+'</td>';
-        tbody.appendChild(tr);
-      });
-      document.getElementById(prefix + "-count").textContent = list.length + " / " + rows.length + " salon";
-    }
-    var sorted = rows.slice().sort(function(a,b){ return a.bang===b.bang ? b.pct-a.pct : (a.bang<b.bang?-1:1); });
-    renderFull(sorted);
+    ["A","B"].forEach(function(bang){
+      var bl = bang.toLowerCase();
+      var group = rows.filter(function(r){ return r.bang===bang; }).slice().sort(function(a,b){ return b.pct-a.pct; });
 
-    document.getElementById(prefix + "-search").addEventListener("input", function(e){
-      var q = e.target.value.trim().toLowerCase();
-      renderFull(sorted.filter(function(r){
-        return r.salonName.toLowerCase().indexOf(q) > -1 || r.gdkv.toLowerCase().indexOf(q) > -1;
-      }));
+      function renderFull(list){
+        var tbody = document.querySelector("#" + prefix + "-full-" + bl + "-table tbody");
+        tbody.innerHTML = "";
+        list.forEach(function(r,i){
+          var tr = document.createElement("tr");
+          if (r.thuong>0) tr.className = "win";
+          tr.innerHTML =
+            '<td>'+(i+1)+'</td>'+
+            '<td>'+r.salonName+'</td>'+
+            '<td>'+shortGdkv(r.gdkv)+'</td>'+
+            '<td class="num">'+fmtVnd(r.aovT9)+'</td>'+
+            '<td class="num">'+fmtVnd(r.aovTb)+'</td>'+
+            '<td class="num" style="color:'+(r.pct>=0?'var(--blue)':'var(--orange)')+'"><b>'+fmtPct(r.pct,true)+'</b></td>'+
+            '<td>'+(r.datMin ? '<span class="pill-dat">✓ Đạt</span>' : '<span class="pill-khongdat">✗</span>')+'</td>'+
+            '<td class="num">'+fmtVnd(r.thuong)+'</td>';
+          tbody.appendChild(tr);
+        });
+        document.getElementById(prefix + "-" + bl + "-count").textContent = list.length + " / " + group.length + " salon";
+      }
+      renderFull(group);
+
+      document.getElementById(prefix + "-" + bl + "-search").addEventListener("input", function(e){
+        var q = e.target.value.trim().toLowerCase();
+        renderFull(group.filter(function(r){
+          return r.salonName.toLowerCase().indexOf(q) > -1 || r.gdkv.toLowerCase().indexOf(q) > -1;
+        }));
+      });
     });
   }
 
