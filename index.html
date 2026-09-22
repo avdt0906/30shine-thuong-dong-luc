@@ -1714,13 +1714,9 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
     var g150 = nvRows.filter(function(r){ return r.dat150; });
     var qualified = g150.filter(function(r){ return r.dat30; });
     var spent = nvRows.reduce(function(s,r){ return s+r.thuong; },0);
-    var sorted = g150.slice().sort(function(a,b){ return a.tyLe-b.tyLe; });
-    var median = sorted.length ? (sorted.length%2 ? sorted[(sorted.length-1)/2].tyLe :
-      (sorted[sorted.length/2-1].tyLe + sorted[sorted.length/2].tyLe)/2) : 0;
 
     document.getElementById("k3-p150").textContent = g150.length;
     document.getElementById("k3-qualify").textContent = qualified.length + " NV";
-    document.getElementById("k3-median").textContent = fmtNum2(median)+"%";
     document.getElementById("k3-p185").textContent = g150.length;
     document.getElementById("k3-winner-sub").textContent = qualified.length + " / " + g150.length + " NV đạt đủ cả 2 ngưỡng";
 
