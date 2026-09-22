@@ -1599,15 +1599,11 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
   /* ================= TAB 2 ================= */
   function initSalonTab(){
     var posCount = salonRows.filter(function(r){ return r.ttQuydoi > 0; }).length;
-    var totalQuydoi = salonRows.reduce(function(s,r){ return s+r.khQuydoi; },0);
-    var totalTb = salonRows.reduce(function(s,r){ return s+r.khTb; },0);
-    var totalGrowth = (totalQuydoi/totalTb - 1) * 100;
     var top = salonRows[0];
 
     document.getElementById("k2-pos").textContent = posCount + " / " + salonRows.length;
     document.getElementById("k2-max").textContent = fmtPct(top.ttQuydoi,true);
     document.getElementById("k2-max-name").textContent = top.salonName + " (" + shortGdkv(top.gdkv) + ")";
-    document.getElementById("k2-total").textContent = fmtPct(totalGrowth,true);
 
     var top10 = salonRows.slice(0,10);
     var tbTop10 = document.querySelector("#top10-table tbody");
