@@ -538,16 +538,13 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
   </section>
 
   <section class="khoi">
-    <h2 id="td-ct7"></h2>
-    <p class="mo">Kết quả tháng 8 đã ghi trong tài liệu chương trình. Trang dựng lại từ khối THÁNG 7 / THÁNG 8 của sheet content để kiểm cách hiểu «video đạt chuẩn» — cùng cách hiểu đó dùng chấm CT8, CT9.</p>
-    <div class="cuon"><table id="bang-ct7"></table></div>
-    <div class="nhan-dinh" id="nd-ct7"></div>
-  </section>
-  <section class="khoi">
-    <h2>Tỷ lệ salon có video đạt chuẩn, tháng 7 → tháng 8, theo GĐKV</h2>
-    <p class="mo">Salon đạt chuẩn (thước tháng 8) = có ít nhất 1 video đạt chuẩn trong khối tháng. Mẫu số = salon của GĐKV trong danh sách salon chấm CTĐL.</p>
-    <div class="cuon"><table id="bang-ct7-gd"></table></div>
-    <div class="nhan-dinh" id="nd-ct7-gd"></div>
+    <h2>Thưởng dành cho 4 vùng có kết quả nội dung bán hàng nổi bật nhất tháng 8</h2>
+    <ul>
+      <li><b>Bứt Phá Thần Tốc</b>: có tỷ lệ salon đạt chuẩn tăng nhiều nhất hệ thống, từ 0% (tháng 7) lên 86% (tháng 8) — Vùng Đoàn Trung Đức</li>
+      <li><b>Tăng Trưởng Ấn Tượng</b>: có tỷ lệ salon đạt chuẩn tăng nhiều thứ 2 hệ thống, từ 33% lên 78% — Vùng Nguyễn Thanh Sang</li>
+      <li><b>Giữ Vững Phong Độ Tuyệt Đối</b>: duy nhất giữ 100% salon đạt chuẩn liên tục 2 tháng liền (không sót salon nào) — Vùng Trịnh Văn Quang</li>
+      <li><b>Nhà Sản Xuất Nội Dung Số 1</b>: có salon làm nhiều video đạt chuẩn nhất hệ thống trong tháng (3 video) — Vùng Nguyễn Như Quỳnh (nhờ salon 168 NVC)</li>
+    </ul>
   </section>
 
 </div></div>
@@ -2176,7 +2173,7 @@ function veDoiSoat(){
     <tr><td>Kiểm: chi cách A không vượt cách B (A là tập con)</td><td></td><td>${chiA<=chiB+1?chip('tot','✓','đúng'):chip('nang','✕','A > B — khoá bị đặt lệch')}</td></tr></tbody>`;
 }
 
-function ve(){ veTongQuan(); veCT7(); veCT8(); veCT9(); veDoiSoat(); }
+function ve(){ veTongQuan(); veCT8(); veCT9(); veDoiSoat(); }
 document.querySelectorAll('.k-den').forEach(e=>e.textContent=ngayDu(D.ky.den));
 document.getElementById('moc').innerHTML=`Số <b>${ngayDu(D.ky.tu)} → ${ngayDu(D.ky.den)}</b><br>sheet ${D.ky.gio_sheet} · quảng cáo ${D.ky.gio_ads}`;
 document.getElementById('chan').innerHTML=`Nguồn [D]: sheet Lark «Salon order Content Calendar» (đọc sống lúc dựng); kết quả quảng cáo mức từng quảng cáo — Meta Marketing API + TikTok Business API (bộ kéo của trang Content Salon T9); lượt mua Meta = bill thật tại salon trong 7 ngày sau xem quảng cáo. `+
