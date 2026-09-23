@@ -1641,7 +1641,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
       svg.appendChild(label);
 
       var bar = el("rect",{x:leftLabelW, y:y, width:Math.max(w,1.5), height:rowH-6, rx:4, fill:"var(--blue)", class:"bar-hit"});
-      if (r.fbPct<=DATLICH_FB_SAN) bar.setAttribute("stroke","var(--green)"), bar.setAttribute("stroke-width","2");
+      if (r.fbPct<=DATLICH_FB_SAN && r.choLauPct<=DATLICH_CHOLAU_SAN) bar.setAttribute("stroke","var(--green)"), bar.setAttribute("stroke-width","2");
       bar.addEventListener("mousemove", function(evt){
         showTip(evt, "<b>"+r.salonName+"</b> ("+shortGdkv(r.gdkv)+")<br>"+
           "Đặt lịch ≥30p: <b>"+fmtNum2(r.pct)+"%</b><br>"+
