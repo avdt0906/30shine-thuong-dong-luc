@@ -2163,7 +2163,6 @@ function veDoiSoat(){
 
 function ve(){ veCT8(); veCT9(); veDoiSoat(); }
 document.querySelectorAll('.k-den').forEach(e=>e.textContent=ngayDu(D.ky.den));
-document.getElementById('moc').innerHTML=`Số <b>${ngayDu(D.ky.tu)} → ${ngayDu(D.ky.den)}</b><br>sheet ${D.ky.gio_sheet} · quảng cáo ${D.ky.gio_ads}`;
 document.getElementById('chan').innerHTML=`Nguồn [D]: sheet Lark «Salon order Content Calendar» (đọc sống lúc dựng); kết quả quảng cáo mức từng quảng cáo — Meta Marketing API + TikTok Business API (bộ kéo của trang Content Salon T9); lượt mua Meta = bill thật tại salon trong 7 ngày sau xem quảng cáo. `+
   `Quy tắc chương trình: ${esc(D.nguon_ctdl)}. Video đạt chuẩn: ${esc(D.q.vdc._cach_hieu)}`;
 if(D.loi.length) document.getElementById('hop-loi').innerHTML=`<div class="loi"><b>✕ Bất thường lúc dựng — soát trước khi tin số:</b><br>${D.loi.map(esc).join('<br>')}</div>`;
