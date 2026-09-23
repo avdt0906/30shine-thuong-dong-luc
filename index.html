@@ -1999,12 +1999,6 @@ function veCT8(){
     tt.map(x=>`<tr class="${x.du?'':'mo-di'} ${ST.chon===x.ten?'chon':''}"><td class="so">${x.hang??'—'}</td>${bam(x.ten)}<td>${esc(x.gdkv)}</td><td>${dieuKien(x)}</td>`+
       `<td class="so">${x.phat?so(x.phat):'—'}</td><td class="so">${x.phat?so(x.x50):'—'}</td><td class="so"><b>${x.v50!==null?pt(x.v50):'—'}</b></td><td class="so">${x.cpm?dong(x.cpm):'—'}</td><td class="so">${x.chi?dong(x.chi):'—'}</td>`+
       `<td>${x.phat>0&&x.phat<MM.tiktok_phat?chip('canh','!','mẫu mỏng'):x.so_ad===0?chip('trung','–','chưa có quảng cáo'):''}</td><td class="so giai">${x.giai?dong(x.giai):''}</td></tr>`).join('')+`</tbody>`;
-  const ndTt=[], trongGiaiTt=ttDu.filter(x=>x.giai>0);
-  if(trongGiaiTt.length) ndTt.push(`<p>Đang trong giải: ${trongGiaiTt.map(x=>`<b>${esc(x.ten)}</b> ${pt(x.v50)} (${so(x.phat)} lượt phát)`).join(' · ')}.</p>`);
-  const mong=trongGiaiTt.filter(x=>x.phat<MM.tiktok_phat);
-  if(mong.length) ndTt.push(`<p>${mong.length}/${trongGiaiTt.length} salon trong giải có dưới ${so(MM.tiktok_phat)} lượt phát (${mong.map(x=>esc(x.ten)).join(', ')}) — thứ hạng còn đổi nhiều khi tiền đổ thêm. Chương trình không ghi ngưỡng lượt phát tối thiểu; nếu cần, ban tổ chức khai thêm.</p>`);
-  ndTt.push(`<p>Thước TikTok là tỉ lệ xem, không phải khách: chiến dịch TikTok đang chạy mục tiêu phủ/xem 15 giây, cột chuyển đổi trả 0 nên không đo được khách ra salon.</p>`);
-  document.getElementById('nd-ct8-tt').innerHTML=ndTt.join('');
   document.querySelectorAll('#bang-ct8-fb td.bam, #bang-ct8-tt td.bam').forEach(td=>td.onclick=()=>{ ST.chon=ST.chon===td.dataset.s?null:td.dataset.s; veCT8(); });
   // chi tiết video
   let vd=D.video.filter(v=>trongPham(v.salon) && (!ST.chon||v.salon===ST.chon) && (!v.ngay||v.ngay<=D.ky.den));
