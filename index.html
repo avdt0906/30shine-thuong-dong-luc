@@ -1386,10 +1386,14 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
     };
   });
 
+  var SALON_TEN_MAP = {};
+  salonRows.concat(datlichRows).forEach(function(r){ SALON_TEN_MAP[r.salonId] = r.salonName; });
+
   var R12W_KH_SAN = 120;
   var nvRows = parseCSV(NV_CSV_RAW).map(function(r){
     return {
-      staffId:r.staff_id, name:r.staff_name.trim(), salonId:r.salon_id, gdkv:r.gdkv,
+      staffId:r.staff_id, name:r.staff_name.trim(), salonId:r.salon_id,
+      salonName: SALON_TEN_MAP[r.salon_id] || ("Salon "+r.salon_id), gdkv:r.gdkv,
       soKhCham: parseInt(r.so_kh_da_cham,10), soKhDen: parseInt(r.so_kh_den_trong_7ngay,10),
       tyLe: parseFloat(r.ty_le_r12w_pct), dat150: parseInt(r.so_kh_da_cham,10) >= R12W_KH_SAN,
       dat30: r.dat_nguong_30pct === "Y", xepHang: null, thuong: 0
