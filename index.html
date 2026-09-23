@@ -1764,7 +1764,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
       tr.innerHTML =
         '<td>'+rankCell+'</td>'+
         '<td>'+(r.xepHang<=3?'<span class="medal-badge">'+medal(r.xepHang)+'</span>':'')+r.name+'</td>'+
-        '<td>'+r.salonId+'</td><td>'+shortGdkv(r.gdkv)+'</td>'+
+        '<td>'+r.salonName+'</td><td>'+shortGdkv(r.gdkv)+'</td>'+
         '<td class="num">'+fmtInt(r.soKhCham)+'</td>'+
         '<td class="num"><b>'+fmtNum2(r.tyLe)+'%</b></td>'+
         '<td class="num"><span class="prize-tag '+rankBigClass(r.xepHang)+'">'+fmtVnd(r.thuong)+'</span></td>';
@@ -1781,7 +1781,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
       var q = searchInput.value.trim().toLowerCase();
       var pool = filterChk.checked ? g150 : nvRows;
       var filtered = pool.filter(function(r){
-        return r.name.toLowerCase().indexOf(q) > -1 || String(r.salonId).indexOf(q) > -1 || r.gdkv.toLowerCase().indexOf(q) > -1;
+        return r.name.toLowerCase().indexOf(q) > -1 || r.salonName.toLowerCase().indexOf(q) > -1 || r.gdkv.toLowerCase().indexOf(q) > -1;
       });
       renderNvTable(filtered);
     }
