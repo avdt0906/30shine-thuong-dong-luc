@@ -48,7 +48,8 @@ header.hd h1{font-size:26px; font-weight:800; letter-spacing:-.01em; margin-top:
 header.hd .meta{color:var(--text-muted); font-size:13.5px;}
 header.hd .meta b{color:var(--text); font-weight:600;}
 
-.tabbar{display:flex; gap:8px; overflow-x:auto; position:relative;}
+.tabbar{display:flex; flex-direction:column; gap:8px; position:relative;}
+.tabbar-row{display:flex; gap:8px; overflow-x:auto;}
 .tab-btn{
   flex:0 0 auto; appearance:none; border:1px solid var(--border); background:var(--surface);
   color:var(--text-muted); font:inherit; font-size:13px; font-weight:600; padding:9px 15px;
