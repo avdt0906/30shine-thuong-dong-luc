@@ -1354,17 +1354,27 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
     return rows;
   }
 
+  var DATLICH_PCT_SAN = 35, DATLICH_FB_SAN = 0.35;
   var datlichRows = parseCSV(TIEUCHI1_CSV).map(function(r){
     return {
       salonId: r.salon_id, salonName: r.salon_name, gdkv: r.gdkv,
       bookingDatTruoc: parseInt(r.booking_dat_truoc,10), datDu30p: parseInt(r.dat_du_30p,10),
       pct: parseFloat(r.ty_le_datlich_pct),
       fbCount: parseInt(r.feedback_tieu_cuc_soluong,10), luotKhach: parseInt(r.luot_khach,10),
-      fbPct: parseFloat(r.ty_le_feedback_pct), datFeedback: r.dat_nguong_feedback_029 === "Y",
-      xepHang: r.xep_hang_combined ? parseInt(r.xep_hang_combined,10) : null,
-      thuong: parseInt(r.thuong_vnd,10)
+      fbPct: parseFloat(r.ty_le_feedback_pct),
+      xepHang: null, thuong: 0
     };
   });
+  (function(){
+    var hang = 0;
+    datlichRows.slice().sort(function(a,b){ return b.pct-a.pct; }).forEach(function(r){
+      if (r.pct >= DATLICH_PCT_SAN && r.fbPct <= DATLICH_FB_SAN){
+        hang += 1;
+        r.xepHang = hang;
+        r.thuong = hang<=5 ? 2000000 : hang<=10 ? 1000000 : 0;
+      }
+    });
+  })();
 
   var salonRows = parseCSV(SALON_CSV).map(function(r){
     return {
