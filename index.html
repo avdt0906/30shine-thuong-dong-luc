@@ -1386,15 +1386,25 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
     };
   });
 
+  var R12W_KH_SAN = 120;
   var nvRows = parseCSV(NV_CSV_RAW).map(function(r){
     return {
       staffId:r.staff_id, name:r.staff_name.trim(), salonId:r.salon_id, gdkv:r.gdkv,
       soKhCham: parseInt(r.so_kh_da_cham,10), soKhDen: parseInt(r.so_kh_den_trong_7ngay,10),
-      tyLe: parseFloat(r.ty_le_r12w_pct), dat150: r.dat_nguong_150kh === "Y",
-      dat30: r.dat_nguong_30pct === "Y", xepHang: r.xep_hang ? parseInt(r.xep_hang,10) : null,
-      thuong: parseInt(r.thuong_vnd,10)
+      tyLe: parseFloat(r.ty_le_r12w_pct), dat150: parseInt(r.so_kh_da_cham,10) >= R12W_KH_SAN,
+      dat30: r.dat_nguong_30pct === "Y", xepHang: null, thuong: 0
     };
   });
+  (function(){
+    var hang = 0;
+    nvRows.filter(function(r){ return r.dat150 && r.dat30; })
+      .sort(function(a,b){ return b.tyLe-a.tyLe; })
+      .forEach(function(r){
+        hang += 1;
+        r.xepHang = hang;
+        r.thuong = hang<=10 ? 300000 : hang<=20 ? 200000 : 0;
+      });
+  })();
 
   function parseAovRow(r){
     return {
