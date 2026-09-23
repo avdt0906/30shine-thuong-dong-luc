@@ -1975,7 +1975,7 @@ function veCT8(){
     (fbTop5.length?fbTop5.map(x=>`<tr class="${podiumClassCt(x.hang)}"><td class="so">${x.hang}</td><td class="ten">${esc(x.ten)}</td><td>${esc(x.gdkv)}</td>`+
       `<td class="so"><b>${so(x.mua)}</b></td><td class="so">${x.cpa?dong(x.cpa):'—'}</td><td class="so giai">${x.giai?dong(x.giai):'—'}</td></tr>`).join('')
       :'<tr><td colspan="6" style="text-align:center;color:var(--chu-mo);padding:14px 12px;">Chưa salon nào đủ điều kiện.</td></tr>')+`</tbody>`;
-  document.getElementById('bang-ct8-fb').innerHTML=`<thead><tr><th class="so">Hạng</th><th>Salon</th><th>GĐKV</th><th>Video FB đạt chuẩn</th><th class="so">Lượt mua</th><th class="so">Chi Meta</th><th class="so">CPA</th><th class="so">Số quảng cáo</th><th>Cờ</th><th class="so">Thưởng tạm tính</th></tr></thead><tbody>`+
+  document.getElementById('bang-ct8-fb').innerHTML=`<thead><tr><th class="so">Hạng</th><th>Salon</th><th>GĐKV</th><th>Video FB đạt chuẩn</th><th class="so">Lượt mua</th><th class="so">Chi Meta</th><th class="so">CPA</th><th class="so">Số quảng cáo</th><th>Cờ</th><th class="so">Thưởng</th></tr></thead><tbody>`+
     fb.map(x=>`<tr class="${x.du?'':'mo-di'} ${ST.chon===x.ten?'chon':''}"><td class="so">${x.hang??'—'}</td>${bam(x.ten)}<td>${esc(x.gdkv)}</td><td>${dieuKien(x)}</td>`+
       `<td class="so"><b>${so(x.mua)}</b></td><td class="so">${x.chi?dong(x.chi):'—'}</td><td class="so">${x.cpa?dong(x.cpa):'—'}</td><td class="so">${x.so_ad||'—'}</td>`+
       `<td>${x.chi>0&&x.chi<MM.meta_chi?chip('canh','!','chi mỏng'):x.so_ad===0?chip('trung','–','chưa có quảng cáo'):''}</td><td class="so giai">${x.giai?dong(x.giai):''}</td></tr>`).join('')+`</tbody>`;
@@ -1995,7 +1995,7 @@ function veCT8(){
     (ttTop5.length?ttTop5.map(x=>`<tr class="${podiumClassCt(x.hang)}"><td class="so">${x.hang}</td><td class="ten">${esc(x.ten)}</td><td>${esc(x.gdkv)}</td>`+
       `<td class="so"><b>${x.v50!==null?pt(x.v50):'—'}</b></td><td class="so">${x.cpm?dong(x.cpm):'—'}</td><td class="so giai">${x.giai?dong(x.giai):'—'}</td></tr>`).join('')
       :'<tr><td colspan="6" style="text-align:center;color:var(--chu-mo);padding:14px 12px;">Chưa salon nào đủ điều kiện.</td></tr>')+`</tbody>`;
-  document.getElementById('bang-ct8-tt').innerHTML=`<thead><tr><th class="so">Hạng</th><th>Salon</th><th>GĐKV</th><th>Video TikTok đạt chuẩn</th><th class="so">Lượt phát</th><th class="so">Xem 50%</th><th class="so">Tỉ lệ xem 50%</th><th class="so">CPM</th><th class="so">Chi TikTok</th><th>Cờ</th><th class="so">Thưởng tạm tính</th></tr></thead><tbody>`+
+  document.getElementById('bang-ct8-tt').innerHTML=`<thead><tr><th class="so">Hạng</th><th>Salon</th><th>GĐKV</th><th>Video TikTok đạt chuẩn</th><th class="so">Lượt phát</th><th class="so">Xem 50%</th><th class="so">Tỉ lệ xem 50%</th><th class="so">CPM</th><th class="so">Chi TikTok</th><th>Cờ</th><th class="so">Thưởng</th></tr></thead><tbody>`+
     tt.map(x=>`<tr class="${x.du?'':'mo-di'} ${ST.chon===x.ten?'chon':''}"><td class="so">${x.hang??'—'}</td>${bam(x.ten)}<td>${esc(x.gdkv)}</td><td>${dieuKien(x)}</td>`+
       `<td class="so">${x.phat?so(x.phat):'—'}</td><td class="so">${x.phat?so(x.x50):'—'}</td><td class="so"><b>${x.v50!==null?pt(x.v50):'—'}</b></td><td class="so">${x.cpm?dong(x.cpm):'—'}</td><td class="so">${x.chi?dong(x.chi):'—'}</td>`+
       `<td>${x.phat>0&&x.phat<MM.tiktok_phat?chip('canh','!','mẫu mỏng'):x.so_ad===0?chip('trung','–','chưa có quảng cáo'):''}</td><td class="so giai">${x.giai?dong(x.giai):''}</td></tr>`).join('')+`</tbody>`;
