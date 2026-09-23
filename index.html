@@ -1609,13 +1609,6 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
 
   /* ================= TAB 2 ================= */
   function initSalonTab(){
-    var posCount = salonRows.filter(function(r){ return r.ttQuydoi > 0; }).length;
-    var top = salonRows[0];
-
-    document.getElementById("k2-pos").textContent = posCount + " / " + salonRows.length;
-    document.getElementById("k2-max").textContent = fmtPct(top.ttQuydoi,true);
-    document.getElementById("k2-max-name").textContent = top.salonName + " (" + shortGdkv(top.gdkv) + ")";
-
     var top10 = salonRows.slice(0,10);
     var tbTop10 = document.querySelector("#top10-table tbody");
     tbTop10.innerHTML = "";
@@ -1629,7 +1622,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
         '<td>'+rankCell+'</td>'+
         '<td>'+(r.xepHang<=3?'<span class="medal-badge">'+medal(r.xepHang)+'</span>':'')+r.salonName+'</td>'+
         '<td>'+shortGdkv(r.gdkv)+'</td>'+
-        '<td class="num" style="color:var(--blue)"><b>'+fmtPct(r.ttQuydoi,true)+'</b></td>'+
+        '<td class="num" style="color:'+(r.ttTho>=0?'var(--blue)':'var(--orange)')+'"><b>'+fmtPct(r.ttTho,true)+'</b></td>'+
         '<td class="num"><span class="prize-tag '+rankBigClass(r.xepHang)+'">'+fmtVnd(r.thuong)+'</span></td>';
       tbTop10.appendChild(tr);
     });
