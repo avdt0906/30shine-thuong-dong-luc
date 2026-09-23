@@ -1938,18 +1938,7 @@ const giaiText = giai => giai.map(g=>`hạng ${g.hang.length>1?g.hang[0]+'–'+g
 const soGiai = giai => Math.max(...giai.flatMap(g=>g.hang));
 const TUAN = D.tuan9, soTron = TUAN.filter(t=>t.tron).length;
 
-function dungLoc(){
-  const g=document.getElementById('gat-vung');
-  g.innerHTML=[['all','Toàn chuỗi'],['Bắc','Bắc'],['Trung','Trung'],['Nam','Nam']].map(([v,t])=>`<button data-v="${v}" class="${ST.vung===v?'bat':''}">${t}</button>`).join('');
-  g.onclick=e=>{ const b=e.target.closest('button'); if(!b) return; ST.vung=b.dataset.v; ST.gdkv='all'; dungLoc(); ve(); };
-  const ds=[...new Set(D.ds.filter(s=>ST.vung==='all'||s.vung===ST.vung).map(s=>s.gdkv))].sort((a,b)=>a.localeCompare(b,'vi'));
-  const c=document.getElementById('chon-gdkv');
-  c.innerHTML=`<option value="all">Mọi GĐKV (${ds.length})</option>`+ds.map(x=>`<option ${ST.gdkv===x?'selected':''}>${esc(x)}</option>`).join('');
-  c.onchange=()=>{ ST.gdkv=c.value; ve(); };
-  const n=document.getElementById('gat-nguon');
-  n.innerHTML=Object.entries(NGUON).map(([v,t])=>`<button data-v="${v}" class="${ST.nguon===v?'bat':''}">${t}</button>`).join('');
-  n.onclick=e=>{ const b=e.target.closest('button'); if(!b) return; ST.nguon=b.dataset.v; try{localStorage.setItem('ctdl789_nguon',ST.nguon);}catch(e){} dungLoc(); ve(); };
-}
+function dungLoc(){}
 
 /* ════════════════ CT8 — xếp hạng (trên cả chuỗi; lọc chỉ ẩn dòng) ════════════════ */
 function xepCT8(){
