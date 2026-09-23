@@ -2166,7 +2166,7 @@ function veDoiSoat(){
     <tr><td>Kiểm: chi cách A không vượt cách B (A là tập con)</td><td></td><td>${chiA<=chiB+1?chip('tot','✓','đúng'):chip('nang','✕','A > B — khoá bị đặt lệch')}</td></tr></tbody>`;
 }
 
-function ve(){ veTongQuan(); veCT8(); veCT9(); veDoiSoat(); }
+function ve(){ veCT8(); veCT9(); veDoiSoat(); }
 document.querySelectorAll('.k-den').forEach(e=>e.textContent=ngayDu(D.ky.den));
 document.getElementById('moc').innerHTML=`Số <b>${ngayDu(D.ky.tu)} → ${ngayDu(D.ky.den)}</b><br>sheet ${D.ky.gio_sheet} · quảng cáo ${D.ky.gio_ads}`;
 document.getElementById('chan').innerHTML=`Nguồn [D]: sheet Lark «Salon order Content Calendar» (đọc sống lúc dựng); kết quả quảng cáo mức từng quảng cáo — Meta Marketing API + TikTok Business API (bộ kéo của trang Content Salon T9); lượt mua Meta = bill thật tại salon trong 7 ngày sau xem quảng cáo. `+
