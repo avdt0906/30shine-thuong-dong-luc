@@ -1993,8 +1993,8 @@ function veCT8(){
   const tt=X.tt.filter(x=>trongPham(x.ten)), ttDu=X.tt.filter(x=>x.du);
   document.getElementById('td-ct8-tt').textContent=`TikTok — ${ttDu.length} salon đủ ${minV} video; `+(ttDu.length&&ttDu[0].v50?`dẫn đầu ${ttDu[0].ten} xem 50% ${pt(ttDu[0].v50)}`:'chưa salon đủ điều kiện nào có lượt phát');
   const ttTop5=tt.filter(x=>x.hang&&x.hang<=5).sort((a,b)=>a.hang-b.hang);
-  document.getElementById('bang-ct8-tt-top5').innerHTML=`<thead><tr><th class="so">Hạng</th><th>Salon</th><th>GĐKV</th><th class="so">Tỉ lệ xem 50%</th><th class="so">CPM</th><th class="so">Thưởng</th></tr></thead><tbody>`+
-    (ttTop5.length?ttTop5.map(x=>`<tr class="${podiumClassCt(x.hang)}"><td class="so">${x.hang}</td><td class="ten">${esc(x.ten)}</td><td>${esc(x.gdkv)}</td>`+
+  document.getElementById('bang-ct8-tt-top5').innerHTML=`<thead><tr><th>#</th><th>Salon</th><th>GĐKV</th><th class="so">Tỉ lệ xem 50%</th><th class="so">CPM</th><th class="so">Thưởng</th></tr></thead><tbody>`+
+    (ttTop5.length?ttTop5.map(x=>`<tr class="${podiumClassCt(x.hang)}"><td>${rankCellCt(x.hang)}</td><td class="ten">${esc(x.ten)}</td><td>${esc(x.gdkv)}</td>`+
       `<td class="so"><b>${x.v50!==null?pt(x.v50):'—'}</b></td><td class="so">${x.cpm?dong(x.cpm):'—'}</td><td class="so giai">${x.giai?dong(x.giai):'—'}</td></tr>`).join('')
       :'<tr><td colspan="6" style="text-align:center;color:var(--chu-mo);padding:14px 12px;">Chưa salon nào đủ điều kiện.</td></tr>')+`</tbody>`;
   document.getElementById('bang-ct8-tt').innerHTML=`<thead><tr><th class="so">Hạng</th><th>Salon</th><th>GĐKV</th><th>Video TikTok đạt chuẩn</th><th class="so">Lượt phát</th><th class="so">Xem 50%</th><th class="so">Tỉ lệ xem 50%</th><th class="so">CPM</th><th class="so">Chi TikTok</th><th>Cờ</th><th class="so">Thưởng</th></tr></thead><tbody>`+
