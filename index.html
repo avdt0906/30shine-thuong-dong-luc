@@ -316,7 +316,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
   </div>
 
   <div class="card">
-    <div class="head"><div><h2>20 salon dẫn đầu — đặt lịch 30 phút</h2><p>% khách đặt lịch trước ≥30 phút, chia trên tổng lượt khách toàn salon (T9 tính đến 22/09) · viền xanh lá = đạt cả feedback ≤0,35% và chờ lâu ≤5%</p></div></div>
+    <div class="head"><div><h2>20 salon dẫn đầu — đặt lịch 30 phút</h2><p>% khách đặt lịch trước ≥30 phút, chia trên tổng lượt khách toàn salon (T9 tính đến 22/09) · viền xanh lá = đạt cả feedback ≤0,35% và chờ lâu &lt;6%</p></div></div>
     <div class="chart-wrap"><svg id="chart-datlich" role="img" aria-label="Biểu đồ tỷ lệ đặt lịch trước 30 phút theo salon"></svg></div>
   </div>
 
@@ -328,7 +328,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
     </div>
     <div class="table-scroll tall">
       <table class="dt" id="datlich-table">
-        <thead><tr><th>#</th><th>Salon</th><th>GĐKV</th><th class="num">% Đặt lịch ≥30p</th><th>Đạt sàn 35%</th><th class="num">% Feedback tiêu cực</th><th>Đạt ≤0,35%</th><th class="num">% Chờ lâu</th><th>Đạt ≤5%</th><th class="num">Thưởng</th></tr></thead>
+        <thead><tr><th>#</th><th>Salon</th><th>GĐKV</th><th class="num">% Đặt lịch ≥30p</th><th>Đạt sàn 35%</th><th class="num">% Feedback tiêu cực</th><th>Đạt ≤0,35%</th><th class="num">% Chờ lâu</th><th>Đạt &lt;6%</th><th class="num">Thưởng</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -1378,7 +1378,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
     return rows;
   }
 
-  var DATLICH_PCT_SAN = 35, DATLICH_FB_SAN = 0.35, DATLICH_CHOLAU_SAN = 5;
+  var DATLICH_PCT_SAN = 35, DATLICH_FB_SAN = 0.35, DATLICH_CHOLAU_SAN = 6;
   var datlichRows = parseCSV(TIEUCHI1_CSV).map(function(r){
     return {
       salonId: r.salon_id, salonName: r.salon_name, gdkv: r.gdkv,
@@ -1393,7 +1393,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
   (function(){
     var hang = 0;
     datlichRows.slice().sort(function(a,b){ return b.pct-a.pct; }).forEach(function(r){
-      if (r.pct >= DATLICH_PCT_SAN && r.fbPct <= DATLICH_FB_SAN && r.choLauPct <= DATLICH_CHOLAU_SAN){
+      if (r.pct >= DATLICH_PCT_SAN && r.fbPct <= DATLICH_FB_SAN && r.choLauPct < DATLICH_CHOLAU_SAN){
         hang += 1;
         r.xepHang = hang;
         r.thuong = hang<=5 ? 2000000 : hang<=10 ? 1000000 : 0;
@@ -1610,7 +1610,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
         '<td class="num">'+fmtNum2(r.fbPct)+'%</td>'+
         '<td>'+(r.fbPct<=DATLICH_FB_SAN ? '<span class="pill-dat">✓ Đạt</span>' : '<span class="pill-khongdat">✗</span>')+'</td>'+
         '<td class="num">'+fmtNum2(r.choLauPct)+'%</td>'+
-        '<td>'+(r.choLauPct<=DATLICH_CHOLAU_SAN ? '<span class="pill-dat">✓ Đạt</span>' : '<span class="pill-khongdat">✗</span>')+'</td>'+
+        '<td>'+(r.choLauPct<DATLICH_CHOLAU_SAN ? '<span class="pill-dat">✓ Đạt</span>' : '<span class="pill-khongdat">✗</span>')+'</td>'+
         '<td class="num">'+fmtVnd(r.thuong)+'</td>';
       tbody.appendChild(tr);
     });
@@ -1641,12 +1641,12 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
       svg.appendChild(label);
 
       var bar = el("rect",{x:leftLabelW, y:y, width:Math.max(w,1.5), height:rowH-6, rx:4, fill:"var(--blue)", class:"bar-hit"});
-      if (r.fbPct<=DATLICH_FB_SAN && r.choLauPct<=DATLICH_CHOLAU_SAN) bar.setAttribute("stroke","var(--green)"), bar.setAttribute("stroke-width","2");
+      if (r.fbPct<=DATLICH_FB_SAN && r.choLauPct<DATLICH_CHOLAU_SAN) bar.setAttribute("stroke","var(--green)"), bar.setAttribute("stroke-width","2");
       bar.addEventListener("mousemove", function(evt){
         showTip(evt, "<b>"+r.salonName+"</b> ("+shortGdkv(r.gdkv)+")<br>"+
           "Đặt lịch ≥30p: <b>"+fmtNum2(r.pct)+"%</b><br>"+
           "Feedback tiêu cực: <b>"+fmtNum2(r.fbPct)+"%</b> ("+(r.fbPct<=DATLICH_FB_SAN?"đạt ≤0,35%":"không đạt")+")<br>"+
-          "Chờ lâu: <b>"+fmtNum2(r.choLauPct)+"%</b> ("+(r.choLauPct<=DATLICH_CHOLAU_SAN?"đạt ≤5%":"không đạt")+")"+
+          "Chờ lâu: <b>"+fmtNum2(r.choLauPct)+"%</b> ("+(r.choLauPct<DATLICH_CHOLAU_SAN?"đạt <6%":"không đạt")+")"+
           (r.thuong>0 ? "<br>Thưởng: <b>"+fmtVnd(r.thuong)+"</b>" : ""));
       });
       bar.addEventListener("mouseleave", hideTip);
