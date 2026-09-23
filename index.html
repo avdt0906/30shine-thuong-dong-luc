@@ -1697,9 +1697,9 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
       var bar = el("rect",{x:barX, y:y, width:Math.max(w,1.5), height:rowH-6, rx:4, fill:color, class:"bar-hit"});
       bar.addEventListener("mousemove", function(evt){
         showTip(evt, "<b>"+r.salonName+"</b> ("+shortGdkv(r.gdkv)+")<br>"+
-          "Quy đổi 30 ngày: <b>"+fmtPct(r.ttQuydoi,true)+"</b><br>"+
-          "Thô 18 ngày: "+fmtPct(r.ttTho,true)+"<br>"+
-          "KH lần 2: "+fmtNum2(r.khQuydoi)+" (quy đổi) / TB 3 tháng "+fmtNum2(r.khTb)+
+          "%TT thực tế: <b>"+fmtPct(r.ttTho,true)+"</b><br>"+
+          "Quy đổi 30 ngày (dùng xếp hạng): "+fmtPct(r.ttQuydoi,true)+"<br>"+
+          "KH lần 2: "+fmtInt(r.khTho)+" (thực tế) / TB 3 tháng "+fmtNum2(r.khTb)+
           (r.thuong>0 ? "<br>Thưởng: <b>"+fmtVnd(r.thuong)+"</b>" : ""));
       });
       bar.addEventListener("mouseleave", hideTip);
@@ -1707,7 +1707,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
 
       var valX = isPos ? barX + w + 6 : barX - 6;
       var val = el("text",{x:valX, y:y+rowH*0.68, "font-size":11.5, "text-anchor": isPos ? "start":"end", fill:color, "font-weight":700});
-      val.textContent = fmtPct(r.ttQuydoi,true);
+      val.textContent = fmtPct(r.ttTho,true);
       svg.appendChild(val);
     });
 
