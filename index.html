@@ -1679,8 +1679,8 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
 
     rows.forEach(function(r, i){
       var y = 14 + i*(rowH+gap);
-      var isPos = r.ttQuydoi >= 0;
-      var w = Math.abs(r.ttQuydoi) * scale;
+      var isPos = r.ttTho >= 0;
+      var w = Math.abs(r.ttTho) * scale;
       var barX = isPos ? cx : cx - w;
       var color = isPos ? "var(--blue)" : "var(--orange)";
 
