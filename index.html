@@ -1973,8 +1973,8 @@ function veCT8(){
   const fb=X.fb.filter(x=>trongPham(x.ten)), fbDu=X.fb.filter(x=>x.du);
   document.getElementById('td-ct8-fb').textContent=`Facebook — ${fbDu.length} salon đủ ${minV} video; `+(fbDu.length&&fbDu[0].mua>0?`dẫn đầu ${fbDu[0].ten} ${so(fbDu[0].mua)} lượt mua`:'chưa salon đủ điều kiện nào có lượt mua');
   const fbTop5=fb.filter(x=>x.hang&&x.hang<=5).sort((a,b)=>a.hang-b.hang);
-  document.getElementById('bang-ct8-fb-top5').innerHTML=`<thead><tr><th class="so">Hạng</th><th>Salon</th><th>GĐKV</th><th class="so">Lượt mua</th><th class="so">CPA</th><th class="so">Thưởng</th></tr></thead><tbody>`+
-    (fbTop5.length?fbTop5.map(x=>`<tr class="${podiumClassCt(x.hang)}"><td class="so">${x.hang}</td><td class="ten">${esc(x.ten)}</td><td>${esc(x.gdkv)}</td>`+
+  document.getElementById('bang-ct8-fb-top5').innerHTML=`<thead><tr><th>#</th><th>Salon</th><th>GĐKV</th><th class="so">Lượt mua</th><th class="so">CPA</th><th class="so">Thưởng</th></tr></thead><tbody>`+
+    (fbTop5.length?fbTop5.map(x=>`<tr class="${podiumClassCt(x.hang)}"><td>${rankCellCt(x.hang)}</td><td class="ten">${esc(x.ten)}</td><td>${esc(x.gdkv)}</td>`+
       `<td class="so"><b>${so(x.mua)}</b></td><td class="so">${x.cpa?dong(x.cpa):'—'}</td><td class="so giai">${x.giai?dong(x.giai):'—'}</td></tr>`).join('')
       :'<tr><td colspan="6" style="text-align:center;color:var(--chu-mo);padding:14px 12px;">Chưa salon nào đủ điều kiện.</td></tr>')+`</tbody>`;
   document.getElementById('bang-ct8-fb').innerHTML=`<thead><tr><th class="so">Hạng</th><th>Salon</th><th>GĐKV</th><th>Video FB đạt chuẩn</th><th class="so">Lượt mua</th><th class="so">Chi Meta</th><th class="so">CPA</th><th class="so">Số quảng cáo</th><th>Cờ</th><th class="so">Thưởng</th></tr></thead><tbody>`+
