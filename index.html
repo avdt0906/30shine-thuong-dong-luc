@@ -1937,6 +1937,7 @@ const Q8 = D.q.ct8, Q9 = D.q.ct9;
 const ST = { vung:'all', gdkv:'all', tab:'ct8', nguon:'A', chon:null, vdHet:false };
 const NGUON = {A:'Video quay T9', B:'Mọi video của salon'};
 const NGUON_CAU = {A:'video quay tháng 9', B:'mọi video của salon'};   // dùng giữa câu
+function podiumClassCt(hang){ return hang===1?'podium-1':hang===2?'podium-2':hang===3?'podium-3':''; }
 function trongPham(ten){ const s=SALON[ten]; if(!s) return false;
   if(ST.vung!=='all'&&s.vung!==ST.vung) return false; if(ST.gdkv!=='all'&&s.gdkv!==ST.gdkv) return false; return true; }
 function gdTrongPham(g){ return D.ds.some(s=>s.gdkv===g && (ST.vung==='all'||s.vung===ST.vung)) && (ST.gdkv==='all'||ST.gdkv===g); }
