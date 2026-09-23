@@ -1957,7 +1957,7 @@ function veCT8(){
   const X=xepCT8(), minV=Q8.min_video_thang, MM=Q8.mau_mong;
   const dieuKien=x=> x.du?chip('tot','✓',`${x.v}/${minV} video`):chip('nang','✕',`${x.v}/${minV} — cần thêm ${minV-x.v}`);
   const bam=ten=>`<td class="ten bam" data-s="${esc(ten)}">${esc(ten)}</td>`;
-  const noiDuoi=`Kết quả quảng cáo ${ngayVN(D.ky.ads_tu)} → ${ngayVN(D.ky.ads_den)}, tính từ <b>${NGUON_CAU[ST.nguon]}</b> (đổi ở thanh trên). Hạng xếp trên cả ${N_SALON} salon — lọc chỉ ẩn dòng.`;
+  const noiDuoi=`Kết quả quảng cáo ${ngayVN(D.ky.ads_tu)} → ${ngayVN(D.ky.ads_den)}, tính từ <b>${NGUON_CAU[ST.nguon]}</b>. Hạng xếp trên cả ${N_SALON} salon — lọc chỉ ẩn dòng.`;
   // Facebook
   const fb=X.fb.filter(x=>trongPham(x.ten)), fbDu=X.fb.filter(x=>x.du);
   document.getElementById('td-ct8-fb').textContent=`Facebook — ${fbDu.length} salon đủ ${minV} video; `+(fbDu.length&&fbDu[0].mua>0?`dẫn đầu ${fbDu[0].ten} ${so(fbDu[0].mua)} lượt mua`:'chưa salon đủ điều kiện nào có lượt mua');
