@@ -1646,7 +1646,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
         showTip(evt, "<b>"+r.salonName+"</b> ("+shortGdkv(r.gdkv)+")<br>"+
           "Đặt lịch ≥30p: <b>"+fmtNum2(r.pct)+"%</b><br>"+
           "Feedback tiêu cực: <b>"+fmtNum2(r.fbPct)+"%</b> ("+(r.fbPct<=DATLICH_FB_SAN?"đạt ≤0,35%":"không đạt")+")<br>"+
-          "Chờ lâu: <b>"+fmtNum2(r.choLauPct)+"%</b> ("+(r.choLauPct<DATLICH_CHOLAU_SAN?"đạt <6%":"không đạt")+")"+
+          "Chờ lâu: <b>"+fmtNum2(r.choLauPct)+"%</b> ("+(r.choLauPct<DATLICH_CHOLAU_SAN?"đạt &lt;6%":"không đạt")+")"+
           (r.thuong>0 ? "<br>Thưởng: <b>"+fmtVnd(r.thuong)+"</b>" : ""));
       });
       bar.addEventListener("mouseleave", hideTip);
