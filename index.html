@@ -1665,7 +1665,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
     var H = rows.length*(rowH+gap) + 30;
     var plotW = W - leftLabelW - rightLabelW;
     var half = plotW/2;
-    var maxAbs = Math.max.apply(null, rows.map(function(r){ return Math.abs(r.ttQuydoi); }));
+    var maxAbs = Math.max.apply(null, rows.map(function(r){ return Math.abs(r.ttTho); }));
     maxAbs = Math.ceil(maxAbs/5)*5;
     var scale = (half-10) / maxAbs;
     var cx = leftLabelW + half;
