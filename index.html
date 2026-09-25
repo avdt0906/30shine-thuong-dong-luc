@@ -303,10 +303,10 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
 <!-- ============ TAB 1 — ĐẶT LỊCH 30 PHÚT + FEEDBACK TIÊU CỰC ============ -->
 <section data-tab="t1">
 
-  <div class="cut-date">Cắt dữ liệu: <b>22/09/2026</b></div>
+  <div class="cut-date">Cắt dữ liệu: <b>24/09/2026</b></div>
 
   <div class="card leaderboard">
-    <div class="head"><div><h2>🏆 Top 10 Salon nhận thưởng</h2><p>Cả 3 điều kiện (đặt lịch, feedback tiêu cực, chờ lâu) đã cập nhật tới 22/09 theo công thức chính thức</p></div></div>
+    <div class="head"><div><h2>🏆 Top 10 Salon nhận thưởng</h2><p>Cả 3 điều kiện (đặt lịch, feedback tiêu cực, chờ lâu) đã cập nhật tới 24/09 theo công thức chính thức</p></div></div>
     <div class="table-scroll">
       <table class="dt" id="datlich-top10-table">
         <thead><tr><th>#</th><th>Salon</th><th>GĐKV</th><th class="num">% Đặt lịch ≥30p</th><th class="num">% Feedback tiêu cực</th><th class="num">% Chờ lâu</th><th class="num">Thưởng</th></tr></thead>
@@ -316,7 +316,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
   </div>
 
   <div class="card">
-    <div class="head"><div><h2>20 salon dẫn đầu — đặt lịch 30 phút</h2><p>% khách đặt lịch trước ≥30 phút, chia trên tổng lượt khách toàn salon (T9 tính đến 22/09) · viền xanh lá = đạt cả feedback ≤0,35% và chờ lâu &lt;6%</p></div></div>
+    <div class="head"><div><h2>20 salon dẫn đầu — đặt lịch 30 phút</h2><p>% khách đặt lịch trước ≥30 phút, chia trên tổng lượt khách toàn salon (T9 tính đến 24/09) · viền xanh lá = đạt cả feedback ≤0,35% và chờ lâu &lt;6%</p></div></div>
     <div class="chart-wrap"><svg id="chart-datlich" role="img" aria-label="Biểu đồ tỷ lệ đặt lịch trước 30 phút theo salon"></svg></div>
   </div>
 
@@ -338,7 +338,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
 <!-- ============ TAB 2 — GROWTH ============ -->
 <section data-tab="t2" hidden>
 
-  <div class="cut-date">Cắt dữ liệu: <b>22/09/2026</b></div>
+  <div class="cut-date">Cắt dữ liệu: <b>24/09/2026</b></div>
   <div class="card leaderboard">
     <div class="head">
       <div><h2>🏆 Top 10 Salon nhận thưởng</h2><p>Hạng xếp theo % tăng trưởng quy đổi 30 ngày (dùng xét thưởng) · %TT hiển thị là số liệu thực tế · dương = xanh, âm = cam</p></div>
@@ -381,7 +381,7 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
 <!-- ============ TAB 3 — R12W ============ -->
 <section data-tab="t3" hidden>
 
-  <div class="cut-date">Cắt dữ liệu: <b>22/09/2026</b></div>
+  <div class="cut-date">Cắt dữ liệu: <b>24/09/2026</b></div>
   <div class="kpi-grid">
     <div class="kpi"><div class="l">NV đạt ≥120 khách</div><div class="v nums" id="k3-p150">–</div><div class="s">nút thắt không nằm ở đây</div></div>
     <div class="kpi big"><div class="l">Đạt đủ cả 2 ngưỡng</div><div class="v pos nums" id="k3-qualify">–</div><div class="s">≥120 khách và ≥30% R12W</div></div>
@@ -638,614 +638,580 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
   "use strict";
 
   var TIEUCHI1_CSV = `salon_id,salon_name,gdkv,booking_dat_truoc,dat_du_30p,luot_khach,ty_le_datlich_pct,feedback_tieu_cuc_soluong,ty_le_feedback_pct,dat_nguong_feedback_029,cho_lau_soluong,ty_le_cho_lau_pct,dat_nguong_cholau_5,xep_hang_combined,thuong_vnd
-143,10 TP,Nguyễn Như Quỳnh,1386,545,1386,39.32,0,0.0,Y,11,0.787,Y,1,2000000
-245,55A NVL,Đoàn Trung Đức,1059,390,1059,36.83,2,0.185,Y,37,3.423,Y,2,2000000
-193,145 THT,Nguyễn Thanh Sang,2379,868,2379,36.49,1,0.041,Y,157,6.506,N,,0
-182,186 DTH,Tống Xuân Quyền,1565,565,1565,36.1,1,0.063,Y,82,5.203,Y,3,2000000
-146,109 TQH,Đoàn Trung Đức,1700,580,1700,34.12,3,0.175,Y,59,3.444,Y,,0
-145,237 NTT,Tống Xuân Quyền,2447,831,2447,33.96,2,0.081,Y,80,3.259,Y,,0
-22,927 HG,Nguyễn Thanh Sang,2017,665,2017,32.97,2,0.097,Y,78,3.766,Y,,0
-144,168 NVC,Nguyễn Như Quỳnh,1897,622,1897,32.79,0,0.0,Y,100,5.171,Y,,0
-184,36 N1 BD,Nguyễn Việt Cường,792,251,792,31.69,0,0.0,Y,12,1.502,Y,,0
-196,202 DC,Phan Thị Hồng Gấm,1232,373,1232,30.28,4,0.322,Y,95,7.643,N,,0
-192,264 LLQ,Phan Thị Hồng Gấm,1013,306,1013,30.21,4,0.392,N,91,8.922,N,,0
-12,12 LDT,Trịnh Văn Quang,1231,371,1231,30.14,5,0.405,N,53,4.288,Y,,0
-147,99 TSN,Nguyễn Thanh Sang,1981,590,1981,29.78,5,0.249,Y,110,5.486,Y,,0
-20,382 NT,Đoàn Trung Đức,2392,698,2392,29.18,2,0.082,Y,45,1.836,Y,,0
-194,90 NH,Đoàn Trung Đức,1014,289,1014,28.5,8,0.783,N,31,3.033,Y,,0
-11,8 CVL,Nguyễn Thanh Sang,1592,450,1592,28.27,8,0.497,N,24,1.49,Y,,0
-188,190 HB,Nguyễn Thanh Sang,1047,289,1047,27.6,4,0.38,N,74,7.034,N,,0
-58,730 TL10,Nguyễn Thanh Sang,1680,452,1680,26.9,4,0.237,Y,81,4.793,Y,,0
-2,346 KT,Phan Thị Hồng Gấm,983,262,983,26.65,4,0.403,N,43,4.335,Y,,0
-44,103 TN,Nguyễn Việt Cường,3099,822,3099,26.52,4,0.128,Y,51,1.634,Y,,0
-228,62 LH,Đoàn Trung Đức,780,200,780,25.64,2,0.255,Y,40,5.102,Y,,0
-21,575 AC,Nguyễn Thanh Sang,1392,351,1392,25.22,6,0.429,N,59,4.223,Y,,0
-65,255 NAN,Nguyễn Việt Cường,1136,286,1136,25.18,4,0.347,Y,21,1.82,Y,,0
-179,50BT4 NPC LD,Phan Thị Hồng Gấm,1480,372,1480,25.14,7,0.464,N,66,4.371,Y,,0
-141,236 DBT,Tống Xuân Quyền,1366,336,1366,24.6,7,0.507,N,42,3.041,Y,,0
-249,1146 KVC,Nguyễn Việt Cường,781,191,781,24.46,2,0.254,Y,16,2.036,Y,,0
-187,116 TK,Đoàn Trung Đức,2327,563,2327,24.19,3,0.127,Y,49,2.075,Y,,0
-46,483 TN,Trịnh Văn Quang,1081,259,1081,23.96,4,0.367,N,23,2.108,Y,,0
-69,312 LVS,Nguyễn Thanh Sang,1941,464,1941,23.91,6,0.307,Y,71,3.637,Y,,0
-61,1180 QT,Trịnh Văn Quang,955,224,955,23.46,6,0.622,N,22,2.28,Y,,0
-45,25 TD,Tống Xuân Quyền,1779,415,1779,23.33,3,0.167,Y,72,4.007,Y,,0
-274,32 NAT,Trịnh Văn Quang,669,154,669,23.02,3,0.447,N,28,4.173,Y,,0
-204,401/1 NDT,Nguyễn Việt Cường,834,189,834,22.66,4,0.453,N,10,1.133,Y,,0
-51,420 HTP,Tống Xuân Quyền,1805,403,1805,22.33,11,0.605,N,83,4.563,Y,,0
-250,173 TN,Phan Thị Hồng Gấm,1110,244,1110,21.98,3,0.267,Y,96,8.556,N,,0
-200,39 HBT,Phan Thị Hồng Gấm,1224,257,1224,21.0,7,0.566,N,53,4.288,Y,,0
-47,708 LTT,Nguyễn Thanh Sang,790,158,790,20.0,0,0.0,Y,41,5.157,Y,,0
-239,186 QT,Nguyễn Như Quỳnh,391,78,391,19.95,0,0.0,Y,7,1.772,Y,,0
-231,304 NT TH,Nguyễn Thị Huệ,480,95,480,19.79,2,0.391,N,11,2.148,Y,,0
-63,29 HB,Nguyễn Việt Cường,1248,236,1248,18.91,7,0.558,N,13,1.036,Y,,0
-197,65 CD,Đoàn Trung Đức,714,119,714,16.67,3,0.416,N,21,2.909,Y,,0
-60,80 PL BD,Nguyễn Việt Cường,1263,200,1263,15.84,3,0.235,Y,8,0.627,Y,,0
-210,148 TD,Phan Thị Hồng Gấm,696,108,696,15.52,1,0.142,Y,22,3.125,Y,,0
-233,595 BT TH,Nguyễn Thị Huệ,519,79,519,15.22,0,0.0,Y,9,1.711,Y,,0
-106,76 PVH,Trịnh Văn Quang,821,122,821,14.86,1,0.121,Y,27,3.273,Y,,0
-247,1371 PVT,Nguyễn Việt Cường,703,103,703,14.65,0,0.0,Y,1,0.142,Y,,0
-212,58 NVC NA,Nguyễn Thị Huệ,618,89,618,14.4,0,0.0,Y,23,3.728,Y,,0
-230,290 QT TH,Nguyễn Thị Huệ,499,71,499,14.23,0,0.0,Y,4,0.797,Y,,0
-244,11 PKT,Nguyễn Như Quỳnh,839,107,839,12.75,6,0.707,N,17,2.002,Y,,0
-302,362 NGT BN,Nguyễn Như Quỳnh,1699,196,1699,11.54,6,0.346,Y,21,1.21,Y,,0
-199,7 DTP LA,Tống Xuân Quyền,549,56,549,10.2,3,0.545,N,14,2.545,Y,,0
-201,4 LQD BN,Nguyễn Như Quỳnh,448,41,448,9.15,1,0.223,Y,5,1.114,Y,,0
-240,68 LN NA,Nguyễn Thị Huệ,540,49,540,9.07,2,0.367,N,3,0.55,Y,,0
-72,113 THD AG,Tống Xuân Quyền,547,45,547,8.23,0,0.0,Y,3,0.547,Y,,0
-232,80 TP TH,Nguyễn Thị Huệ,593,46,593,7.76,3,0.506,N,8,1.349,Y,,0
-85,363 LNQ TN,Phan Thị Hồng Gấm,860,53,860,6.16,7,0.811,N,4,0.463,Y,,0`;
+143,10 TP,Nguyễn Như Quỳnh,1487,585,1487,39.34,0,0.0,Y,11,0.733,Y,1,2000000
+193,145 THT,Nguyễn Thanh Sang,2554,939,2554,36.77,1,0.0386,Y,173,6.682,N,,0
+245,55A NVL,Đoàn Trung Đức,1120,411,1120,36.7,2,0.1751,Y,40,3.503,Y,2,2000000
+182,186 DTH,Tống Xuân Quyền,1679,604,1679,35.97,1,0.0592,Y,88,5.207,Y,3,2000000
+145,237 NTT,Tống Xuân Quyền,2620,886,2620,33.82,2,0.0761,Y,88,3.347,Y,,0
+22,927 HG,Nguyễn Thanh Sang,2170,723,2170,33.32,2,0.0896,Y,84,3.765,Y,,0
+146,109 TQH,Đoàn Trung Đức,1843,609,1843,33.04,4,0.2154,Y,61,3.285,Y,,0
+144,168 NVC,Nguyễn Như Quỳnh,2062,675,2062,32.74,1,0.0476,Y,111,5.278,Y,,0
+196,202 DC,Phan Thị Hồng Gấm,1346,415,1346,30.83,4,0.2941,Y,107,7.868,N,,0
+184,36 N1 BD,Nguyễn Việt Cường,846,260,846,30.73,0,0.0,Y,12,1.405,Y,,0
+12,12 LDT,Trịnh Văn Quang,1301,390,1301,29.98,5,0.3826,N,55,4.208,Y,,0
+192,264 LLQ,Phan Thị Hồng Gấm,1079,322,1079,29.84,6,0.5525,N,92,8.471,N,,0
+194,90 NH,Đoàn Trung Đức,1079,320,1079,29.66,7,0.6434,N,33,3.033,Y,,0
+147,99 TSN,Nguyễn Thanh Sang,2134,632,2134,29.62,5,0.2317,Y,124,5.746,Y,,0
+20,382 NT,Đoàn Trung Đức,2572,754,2572,29.32,3,0.114,Y,48,1.824,Y,,0
+11,8 CVL,Nguyễn Thanh Sang,1705,477,1705,27.98,9,0.5217,N,28,1.623,Y,,0
+188,190 HB,Nguyễn Thanh Sang,1120,307,1120,27.41,4,0.3556,N,76,6.756,N,,0
+58,730 TL10,Nguyễn Thanh Sang,1808,481,1808,26.6,4,0.2199,Y,89,4.893,Y,,0
+2,346 KT,Phan Thị Hồng Gấm,1065,281,1065,26.38,5,0.4655,N,44,4.097,Y,,0
+44,103 TN,Nguyễn Việt Cường,3308,865,3308,26.15,4,0.1199,Y,53,1.589,Y,,0
+228,62 LH,Đoàn Trung Đức,840,217,840,25.83,2,0.237,Y,45,5.332,Y,,0
+21,575 AC,Nguyễn Thanh Sang,1480,380,1480,25.68,6,0.4038,N,62,4.172,Y,,0
+179,50BT4 NPC LD,Phan Thị Hồng Gấm,1589,398,1589,25.05,8,0.4938,N,71,4.383,Y,,0
+65,255 NAN,Nguyễn Việt Cường,1202,301,1202,25.04,4,0.3279,Y,22,1.803,Y,,0
+249,1146 KVC,Nguyễn Việt Cường,829,203,829,24.49,2,0.2398,Y,19,2.278,Y,,0
+141,236 DBT,Tống Xuân Quyền,1456,353,1456,24.24,7,0.4759,N,43,2.923,Y,,0
+187,116 TK,Đoàn Trung Đức,2497,604,2497,24.19,3,0.1183,Y,52,2.05,Y,,0
+45,25 TD,Tống Xuân Quyền,1900,453,1900,23.84,3,0.1563,Y,78,4.065,Y,,0
+69,312 LVS,Nguyễn Thanh Sang,2091,496,2091,23.72,5,0.2378,Y,78,3.709,Y,,0
+46,483 TN,Trịnh Văn Quang,1138,269,1138,23.64,5,0.4352,N,23,2.002,Y,,0
+274,32 NAT,Trịnh Văn Quang,709,166,709,23.41,2,0.2813,Y,28,3.938,Y,,0
+61,1180 QT,Trịnh Văn Quang,1014,234,1014,23.08,6,0.5859,N,23,2.246,Y,,0
+204,401/1 NDT,Nguyễn Việt Cường,887,202,887,22.77,6,0.641,N,11,1.175,Y,,0
+250,173 TN,Phan Thị Hồng Gấm,1205,266,1205,22.07,3,0.2463,Y,98,8.046,N,,0
+51,420 HTP,Tống Xuân Quyền,1954,428,1954,21.9,11,0.5587,N,84,4.266,Y,,0
+200,39 HBT,Phan Thị Hồng Gấm,1356,279,1356,20.58,8,0.5848,N,55,4.02,Y,,0
+47,708 LTT,Nguyễn Thanh Sang,853,172,853,20.16,1,0.1164,Y,44,5.122,Y,,0
+239,186 QT,Nguyễn Như Quỳnh,415,82,415,19.76,0,0.0,Y,9,2.148,Y,,0
+231,304 NT TH,Nguyễn Thị Huệ,520,97,520,18.65,2,0.3623,N,11,1.993,Y,,0
+63,29 HB,Nguyễn Việt Cường,1320,245,1320,18.56,7,0.5275,N,14,1.055,Y,,0
+197,65 CD,Đoàn Trung Đức,782,129,782,16.5,3,0.3797,N,22,2.785,Y,,0
+60,80 PL BD,Nguyễn Việt Cường,1344,208,1344,15.48,3,0.2212,Y,10,0.737,Y,,0
+210,148 TD,Phan Thị Hồng Gấm,743,113,743,15.21,1,0.1332,Y,22,2.929,Y,,0
+233,595 BT TH,Nguyễn Thị Huệ,548,83,548,15.15,0,0.0,Y,10,1.779,Y,,0
+106,76 PVH,Trịnh Văn Quang,882,132,882,14.97,1,0.1129,Y,27,3.047,Y,,0
+247,1371 PVT,Nguyễn Việt Cường,746,107,746,14.34,0,0.0,Y,1,0.134,Y,,0
+212,58 NVC NA,Nguyễn Thị Huệ,660,93,660,14.09,1,0.1511,Y,23,3.474,Y,,0
+230,290 QT TH,Nguyễn Thị Huệ,543,76,543,14.0,1,0.1832,Y,4,0.733,Y,,0
+244,11 PKT,Nguyễn Như Quỳnh,902,114,902,12.64,6,0.6579,N,17,1.864,Y,,0
+302,362 NGT BN,Nguyễn Như Quỳnh,1848,214,1848,11.58,9,0.4775,N,21,1.114,Y,,0
+199,7 DTP LA,Tống Xuân Quyền,585,60,585,10.26,3,0.5119,N,16,2.73,Y,,0
+201,4 LQD BN,Nguyễn Như Quỳnh,464,42,464,9.05,1,0.2146,Y,5,1.073,Y,,0
+72,113 THD AG,Tống Xuân Quyền,580,50,580,8.62,0,0.0,Y,3,0.516,Y,,0
+240,68 LN NA,Nguyễn Thị Huệ,581,50,581,8.61,2,0.3413,Y,3,0.512,Y,,0
+232,80 TP TH,Nguyễn Thị Huệ,642,52,642,8.1,3,0.4673,N,9,1.402,Y,,0
+85,363 LNQ TN,Phan Thị Hồng Gấm,919,53,919,5.77,7,0.7592,N,4,0.434,Y,,0`;
 
   var SALON_CSV = `salon_id,salon_name,gdkv,kh_lan2_t9_tho,kh_lan2_t9_quydoi30ngay,kh_lan2_tb_t6_t8,ty_le_tang_truong_tho_pct,ty_le_tang_truong_quydoi_pct,xep_hang,thuong_vnd
-193,145 THT,Nguyễn Thanh Sang,82,111.82,87.33,-6.11,28.04,1,1000000
-194,90 NH,Đoàn Trung Đức,54,73.64,59.67,-9.50,23.41,2,1000000
-60,80 PL BD,Nguyễn Việt Cường,69,94.09,79.33,-13.03,18.60,3,1000000
-200,39 HBT,Phan Thị Hồng Gấm,52,70.91,60.00,-13.33,18.18,4,500000
-244,11 PKT,Nguyễn Như Quỳnh,50,68.18,59.00,-15.25,15.56,5,500000
-231,304 NT TH,Nguyễn Thị Huệ,31,42.27,37.00,-16.22,14.25,6,500000
-58,730 TL10,Nguyễn Thanh Sang,82,111.82,99.67,-17.73,12.19,7,500000
-192,264 LLQ,Phan Thị Hồng Gấm,43,58.64,53.00,-18.87,10.63,8,500000
-228,62 LH,Đoàn Trung Đức,29,39.55,36.33,-20.18,8.84,9,500000
-233,595 BT TH,Nguyễn Thị Huệ,26,35.45,32.67,-20.41,8.53,10,500000
-85,363 LNQ TN,Phan Thị Hồng Gấm,56,76.36,71.33,-21.50,7.05,11,0
-11,8 CVL,Nguyễn Thanh Sang,57,77.73,74.67,-23.66,4.10,12,0
-21,575 AC,Nguyễn Thanh Sang,49,66.82,64.33,-23.83,3.86,13,0
-65,255 NAN,Nguyễn Việt Cường,52,70.91,68.33,-23.90,3.77,14,0
-22,927 HG,Nguyễn Thanh Sang,55,75.00,72.33,-23.96,3.69,15,0
-45,25 TD,Tống Xuân Quyền,61,83.18,83.67,-27.09,-0.58,16,0
-196,202 DC,Phan Thị Hồng Gấm,34,46.36,46.67,-27.14,-0.65,17,0
-47,708 LTT,Nguyễn Thanh Sang,42,57.27,57.67,-27.17,-0.68,18,0
-141,236 DBT,Tống Xuân Quyền,47,64.09,65.00,-27.69,-1.40,19,0
-249,1146 KVC,Nguyễn Việt Cường,35,47.73,49.00,-28.57,-2.60,20,0
-144,168 NVC,Nguyễn Như Quỳnh,68,92.73,96.00,-29.17,-3.41,21,0
-179,50BT4 NPC LD,Phan Thị Hồng Gấm,60,81.82,85.33,-29.69,-4.12,22,0
-2,346 KT,Phan Thị Hồng Gấm,30,40.91,42.67,-29.69,-4.12,23,0
-184,36 N1 BD,Nguyễn Việt Cường,52,70.91,74.00,-29.73,-4.18,24,0
-63,29 HB,Nguyễn Việt Cường,48,65.45,69.00,-30.43,-5.14,25,0
-76,RESALEONLINE,(chưa gán),29,39.55,43.33,-33.08,-8.74,26,0
-106,76 PVH,Trịnh Văn Quang,37,50.45,55.33,-33.13,-8.82,27,0
-72,113 THD AG,Tống Xuân Quyền,36,49.09,55.00,-34.55,-10.74,28,0
-240,68 LN NA,Nguyễn Thị Huệ,31,42.27,47.67,-34.97,-11.32,29,0
-187,116 TK,Đoàn Trung Đức,55,75.00,84.67,-35.04,-11.42,30,0
-91,30shine online,(chưa gán),14,19.09,21.67,-35.38,-11.89,31,0
-204,401/1 NDT,Nguyễn Việt Cường,25,34.09,39.67,-36.97,-14.06,32,0
-146,109 TQH,Đoàn Trung Đức,60,81.82,97.67,-38.57,-16.23,33,0
-12,12 LDT,Trịnh Văn Quang,37,50.45,60.33,-38.67,-16.37,34,0
-232,80 TP TH,Nguyễn Thị Huệ,39,53.18,64.33,-39.38,-17.33,35,0
-61,1180 QT,Trịnh Văn Quang,30,40.91,49.67,-39.60,-17.63,36,0
-46,483 TN,Trịnh Văn Quang,32,43.64,53.00,-39.62,-17.67,37,0
-69,312 LVS,Nguyễn Thanh Sang,57,77.73,95.00,-40.00,-18.18,38,0
-147,99 TSN,Nguyễn Thanh Sang,49,66.82,82.33,-40.49,-18.84,39,0
-143,10 TP,Nguyễn Như Quỳnh,34,46.36,57.33,-40.70,-19.13,40,0
-247,1371 PVT,Nguyễn Việt Cường,27,36.82,45.67,-40.88,-19.38,41,0
-145,237 NTT,Tống Xuân Quyền,62,84.55,107.00,-42.06,-20.99,42,0
-20,382 NT,Đoàn Trung Đức,57,77.73,98.67,-42.23,-21.22,43,0
-302,362 NGT BN,Nguyễn Như Quỳnh,77,105.00,135.00,-42.96,-22.22,44,0
-212,58 NVC NA,Nguyễn Thị Huệ,36,49.09,64.67,-44.33,-24.09,45,0
-230,290 QT TH,Nguyễn Thị Huệ,23,31.36,41.33,-44.35,-24.12,46,0
-245,55A NVL,Đoàn Trung Đức,39,53.18,71.00,-45.07,-25.10,47,0
-210,148 TD,Phan Thị Hồng Gấm,26,35.45,48.33,-46.21,-26.65,48,0
-199,7 DTP LA,Tống Xuân Quyền,23,31.36,43.33,-46.92,-27.62,49,0
-239,186 QT,Nguyễn Như Quỳnh,18,24.55,34.00,-47.06,-27.81,50,0
-182,186 DTH,Tống Xuân Quyền,40,54.55,80.00,-50.00,-31.82,51,0
-44,103 TN,Nguyễn Việt Cường,61,83.18,123.67,-50.67,-32.74,52,0
-197,65 CD,Đoàn Trung Đức,35,47.73,72.00,-51.39,-33.71,53,0
-201,4 LQD BN,Nguyễn Như Quỳnh,20,27.27,44.33,-54.89,-38.48,54,0
-51,420 HTP,Tống Xuân Quyền,45,61.36,101.67,-55.74,-39.64,55,0
-188,190 HB,Nguyễn Thanh Sang,23,31.36,53.67,-57.14,-41.56,56,0
-250,173 TN,Phan Thị Hồng Gấm,21,28.64,54.00,-61.11,-46.97,57,0
-274,32 NAT,Trịnh Văn Quang,16,21.82,44.67,-64.18,-51.15,58,0`;
+193,145 THT,Nguyễn Thanh Sang,86,107.5,87.3,-1.53,23.1,1,1000000
+194,90 NH,Đoàn Trung Đức,58,72.5,59.7,-2.79,21.5,2,1000000
+60,80 PL BD,Nguyễn Việt Cường,74,92.5,79.3,-6.72,16.6,3,1000000
+228,62 LH,Đoàn Trung Đức,33,41.2,36.3,-9.17,13.5,4,500000
+85,363 LNQ TN,Phan Thị Hồng Gấm,63,78.8,71.3,-11.68,10.4,5,500000
+244,11 PKT,Nguyễn Như Quỳnh,52,65.0,59.0,-11.86,10.2,6,500000
+200,39 HBT,Phan Thị Hồng Gấm,52,65.0,60.0,-13.33,8.3,7,500000
+231,304 NT TH,Nguyễn Thị Huệ,32,40.0,37.0,-13.51,8.1,8,500000
+58,730 TL10,Nguyễn Thanh Sang,85,106.2,99.7,-14.72,6.6,9,500000
+22,927 HG,Nguyễn Thanh Sang,60,75.0,72.3,-17.05,3.7,10,500000
+233,595 BT TH,Nguyễn Thị Huệ,27,33.8,32.7,-17.35,3.3,11,0
+21,575 AC,Nguyễn Thanh Sang,53,66.2,64.3,-17.62,3.0,12,0
+2,346 KT,Phan Thị Hồng Gấm,35,43.8,42.7,-17.97,2.5,13,0
+11,8 CVL,Nguyễn Thanh Sang,61,76.2,74.7,-18.3,2.1,14,0
+192,264 LLQ,Phan Thị Hồng Gấm,43,53.8,53.0,-18.87,1.4,15,0
+65,255 NAN,Nguyễn Việt Cường,55,68.8,68.3,-19.51,0.6,16,0
+144,168 NVC,Nguyễn Như Quỳnh,76,95.0,96.0,-20.83,-1.0,17,0
+45,25 TD,Tống Xuân Quyền,66,82.5,83.7,-21.12,-1.4,18,0
+249,1146 KVC,Nguyễn Việt Cường,38,47.5,49.0,-22.45,-3.1,19,0
+196,202 DC,Phan Thị Hồng Gấm,36,45.0,46.7,-22.86,-3.6,20,0
+47,708 LTT,Nguyễn Thanh Sang,44,55.0,57.7,-23.7,-4.6,21,0
+179,50BT4 NPC LD,Phan Thị Hồng Gấm,64,80.0,85.3,-25.0,-6.2,22,0
+63,29 HB,Nguyễn Việt Cường,51,63.8,69.0,-26.09,-7.6,23,0
+141,236 DBT,Tống Xuân Quyền,48,60.0,65.0,-26.15,-7.7,24,0
+240,68 LN NA,Nguyễn Thị Huệ,35,43.8,47.7,-26.57,-8.2,25,0
+61,1180 QT,Trịnh Văn Quang,36,45.0,49.7,-27.52,-9.4,26,0
+184,36 N1 BD,Nguyễn Việt Cường,53,66.2,74.0,-28.38,-10.5,27,0
+143,10 TP,Nguyễn Như Quỳnh,41,51.2,57.3,-28.49,-10.6,28,0
+72,113 THD AG,Tống Xuân Quyền,39,48.8,55.0,-29.09,-11.4,29,0
+187,116 TK,Đoàn Trung Đức,59,73.8,84.7,-30.31,-12.9,30,0
+106,76 PVH,Trịnh Văn Quang,38,47.5,55.3,-31.33,-14.2,31,0
+46,483 TN,Trịnh Văn Quang,36,45.0,53.0,-32.08,-15.1,32,0
+147,99 TSN,Nguyễn Thanh Sang,55,68.8,82.3,-33.2,-16.5,33,0
+204,401/1 NDT,Nguyễn Việt Cường,26,32.5,39.7,-34.45,-18.1,34,0
+146,109 TQH,Đoàn Trung Đức,64,80.0,97.7,-34.47,-18.1,35,0
+12,12 LDT,Trịnh Văn Quang,39,48.8,60.3,-35.36,-19.2,36,0
+232,80 TP TH,Nguyễn Thị Huệ,41,51.2,64.3,-36.27,-20.3,37,0
+247,1371 PVT,Nguyễn Việt Cường,29,36.2,45.7,-36.5,-20.6,38,0
+245,55A NVL,Đoàn Trung Đức,44,55.0,71.0,-38.03,-22.5,39,0
+69,312 LVS,Nguyễn Thanh Sang,58,72.5,95.0,-38.95,-23.7,40,0
+145,237 NTT,Tống Xuân Quyền,65,81.2,107.0,-39.25,-24.1,41,0
+302,362 NGT BN,Nguyễn Như Quỳnh,82,102.5,135.0,-39.26,-24.1,42,0
+230,290 QT TH,Nguyễn Thị Huệ,25,31.3,41.3,-39.52,-24.4,43,0
+212,58 NVC NA,Nguyễn Thị Huệ,39,48.8,64.7,-39.69,-24.6,44,0
+199,7 DTP LA,Tống Xuân Quyền,26,32.5,43.3,-40.0,-25.0,45,0
+210,148 TD,Phan Thị Hồng Gấm,29,36.2,48.3,-40.0,-25.0,46,0
+20,382 NT,Đoàn Trung Đức,59,73.8,98.7,-40.2,-25.3,47,0
+239,186 QT,Nguyễn Như Quỳnh,20,25.0,34.0,-41.18,-26.5,48,0
+44,103 TN,Nguyễn Việt Cường,70,87.5,123.7,-43.4,-29.2,49,0
+182,186 DTH,Tống Xuân Quyền,44,55.0,80.0,-45.0,-31.2,50,0
+197,65 CD,Đoàn Trung Đức,39,48.8,72.0,-45.83,-32.3,51,0
+201,4 LQD BN,Nguyễn Như Quỳnh,21,26.2,44.3,-52.63,-40.8,52,0
+51,420 HTP,Tống Xuân Quyền,48,60.0,101.7,-52.79,-41.0,53,0
+250,173 TN,Phan Thị Hồng Gấm,25,31.3,54.0,-53.7,-42.1,54,0
+274,32 NAT,Trịnh Văn Quang,20,25.0,44.7,-55.22,-44.0,55,0
+188,190 HB,Nguyễn Thanh Sang,23,28.8,53.7,-57.14,-46.4,56,0`;
 
   var NV_CSV_RAW = `staff_id,staff_name,salon_id,salon_name,gdkv,so_kh_da_cham,so_kh_den_trong_7ngay,ty_le_r12w_pct,dat_nguong_150kh,dat_nguong_30pct,xep_hang,thuong_vnd
-12684,Ngô Mạnh Cường SMSUP,245,55A NVL,Đoàn Trung Đức,1,1,100.00,N,Y,,0
-21588,(không có trong bi.staff),47,708 LTT,Nguyễn Thanh Sang,2,1,50.00,N,Y,,0
-9279,Bùi Thanh Phương,2,346 KT,Phan Thị Hồng Gấm,47,21,44.68,N,Y,,0
-14833,Đoàn Tấn Tài,44,103 TN,Nguyễn Việt Cường,26,11,42.31,N,Y,,0
-21291,Phan Thị Thu Ngân,63,29 HB,Nguyễn Việt Cường,22,9,40.91,N,Y,,0
+12684,Ngô Mạnh Cường SMSUP,245,55A NVL,Đoàn Trung Đức,1,1,100.0,N,Y,,0
+16549,Nguyễn Trúc Anh ,249,1146 KVC,Nguyễn Việt Cường,4,3,75.0,N,Y,,0
+21428,Huỳnh Nguyễn Trúc Vy,249,1146 KVC,Nguyễn Việt Cường,3,2,66.67,N,Y,,0
+9279,Bùi Thanh Phương,2,346 KT,Phan Thị Hồng Gấm,42,20,47.62,N,Y,,0
+21599,Lô Thị Quỳnh Như,60,80 PL BD,Nguyễn Việt Cường,15,7,46.67,N,Y,,0
+15747,Trần Thị Quỳnh Như,147,99 TSN,Nguyễn Thanh Sang,39,17,43.59,N,Y,,0
+13663,Lê Hoàng Lân,44,103 TN,Nguyễn Việt Cường,7,3,42.86,N,Y,,0
 20787,Nguyễn Hoàng Trường SMST,60,80 PL BD,Nguyễn Việt Cường,84,34,40.48,N,Y,,0
-21599,(không có trong bi.staff),60,80 PL BD,Nguyễn Việt Cường,15,6,40.00,N,Y,,0
-19612,Liễu Thanh Mai,44,103 TN,Nguyễn Việt Cường,136,52,38.24,N,Y,,0
-21031,Nguyễn Văn Tuấn,233,595 BT TH,Nguyễn Thị Huệ,16,6,37.50,N,Y,,0
-15747,Trần Thị Quỳnh Như,147,99 TSN,Nguyễn Thanh Sang,62,22,35.48,N,Y,,0
-11440,Nguyễn Văn Thành NQ,215,77 PVC,An NQ,40,14,35.00,N,Y,,0
-21424,Lỳ Cẩm Linh,197,65 CD,Đoàn Trung Đức,23,8,34.78,N,Y,,0
-8580,Lâm Thanh Thế,44,103 TN,Nguyễn Việt Cường,192,66,34.38,Y,Y,,0
-13978,Mai Thị Giang,179,50BT4 NPC LD,Phan Thị Hồng Gấm,192,64,33.33,Y,Y,,0
-4724,Tăng Đức Phi,44,103 TN,Nguyễn Việt Cường,3,1,33.33,N,Y,,0
-21146,Trần Minh Hùng,188,190 HB,Nguyễn Thanh Sang,28,9,32.14,N,Y,,0
-3965,Đồng Thị Thanh Tuyền,182,186 DTH,Tống Xuân Quyền,481,153,31.81,Y,Y,,0
+21031,Nguyễn Văn Tuấn,233,595 BT TH,Nguyễn Thị Huệ,16,6,37.5,N,Y,,0
+8580,Lâm Thanh Thế,44,103 TN,Nguyễn Việt Cường,203,68,33.5,Y,Y,1,300000
+21291,Phan Thị Thu Ngân,63,29 HB,Nguyễn Việt Cường,18,6,33.33,N,Y,,0
+2850,Nguyễn Hoàng Trường,60,80 PL BD,Nguyễn Việt Cường,51,17,33.33,N,Y,,0
+14833,Đoàn Tấn Tài,44,103 TN,Nguyễn Việt Cường,18,6,33.33,N,Y,,0
+9963,Nguyễn Huy Bảo,44,103 TN,Nguyễn Việt Cường,77,25,32.47,N,Y,,0
+3965,Đồng Thị Thanh Tuyền,182,186 DTH,Tống Xuân Quyền,480,154,32.08,Y,Y,2,300000
+13978,Mai Thị Giang,179,50BT4 NPC LD,Phan Thị Hồng Gấm,199,63,31.66,Y,Y,3,300000
+19682,Trần Nguyễn Trâm Anh,44,103 TN,Nguyễn Việt Cường,88,27,30.68,N,Y,,0
 13866,Nguyễn Thị Kim Ngân ,143,10 TP,Nguyễn Như Quỳnh,62,19,30.65,N,Y,,0
-10390,Võ Trung Hậu SMSUP,12,12 LDT,Trịnh Văn Quang,20,6,30.00,N,Y,,0
-2850,Nguyễn Hoàng Trường,60,80 PL BD,Nguyễn Việt Cường,51,15,29.41,N,N,,0
-17076,Lê Thị Huỳnh Như NQ,283,A6 NAT,An NQ,79,23,29.11,N,N,,0
-20845,Phạm Thị Thu Hà,44,103 TN,Nguyễn Việt Cường,171,49,28.65,Y,N,,0
-19783,Nguyễn Văn Đạt,44,103 TN,Nguyễn Việt Cường,203,58,28.57,Y,N,,0
-4320,Nguyễn Văn Hiếu NQ,285,82 VTP,Đoàn Trung Đức,43,12,27.91,N,N,,0
-19798,Võ Hoàng Anh Thư NQ,228,62 LH,Đoàn Trung Đức,271,73,26.94,Y,N,,0
+6684,Lê Văn Quang,200,39 HBT,Phan Thị Hồng Gấm,50,15,30.0,N,Y,,0
+19783,Nguyễn Văn Đạt,44,103 TN,Nguyễn Việt Cường,10,3,30.0,N,Y,,0
+21424,Lỳ Cẩm Linh,197,65 CD,Đoàn Trung Đức,17,5,29.41,N,N,,0
+10704,Lê Nguyễn Minh Duy,63,29 HB,Nguyễn Việt Cường,97,28,28.87,N,N,,0
+21535,Võ Thị Ngọc Quyền,47,708 LTT,Nguyễn Thanh Sang,11,3,27.27,N,N,,0
+16360,Nguyễn Đình Sanh SMST,61,1180 QT,Trịnh Văn Quang,15,4,26.67,N,N,,0
 19541,Đỗ Ngọc Mai,228,62 LH,Đoàn Trung Đức,15,4,26.67,N,N,,0
-6684,Lê Văn Quang,200,39 HBT,Phan Thị Hồng Gấm,64,17,26.56,N,N,,0
-10704,Lê Nguyễn Minh Duy,63,29 HB,Nguyễn Việt Cường,99,26,26.26,N,N,,0
-20271,Ni Khả Tú,61,1180 QT,Trịnh Văn Quang,99,26,26.26,N,N,,0
-21458,Trần Thị Thanh Loan SMSUP,188,190 HB,Nguyễn Thanh Sang,183,48,26.23,Y,N,,0
-8644,Nguyễn Tấn Phát NQ,283,A6 NAT,An NQ,20,5,25.00,N,N,,0
-3194,Nguyễn Thuỳ Dương (1),274,32 NAT,Trịnh Văn Quang,4,1,25.00,N,N,,0
-16865,Huỳnh Chí Khải NQ,180,177 DVB,Nhật NQ,4,1,25.00,N,N,,0
-19682,Trần Nguyễn Trâm Anh,44,103 TN,Nguyễn Việt Cường,137,34,24.82,N,N,,0
-16195,Nguyễn Như Ngọc ,247,1371 PVT,Nguyễn Việt Cường,106,26,24.53,N,N,,0
-3301,Đặng Thị Ngọc Anh,187,116 TK,Đoàn Trung Đức,210,51,24.29,Y,N,,0
-1597,Nguyễn Thị Thu Huyền SMSUP,2,346 KT,Phan Thị Hồng Gấm,211,51,24.17,Y,N,,0
-9963,Nguyễn Huy Bảo,44,103 TN,Nguyễn Việt Cường,129,31,24.03,N,N,,0
-19801,Trần Thị Kim Phượng,44,103 TN,Nguyễn Việt Cường,125,30,24.00,N,N,,0
-13583,Nguyễn Thị Hồng Ngọc,188,190 HB,Nguyễn Thanh Sang,167,40,23.95,Y,N,,0
-16355,Nguyễn Khắc Hải SMST,233,595 BT TH,Nguyễn Thị Huệ,209,50,23.92,Y,N,,0
-19954,Nguyễn Thị Thanh Mai,20,382 NT,Đoàn Trung Đức,1903,453,23.80,Y,N,,0
-14625,Nguyễn Minh Tiếng,44,103 TN,Nguyễn Việt Cường,85,20,23.53,N,N,,0
-17362,Trần Thị Tuyết Ngân,146,109 TQH,Đoàn Trung Đức,315,74,23.49,Y,N,,0
-4388,Ngô Doãn Hưng,179,50BT4 NPC LD,Phan Thị Hồng Gấm,39,9,23.08,N,N,,0
-20893,Nguyễn Thị Thanh Hiền,187,116 TK,Đoàn Trung Đức,440,101,22.95,Y,N,,0
-13663,Lê Hoàng Lân,44,103 TN,Nguyễn Việt Cường,44,10,22.73,N,N,,0
-10318,Bùi Gia Hạo,63,29 HB,Nguyễn Việt Cường,22,5,22.73,N,N,,0
-1313,Bùi Thị Hương Ly (1),146,109 TQH,Đoàn Trung Đức,222,50,22.52,Y,N,,0
-20040,Nguyễn Thị Yến Vy ,193,145 THT,Nguyễn Thanh Sang,103,23,22.33,N,N,,0
-7575,Thị Bé Ngọc,44,103 TN,Nguyễn Việt Cường,180,40,22.22,Y,N,,0
+21458,Trần Thị Thanh Loan SMSUP,188,190 HB,Nguyễn Thanh Sang,129,34,26.36,N,N,,0
+21593,Thái Kim Phụng ,60,80 PL BD,Nguyễn Việt Cường,27,7,25.93,N,N,,0
+20845,Phạm Thị Thu Hà,44,103 TN,Nguyễn Việt Cường,201,52,25.87,Y,N,,0
+6489,Nguyễn Văn Hây,44,103 TN,Nguyễn Việt Cường,79,20,25.32,N,N,,0
+19813,Võ Kế Quốc Hưng,147,99 TSN,Nguyễn Thanh Sang,103,26,25.24,N,N,,0
+19954,Nguyễn Thị Thanh Mai,20,382 NT,Đoàn Trung Đức,1922,485,25.23,Y,N,,0
+21560,Nguyễn Thị Yến Nhi,47,708 LTT,Nguyễn Thanh Sang,4,1,25.0,N,N,,0
+20967,Dương Quốc Khánh,147,99 TSN,Nguyễn Thanh Sang,121,30,24.79,N,N,,0
+20271,Ni Khả Tú,61,1180 QT,Trịnh Văn Quang,108,26,24.07,N,N,,0
+1597,Nguyễn Thị Thu Huyền SMSUP,2,346 KT,Phan Thị Hồng Gấm,212,51,24.06,Y,N,,0
+19801,Trần Thị Kim Phượng,44,103 TN,Nguyễn Việt Cường,79,19,24.05,N,N,,0
+3301,Đặng Thị Ngọc Anh,187,116 TK,Đoàn Trung Đức,183,44,24.04,Y,N,,0
+17362,Trần Thị Tuyết Ngân,146,109 TQH,Đoàn Trung Đức,307,73,23.78,Y,N,,0
+4388,Ngô Doãn Hưng,179,50BT4 NPC LD,Phan Thị Hồng Gấm,38,9,23.68,N,N,,0
+19798,Võ Hoàng Anh Thư,228,62 LH,Đoàn Trung Đức,309,73,23.62,Y,N,,0
+11975,Phạm Thị Yến Nhi,45,25 TD,Tống Xuân Quyền,106,25,23.58,N,N,,0
+1313,Bùi Thị Hương Ly (1),146,109 TQH,Đoàn Trung Đức,179,42,23.46,Y,N,,0
+3665,Trần Nguyễn Hoàng Tòng,44,103 TN,Nguyễn Việt Cường,91,21,23.08,N,N,,0
+21206,Nguyễn Lê Phương Vy,44,103 TN,Nguyễn Việt Cường,35,8,22.86,N,N,,0
+16635,Dương Thị Ngọc Trinh ,44,103 TN,Nguyễn Việt Cường,67,15,22.39,N,N,,0
+19840,Bùi Thanh Thư,2,346 KT,Phan Thị Hồng Gấm,76,17,22.37,N,N,,0
+20040,Nguyễn Thị Yến Vy ,193,145 THT,Nguyễn Thanh Sang,81,18,22.22,N,N,,0
 21265,Vũ Thị Hạnh,141,236 DBT,Tống Xuân Quyền,9,2,22.22,N,N,,0
-5122,Hà Thị Nương,187,116 TK,Đoàn Trung Đức,280,62,22.14,Y,N,,0
-16635,Dương Thị Ngọc Trinh ,44,103 TN,Nguyễn Việt Cường,118,26,22.03,N,N,,0
-15250,Lê Thị Ninh Khánh,143,10 TP,Nguyễn Như Quỳnh,196,43,21.94,Y,N,,0
-19352,Nguyễn Thị Thuỳ Trang,245,55A NVL,Đoàn Trung Đức,228,50,21.93,Y,N,,0
-15232,Chu Thị Thu Huệ NQ,228,62 LH,Đoàn Trung Đức,156,34,21.79,Y,N,,0
-20967,Dương Quốc Khánh,147,99 TSN,Nguyễn Thanh Sang,115,25,21.74,N,N,,0
-18311,Nguyễn Lan Anh,143,10 TP,Nguyễn Như Quỳnh,171,37,21.64,Y,N,,0
-21547,(không có trong bi.staff),230,290 QT TH,Nguyễn Thị Huệ,149,32,21.48,N,N,,0
-9840,Phạm Thị Hải Anh,187,116 TK,Đoàn Trung Đức,355,76,21.41,Y,N,,0
-19840,Bùi Thanh Thư,2,346 KT,Phan Thị Hồng Gấm,99,21,21.21,N,N,,0
-20501,Hoàng Ngọc Đạt,230,290 QT TH,Nguyễn Thị Huệ,38,8,21.05,N,N,,0
-6489,Nguyễn Văn Hây,44,103 TN,Nguyễn Việt Cường,91,19,20.88,N,N,,0
+10779,Nguyễn Thị Kim Ngân ,188,190 HB,Nguyễn Thanh Sang,18,4,22.22,N,N,,0
+7460,Đồng Minh Quang,147,99 TSN,Nguyễn Thanh Sang,173,38,21.97,Y,N,,0
+7193,Thạch Thi Sa RemCTV,193,145 THT,Nguyễn Thanh Sang,356,78,21.91,Y,N,,0
+7575,Thị Bé Ngọc,44,103 TN,Nguyễn Việt Cường,165,36,21.82,Y,N,,0
+20893,Nguyễn Thị Thanh Hiền,187,116 TK,Đoàn Trung Đức,482,105,21.78,Y,N,,0
+21034,Lê Phan Hoàng Phúc,147,99 TSN,Nguyễn Thanh Sang,23,5,21.74,N,N,,0
+20256,Nguyễn Thị Lan Anh,200,39 HBT,Phan Thị Hồng Gấm,167,36,21.56,Y,N,,0
+15250,Lê Thị Ninh Khánh,143,10 TP,Nguyễn Như Quỳnh,195,42,21.54,Y,N,,0
+19020,Nguyễn Thị Xim,200,39 HBT,Phan Thị Hồng Gấm,56,12,21.43,N,N,,0
+11271,Phạm Thanh Tú,192,264 LLQ,Phan Thị Hồng Gấm,84,18,21.43,N,N,,0
+16195,Nguyễn Như Ngọc ,247,1371 PVT,Nguyễn Việt Cường,56,12,21.43,N,N,,0
+21188,Nguyễn Thị Mỹ Diễm,249,1146 KVC,Nguyễn Việt Cường,14,3,21.43,N,N,,0
+21547,Nguyễn Văn Quốc,230,290 QT TH,Nguyễn Thị Huệ,159,34,21.38,Y,N,,0
+3035,Kim Giang,44,103 TN,Nguyễn Việt Cường,117,25,21.37,N,N,,0
+13583,Nguyễn Thị Hồng Ngọc,188,190 HB,Nguyễn Thanh Sang,197,42,21.32,Y,N,,0
+19352,Nguyễn Thị Thuỳ Trang,245,55A NVL,Đoàn Trung Đức,240,51,21.25,Y,N,,0
+193,Lê Thị Thùy Dương,144,168 NVC,Nguyễn Như Quỳnh,105,22,20.95,N,N,,0
 11263,Thái Thị Thanh Thảo,60,80 PL BD,Nguyễn Việt Cường,144,30,20.83,N,N,,0
-8297,Nguyễn Vân Anh,274,32 NAT,Trịnh Văn Quang,306,63,20.59,Y,N,,0
-961,Lê Thanh Thuận,44,103 TN,Nguyễn Việt Cường,88,18,20.45,N,N,,0
-19813,Võ Kế Quốc Hưng,147,99 TSN,Nguyễn Thanh Sang,118,24,20.34,N,N,,0
-7460,Đồng Minh Quang,147,99 TSN,Nguyễn Thanh Sang,153,31,20.26,Y,N,,0
-7193,Thạch Thi Sa RemCTV,193,145 THT,Nguyễn Thanh Sang,446,90,20.18,Y,N,,0
-193,Lê Thị Thùy Dương,144,168 NVC,Nguyễn Như Quỳnh,164,33,20.12,Y,N,,0
-3035,Kim Giang,44,103 TN,Nguyễn Việt Cường,195,39,20.00,Y,N,,0
-7304,Từ Thị Mỹ Ánh,188,190 HB,Nguyễn Thanh Sang,95,19,20.00,N,N,,0
-20452,Võ Sơn Duy,212,58 NVC NA,Nguyễn Thị Huệ,20,4,20.00,N,N,,0
-16360,Nguyễn Đình Sanh SMST,61,1180 QT,Trịnh Văn Quang,15,3,20.00,N,N,,0
-19648,Cao Thị Mỹ Liên,44,103 TN,Nguyễn Việt Cường,10,2,20.00,N,N,,0
-14289,Ngô Thị Nhung,250,173 TN,Phan Thị Hồng Gấm,5,1,20.00,N,N,,0
-20311,Lê Linh Đan NQ,198,411 NVT,Nhật NQ,5,1,20.00,N,N,,0
-1716,Nguyễn Văn Tấn Đạt,182,186 DTH,Tống Xuân Quyền,561,111,19.79,Y,N,,0
+5122,Hà Thị Nương,187,116 TK,Đoàn Trung Đức,303,63,20.79,Y,N,,0
+16355,Nguyễn Khắc Hải SMST,233,595 BT TH,Nguyễn Thị Huệ,263,54,20.53,Y,N,,0
+17588,Bùi Thị Ánh Ngọc,192,264 LLQ,Phan Thị Hồng Gấm,49,10,20.41,N,N,,0
+1716,Nguyễn Văn Tấn Đạt,182,186 DTH,Tống Xuân Quyền,552,112,20.29,Y,N,,0
+18311,Nguyễn Lan Anh,143,10 TP,Nguyễn Như Quỳnh,193,39,20.21,Y,N,,0
+2324,Nguyễn Thị Ánh Vi,204,401/1 NDT,Nguyễn Việt Cường,144,29,20.14,N,N,,0
+18649,Trương Phi Hà ,249,1146 KVC,Nguyễn Việt Cường,5,1,20.0,N,N,,0
+5368,Mai Ngọc Thắng,147,99 TSN,Nguyễn Thanh Sang,20,4,20.0,N,N,,0
+14289,Ngô Thị Nhung,250,173 TN,Phan Thị Hồng Gấm,5,1,20.0,N,N,,0
+9840,Phạm Thị Hải Anh,187,116 TK,Đoàn Trung Đức,392,78,19.9,Y,N,,0
+8297,Nguyễn Vân Anh,274,32 NAT,Trịnh Văn Quang,207,41,19.81,Y,N,,0
 17789,La Thị Duyên,228,62 LH,Đoàn Trung Đức,71,14,19.72,N,N,,0
-18952,Nguyễn Gia Linh,245,55A NVL,Đoàn Trung Đức,330,65,19.70,Y,N,,0
-20048,Mã Tiểu Nghi,143,10 TP,Nguyễn Như Quỳnh,153,30,19.61,Y,N,,0
-11079,Lê Thị Hiền,249,1146 KVC,Nguyễn Việt Cường,169,33,19.53,Y,N,,0
+12059,Trần Huỳnh Hồng Nhung,193,145 THT,Nguyễn Thanh Sang,335,66,19.7,Y,N,,0
+18952,Nguyễn Gia Linh,245,55A NVL,Đoàn Trung Đức,351,68,19.37,Y,N,,0
 16113,Võ Văn Nhật,63,29 HB,Nguyễn Việt Cường,31,6,19.35,N,N,,0
-11975,Phạm Thị Yến Nhi,45,25 TD,Tống Xuân Quyền,145,28,19.31,N,N,,0
-14271, Vũ Văn Anh,244,11 PKT,Nguyễn Như Quỳnh,275,53,19.27,Y,N,,0
-12059,Trần Huỳnh Hồng Nhung,193,145 THT,Nguyễn Thanh Sang,392,75,19.13,Y,N,,0
-19616,Bùi Thuỷ Lệ,2,346 KT,Phan Thị Hồng Gấm,237,45,18.99,Y,N,,0
-20745,Lê Thanh Hà,245,55A NVL,Đoàn Trung Đức,454,86,18.94,Y,N,,0
-2324,Nguyễn Thị Ánh Vi,204,401/1 NDT,Nguyễn Việt Cường,144,27,18.75,N,N,,0
-20256,Nguyễn Thị Lan Anh,200,39 HBT,Phan Thị Hồng Gấm,219,41,18.72,Y,N,,0
-9280,Trần Thuý Hậu ,187,116 TK,Đoàn Trung Đức,584,109,18.66,Y,N,,0
-19020,Nguyễn Thị Xim,200,39 HBT,Phan Thị Hồng Gấm,70,13,18.57,N,N,,0
-6551,Nguyễn Thị Huyền Trang NQ,307,185 30T4 BD,Nguyễn Việt Cường,146,27,18.49,N,N,,0
-21428,Huỳnh Nguyễn Trúc Vy,249,1146 KVC,Nguyễn Việt Cường,302,55,18.21,Y,N,,0
-19220,Lê thị yến,44,103 TN,Nguyễn Việt Cường,187,34,18.18,Y,N,,0
-11271,Phạm Thanh Tú,192,264 LLQ,Phan Thị Hồng Gấm,154,28,18.18,Y,N,,0
-19751,Nguyễn Trần Thanh Trúc SMSUP,145,237 NTT,Tống Xuân Quyền,22,4,18.18,N,N,,0
-20978,Vũ Hồng Thương NQ,295,152 NO,An NQ,182,33,18.13,Y,N,,0
-9244,Lê Thị Hồng Ngân,58,730 TL10,Nguyễn Thanh Sang,138,25,18.12,N,N,,0
-17035,Đinh Thị Bích Ánh,187,116 TK,Đoàn Trung Đức,686,124,18.08,Y,N,,0
-20796,Đinh Thị Sin,200,39 HBT,Phan Thị Hồng Gấm,83,15,18.07,N,N,,0
-17787,Nguyễn Thị Nga,60,80 PL BD,Nguyễn Việt Cường,289,52,17.99,Y,N,,0
-19407,Hoàng Thị Thanh Thảo NQ,224,90 TDH,Đoàn Trung Đức,772,137,17.75,Y,N,,0
-12196,Nguyễn Văn Trung,274,32 NAT,Trịnh Văn Quang,327,58,17.74,Y,N,,0
-20757,Võ Lê Hà Phương,193,145 THT,Nguyễn Thanh Sang,333,59,17.72,Y,N,,0
-19331,Lê Thị Hồng Nhung,145,237 NTT,Tống Xuân Quyền,284,50,17.61,Y,N,,0
-16988,Nguyễn Văn Toàn,302,362 NGT BN,Nguyễn Như Quỳnh,103,18,17.48,N,N,,0
-3665,Trần Nguyễn Hoàng Tòng,44,103 TN,Nguyễn Việt Cường,126,22,17.46,N,N,,0
-4581,Đỗ Thị Ly,245,55A NVL,Đoàn Trung Đức,109,19,17.43,N,N,,0
-17034,Đinh Thị Thùy Chinh,187,116 TK,Đoàn Trung Đức,349,60,17.19,Y,N,,0
+21372,Huỳnh Trúc Đoan,61,1180 QT,Trịnh Văn Quang,114,22,19.3,N,N,,0
+17772,Phạm Văn Nhiều SMST,46,483 TN,Trịnh Văn Quang,26,5,19.23,N,N,,0
+19751,Nguyễn Trần Thanh Trúc SMSUP,145,237 NTT,Tống Xuân Quyền,26,5,19.23,N,N,,0
+21146,Trần Minh Hùng,188,190 HB,Nguyễn Thanh Sang,47,9,19.15,N,N,,0
+20745,Lê Thanh Hà,245,55A NVL,Đoàn Trung Đức,450,85,18.89,Y,N,,0
+9280,Trần Thuý Hậu ,187,116 TK,Đoàn Trung Đức,557,105,18.85,Y,N,,0
+14271, Vũ Văn Anh,244,11 PKT,Nguyễn Như Quỳnh,284,53,18.66,Y,N,,0
+19616,Bùi Thuỷ Lệ,2,346 KT,Phan Thị Hồng Gấm,243,45,18.52,Y,N,,0
+15232,Chu Thị Thu Huệ NQ,228,62 LH,Đoàn Trung Đức,152,28,18.42,Y,N,,0
+20048,Mã Tiểu Nghi,143,10 TP,Nguyễn Như Quỳnh,169,31,18.34,Y,N,,0
+21276,Nguyễn Trọng Nghĩa,141,236 DBT,Tống Xuân Quyền,710,130,18.31,Y,N,,0
+16988,Nguyễn Văn Toàn,302,362 NGT BN,Nguyễn Như Quỳnh,93,17,18.28,N,N,,0
+20757,Võ Lê Hà Phương,193,145 THT,Nguyễn Thanh Sang,269,49,18.22,Y,N,,0
+16003,Triệu Khánh Huyền,196,202 DC,Phan Thị Hồng Gấm,653,119,18.22,Y,N,,0
+19220,Lê thị yến,44,103 TN,Nguyễn Việt Cường,94,17,18.09,N,N,,0
+17035,Đinh Thị Bích Ánh,187,116 TK,Đoàn Trung Đức,635,113,17.8,Y,N,,0
+20452,Võ Sơn Duy,212,58 NVC NA,Nguyễn Thị Huệ,17,3,17.65,N,N,,0
+20380,Vũ Thị Minh Thư SMSUP,247,1371 PVT,Nguyễn Việt Cường,177,31,17.51,Y,N,,0
+19331,Lê Thị Hồng Nhung,145,237 NTT,Tống Xuân Quyền,309,54,17.48,Y,N,,0
+17787,Nguyễn Thị Nga,60,80 PL BD,Nguyễn Việt Cường,323,56,17.34,Y,N,,0
+5948,Tô Huyền Trang,250,173 TN,Phan Thị Hồng Gấm,468,81,17.31,Y,N,,0
+12196,Nguyễn Văn Trung,274,32 NAT,Trịnh Văn Quang,261,45,17.24,Y,N,,0
+21289,Phan Vinh Quang,11,8 CVL,Nguyễn Thanh Sang,570,98,17.19,Y,N,,0
+19860,Lê Thị Kiều Oanh,51,420 HTP,Tống Xuân Quyền,70,12,17.14,N,N,,0
+4581,Đỗ Thị Ly,245,55A NVL,Đoàn Trung Đức,117,20,17.09,N,N,,0
 10369, Khổng Văn Duy,144,168 NVC,Nguyễn Như Quỳnh,94,16,17.02,N,N,,0
-21276,Nguyễn Trọng Nghĩa,141,236 DBT,Tống Xuân Quyền,670,114,17.01,Y,N,,0
-9402,Nguyễn Xuân Thiện,283,A6 NAT,An NQ,59,10,16.95,N,N,,0
-5948,Tô Huyền Trang,250,173 TN,Phan Thị Hồng Gấm,432,73,16.90,Y,N,,0
-6804,Lương Anh Khánh,146,109 TQH,Đoàn Trung Đức,326,55,16.87,Y,N,,0
-21372,Huỳnh Trúc Đoan,61,1180 QT,Trịnh Văn Quang,119,20,16.81,N,N,,0
-1910,Nguyễn Mỹ Linh,192,264 LLQ,Phan Thị Hồng Gấm,269,45,16.73,Y,N,,0
+7304,Từ Thị Mỹ Ánh,188,190 HB,Nguyễn Thanh Sang,112,19,16.96,N,N,,0
+270,Lường Thị Thảo,200,39 HBT,Phan Thị Hồng Gấm,59,10,16.95,N,N,,0
+21459,Nguyễn Thị Mỹ Ngọc,141,236 DBT,Tống Xuân Quyền,119,20,16.81,N,N,,0
+9244,Lê Thị Hồng Ngân,58,730 TL10,Nguyễn Thanh Sang,113,19,16.81,N,N,,0
 19572,Bạch Xuân Thiện SMST,141,236 DBT,Tống Xuân Quyền,6,1,16.67,N,N,,0
-4627,Võ Thị Thu Ngân,145,237 NTT,Tống Xuân Quyền,254,42,16.54,Y,N,,0
-2976,Lê Lý Chí Tâm,46,483 TN,Trịnh Văn Quang,133,22,16.54,N,N,,0
-21459,Nguyễn Thị Mỹ Ngọc,141,236 DBT,Tống Xuân Quyền,127,21,16.54,N,N,,0
-16003,Triệu Khánh Huyền,196,202 DC,Phan Thị Hồng Gấm,655,108,16.49,Y,N,,0
-16769,Nguyễn Thị Khánh Linh,244,11 PKT,Nguyễn Như Quỳnh,322,52,16.15,Y,N,,0
-12821,Lưu Thị Thuý Duy,193,145 THT,Nguyễn Thanh Sang,329,53,16.11,Y,N,,0
-1883,Đỗ Ngọc Trinh,274,32 NAT,Trịnh Văn Quang,44,7,15.91,N,N,,0
-16549,Nguyễn Trúc Anh ,249,1146 KVC,Nguyễn Việt Cường,334,53,15.87,Y,N,,0
-270,Lường Thị Thảo,200,39 HBT,Phan Thị Hồng Gấm,82,13,15.85,N,N,,0
-17588,Bùi Thị Ánh Ngọc,192,264 LLQ,Phan Thị Hồng Gấm,76,12,15.79,N,N,,0
-18636,Bùi Thị Bình,144,168 NVC,Nguyễn Như Quỳnh,267,42,15.73,Y,N,,0
-21206,Nguyễn Lê Phương Vy,44,103 TN,Nguyễn Việt Cường,280,44,15.71,Y,N,,0
-1607,Nguyễn Cảnh Thái,144,168 NVC,Nguyễn Như Quỳnh,306,48,15.69,Y,N,,0
-8646,Nguyễn Thị Ngọc Hoàn,143,10 TP,Nguyễn Như Quỳnh,332,52,15.66,Y,N,,0
-7407,Nguyễn Văn Nguyên,302,362 NGT BN,Nguyễn Như Quỳnh,250,39,15.60,Y,N,,0
-20777,Lữ Công Minh,200,39 HBT,Phan Thị Hồng Gấm,71,11,15.49,N,N,,0
-10304,Ngô Mỹ Xuyến,247,1371 PVT,Nguyễn Việt Cường,110,17,15.45,N,N,,0
-17898,Trần Đình Đức,210,148 TD,Phan Thị Hồng Gấm,183,28,15.30,Y,N,,0
-21598,(không có trong bi.staff),228,62 LH,Đoàn Trung Đức,59,9,15.25,N,N,,0
-21289,Phan Vinh Quang,11,8 CVL,Nguyễn Thanh Sang,1949,293,15.03,Y,N,,0
-18228,Trần Thị Kim Ngân,204,401/1 NDT,Nguyễn Việt Cường,326,49,15.03,Y,N,,0
-4305,Nguyễn Thị Huệ GDKV,0,,(chưa gán),360,54,15.00,Y,N,,0
-10779,Nguyễn Thị Kim Ngân ,22,927 HG,Nguyễn Thanh Sang,20,3,15.00,N,N,,0
-20607,Phạm Thị Thu Hương,302,362 NGT BN,Nguyễn Như Quỳnh,288,43,14.93,Y,N,,0
-3064,Nguyễn Văn Hữu Nghị,61,1180 QT,Trịnh Văn Quang,122,18,14.75,N,N,,0
-7112,Phạm Thị Duyên,210,148 TD,Phan Thị Hồng Gấm,61,9,14.75,N,N,,0
-19851,Nguyễn Thị Phương,232,80 TP TH,Nguyễn Thị Huệ,145,21,14.48,N,N,,0
-3304,Nguyễn Văn Nam SMSUP,192,264 LLQ,Phan Thị Hồng Gấm,327,47,14.37,Y,N,,0
-19756,Phạm Tiến Phát,46,483 TN,Trịnh Văn Quang,203,29,14.29,Y,N,,0
-21290,Nguyễn Phương Linh,192,264 LLQ,Phan Thị Hồng Gấm,253,36,14.23,Y,N,,0
-18345,Nguyễn Thị Lan Trinh,198,411 NVT,Nhật NQ,239,34,14.23,Y,N,,0
-15252,Nguyễn Hoàng Dương,192,264 LLQ,Phan Thị Hồng Gấm,127,18,14.17,N,N,,0
-4780,Đào Mạnh Đạt,147,99 TSN,Nguyễn Thanh Sang,279,39,13.98,Y,N,,0
-20632,Đỗ Thị Nga,194,90 NH,Đoàn Trung Đức,1011,141,13.95,Y,N,,0
+1910,Nguyễn Mỹ Linh,192,264 LLQ,Phan Thị Hồng Gấm,278,46,16.55,Y,N,,0
+20796,Đinh Thị Sin,200,39 HBT,Phan Thị Hồng Gấm,85,14,16.47,N,N,,0
+2976,Lê Lý Chí Tâm,46,483 TN,Trịnh Văn Quang,154,25,16.23,Y,N,,0
+17236,Nguyễn Hoàng Bảo Anh,200,39 HBT,Phan Thị Hồng Gấm,37,6,16.22,N,N,,0
+8646,Nguyễn Thị Ngọc Hoàn,143,10 TP,Nguyễn Như Quỳnh,364,59,16.21,Y,N,,0
+4627,Võ Thị Thu Ngân,145,237 NTT,Tống Xuân Quyền,286,46,16.08,Y,N,,0
+1607,Nguyễn Cảnh Thái,144,168 NVC,Nguyễn Như Quỳnh,314,49,15.61,Y,N,,0
+18636,Bùi Thị Bình,144,168 NVC,Nguyễn Như Quỳnh,269,42,15.61,Y,N,,0
+4780,Đào Mạnh Đạt,147,99 TSN,Nguyễn Thanh Sang,201,31,15.42,Y,N,,0
+12821,Lưu Thị Thuý Duy,193,145 THT,Nguyễn Thanh Sang,288,44,15.28,Y,N,,0
+21598,La Thị Duyên,228,62 LH,Đoàn Trung Đức,59,9,15.25,N,N,,0
+20607,Phạm Thị Thu Hương,302,362 NGT BN,Nguyễn Như Quỳnh,285,43,15.09,Y,N,,0
+17034,Đinh Thị Thùy Chinh,187,116 TK,Đoàn Trung Đức,412,62,15.05,Y,N,,0
+7407,Nguyễn Văn Nguyên,302,362 NGT BN,Nguyễn Như Quỳnh,206,31,15.05,Y,N,,0
+4305,Nguyễn Thị Huệ GDKV,212,58 NVC NA,Nguyễn Thị Huệ,359,54,15.04,Y,N,,0
+8164,Phạm Cẩm Tú ,250,173 TN,Phan Thị Hồng Gấm,87,13,14.94,N,N,,0
+16769,Nguyễn Thị Khánh Linh,244,11 PKT,Nguyễn Như Quỳnh,370,55,14.86,Y,N,,0
+18228,Trần Thị Kim Ngân,204,401/1 NDT,Nguyễn Việt Cường,359,53,14.76,Y,N,,0
+7120,Diệp Ngọc Nhi,46,483 TN,Trịnh Văn Quang,305,45,14.75,Y,N,,0
+20628,lan.sk99,250,173 TN,Phan Thị Hồng Gấm,122,18,14.75,N,N,,0
+21377,Trần Thị Thuý Kiều,12,12 LDT,Trịnh Văn Quang,375,55,14.67,Y,N,,0
+20501,Hoàng Ngọc Đạt,230,290 QT TH,Nguyễn Thị Huệ,48,7,14.58,N,N,,0
+10119,Quách Tuyết Trang,58,730 TL10,Nguyễn Thanh Sang,850,123,14.47,Y,N,,0
+11079,Lê Thị Hiền,65,255 NAN,Nguyễn Việt Cường,42,6,14.29,N,N,,0
+16303,Nguyễn Hà Phương,45,25 TD,Tống Xuân Quyền,14,2,14.29,N,N,,0
+20102,Đinh Thị Thuý Hiền,143,10 TP,Nguyễn Như Quỳnh,547,78,14.26,Y,N,,0
+19815,Ngô Thị Thuý Nga,51,420 HTP,Tống Xuân Quyền,585,83,14.19,Y,N,,0
+18076,Vy Thị Trà Giang,302,362 NGT BN,Nguyễn Như Quỳnh,233,33,14.16,Y,N,,0
+20777,Lữ Công Minh,200,39 HBT,Phan Thị Hồng Gấm,78,11,14.1,N,N,,0
+17898,Trần Đình Đức,210,148 TD,Phan Thị Hồng Gấm,213,30,14.08,Y,N,,0
+21290,Nguyễn Phương Linh,192,264 LLQ,Phan Thị Hồng Gấm,249,35,14.06,Y,N,,0
+1395,Bùi Việt Hưng,146,109 TQH,Đoàn Trung Đức,1288,180,13.98,Y,N,,0
 19670,Nguyễn Ngọc Mai Thanh,145,237 NTT,Tống Xuân Quyền,43,6,13.95,N,N,,0
-20365,Đỗ Ngọc Bích,146,109 TQH,Đoàn Trung Đức,194,27,13.92,Y,N,,0
-20866,Trần Thị Kim Ngân,147,99 TSN,Nguyễn Thanh Sang,158,22,13.92,Y,N,,0
+9070,Cao Thị Linh,200,39 HBT,Phan Thị Hồng Gấm,668,93,13.92,Y,N,,0
+20865,Nguyễn Thị Thùy Trang,147,99 TSN,Nguyễn Thanh Sang,115,16,13.91,N,N,,0
+20632,Đỗ Thị Nga,194,90 NH,Đoàn Trung Đức,972,135,13.89,Y,N,,0
 1909,Nguyễn Thị Thêu,144,168 NVC,Nguyễn Như Quỳnh,144,20,13.89,N,N,,0
-17236,Nguyễn Hoàng Bảo Anh,200,39 HBT,Phan Thị Hồng Gấm,36,5,13.89,N,N,,0
-21188,Nguyễn Thị Mỹ Diễm,249,1146 KVC,Nguyễn Việt Cường,346,48,13.87,Y,N,,0
-11843,Nguyễn Phan Thảo My,145,237 NTT,Tống Xuân Quyền,326,45,13.80,Y,N,,0
-20102,Đinh Thị Thuý Hiền,143,10 TP,Nguyễn Như Quỳnh,524,72,13.74,Y,N,,0
-19860,Lê Thị Kiều Oanh,51,420 HTP,Tống Xuân Quyền,51,7,13.73,N,N,,0
-20380,Vũ Thị Minh Thư SMSUP,247,1371 PVT,Nguyễn Việt Cường,205,28,13.66,Y,N,,0
-14640,Nguyễn Thuỳ Linh,210,148 TD,Phan Thị Hồng Gấm,231,31,13.42,Y,N,,0
-15706,Nguyễn Thị Phú Quý,145,237 NTT,Tống Xuân Quyền,373,50,13.40,Y,N,,0
-20833,Vũ Trần Anh Thư,145,237 NTT,Tống Xuân Quyền,330,44,13.33,Y,N,,0
-8479,Lâm Tuấn Bảo,283,A6 NAT,An NQ,30,4,13.33,N,N,,0
-16303,Nguyễn Hà Phương,45,25 TD,Tống Xuân Quyền,15,2,13.33,N,N,,0
-18516,Đỗ Thị Lan Anh ,250,173 TN,Phan Thị Hồng Gấm,15,2,13.33,N,N,,0
-1395,Bùi Việt Hưng,146,109 TQH,Đoàn Trung Đức,1517,202,13.32,Y,N,,0
-8164,Phạm Cẩm Tú ,250,173 TN,Phan Thị Hồng Gấm,99,13,13.13,N,N,,0
-17772,Phạm Văn Nhiều SMST,46,483 TN,Trịnh Văn Quang,46,6,13.04,N,N,,0
-21361,Hoàng Văn Quân NQ,200,39 HBT,Phan Thị Hồng Gấm,46,6,13.04,N,N,,0
-21377,Trần Thị Thuý Kiều,12,12 LDT,Trịnh Văn Quang,408,53,12.99,Y,N,,0
-9070,Cao Thị Linh,200,39 HBT,Phan Thị Hồng Gấm,756,98,12.96,Y,N,,0
-20377,Tiền Anh Thư,12,12 LDT,Trịnh Văn Quang,247,32,12.96,Y,N,,0
-12087,Trương Thị Thảo Lan ,145,237 NTT,Tống Xuân Quyền,387,50,12.92,Y,N,,0
-11387,Đinh Thị Ngọc Ánh NQ,285,82 VTP,Đoàn Trung Đức,31,4,12.90,N,N,,0
-16108,Trần Thị Thu Hằng,2,346 KT,Phan Thị Hồng Gấm,194,25,12.89,Y,N,,0
-19255,Nguyễn Thị Minh Thư,145,237 NTT,Tống Xuân Quyền,303,39,12.87,Y,N,,0
-21405,HỒ THỊ DUNG,302,362 NGT BN,Nguyễn Như Quỳnh,288,37,12.85,Y,N,,0
-17591,Hoàng Thị Linh,230,290 QT TH,Nguyễn Thị Huệ,86,11,12.79,N,N,,0
-13106,Phạm Thị Trí ,250,173 TN,Phan Thị Hồng Gấm,698,89,12.75,Y,N,,0
-19722,Trần Minh Thuận,188,190 HB,Nguyễn Thanh Sang,102,13,12.75,N,N,,0
-20313,Nguyễn Ngọc Sơn,200,39 HBT,Phan Thị Hồng Gấm,173,22,12.72,Y,N,,0
-10119,Quách Tuyết Trang,58,730 TL10,Nguyễn Thanh Sang,1356,172,12.68,Y,N,,0
-6959,Vũ Văn Tuyên,210,148 TD,Phan Thị Hồng Gấm,72,9,12.50,N,N,,0
-19872,Nguyễn Thị Ngọc Tươi SMSUP,184,36 N1 BD,Nguyễn Việt Cường,8,1,12.50,N,N,,0
-7120,Diệp Ngọc Nhi,46,483 TN,Trịnh Văn Quang,355,44,12.39,Y,N,,0
-18978,Phan Thị Mai Anh CTV Cuối Tuần,210,148 TD,Phan Thị Hồng Gấm,97,12,12.37,N,N,,0
-20813,Nguyễn Thị Kim Ngân,204,401/1 NDT,Nguyễn Việt Cường,170,21,12.35,Y,N,,0
+19756,Phạm Tiến Phát,46,483 TN,Trịnh Văn Quang,188,26,13.83,Y,N,,0
+6804,Lương Anh Khánh,228,62 LH,Đoàn Trung Đức,311,43,13.83,Y,N,,0
+14640,Nguyễn Thuỳ Linh,210,148 TD,Phan Thị Hồng Gấm,246,34,13.82,Y,N,,0
+11843,Nguyễn Phan Thảo My,145,237 NTT,Tống Xuân Quyền,359,49,13.65,Y,N,,0
+19698,Nguyễn Thị Hiểu Ngân ,46,483 TN,Trịnh Văn Quang,88,12,13.64,N,N,,0
+21219,Phạm Thị Loan,302,362 NGT BN,Nguyễn Như Quỳnh,147,20,13.61,N,N,,0
+12087,Trương Thị Thảo Lan ,145,237 NTT,Tống Xuân Quyền,420,57,13.57,Y,N,,0
+20866,Trần Thị Kim Ngân,147,99 TSN,Nguyễn Thanh Sang,140,19,13.57,N,N,,0
+20833,Vũ Trần Anh Thư,145,237 NTT,Tống Xuân Quyền,363,49,13.5,Y,N,,0
+21588,Lê Thị Kim Thoa ,47,708 LTT,Nguyễn Thanh Sang,15,2,13.33,N,N,,0
+13106,Phạm Thị Trí ,250,173 TN,Phan Thị Hồng Gấm,697,92,13.2,Y,N,,0
+6959,Vũ Văn Tuyên,210,148 TD,Phan Thị Hồng Gấm,76,10,13.16,N,N,,0
+14251,Nguyễn Thị Hiếu,144,168 NVC,Nguyễn Như Quỳnh,350,46,13.14,Y,N,,0
+19255,Nguyễn Thị Minh Thư,145,237 NTT,Tống Xuân Quyền,336,44,13.1,Y,N,,0
+20365,Đỗ Ngọc Bích,146,109 TQH,Đoàn Trung Đức,130,17,13.08,N,N,,0
+21405,HỒ THỊ DUNG,302,362 NGT BN,Nguyễn Như Quỳnh,199,26,13.07,Y,N,,0
+21328,Trần Thị Linh,244,11 PKT,Nguyễn Như Quỳnh,269,35,13.01,Y,N,,0
+8353,Nguyễn Quốc Phương Vy,247,1371 PVT,Nguyễn Việt Cường,123,16,13.01,N,N,,0
+19633,Nguyễn Thị Ngọc Hân,147,99 TSN,Nguyễn Thanh Sang,100,13,13.0,N,N,,0
+3304,Nguyễn Văn Nam SMSUP,192,264 LLQ,Phan Thị Hồng Gấm,362,47,12.98,Y,N,,0
+10289,Ngô Mỹ Huyền ,274,32 NAT,Trịnh Văn Quang,85,11,12.94,N,N,,0
+20313,Nguyễn Ngọc Sơn,200,39 HBT,Phan Thị Hồng Gấm,164,21,12.8,Y,N,,0
+17591,Hoàng Thị Linh,231,304 NT TH,Nguyễn Thị Huệ,86,11,12.79,N,N,,0
+19851,Nguyễn Thị Phương,232,80 TP TH,Nguyễn Thị Huệ,173,22,12.72,Y,N,,0
+7112,Phạm Thị Duyên,210,148 TD,Phan Thị Hồng Gấm,71,9,12.68,N,N,,0
+15706,Nguyễn Thị Phú Quý,145,237 NTT,Tống Xuân Quyền,406,51,12.56,Y,N,,0
+5117,Nguyễn Kim Mùa SMSUP,65,255 NAN,Nguyễn Việt Cường,120,15,12.5,N,N,,0
+18516,Đỗ Thị Lan Anh ,250,173 TN,Phan Thị Hồng Gấm,16,2,12.5,N,N,,0
+19722,Trần Minh Thuận,188,190 HB,Nguyễn Thanh Sang,121,15,12.4,N,N,,0
+19438,Trần Thị Kim Anh,12,12 LDT,Trịnh Văn Quang,356,44,12.36,Y,N,,0
 12767, Nguyễn Minh Quang,250,173 TN,Phan Thị Hồng Gấm,57,7,12.28,N,N,,0
-13502,Nguyễn Lê Diệp Linh,193,145 THT,Nguyễn Thanh Sang,375,46,12.27,Y,N,,0
-20265,Nguyễn Thị Ngọc Nhi,65,255 NAN,Nguyễn Việt Cường,270,33,12.22,Y,N,,0
-20788,Lê Thị Thu Trang,250,173 TN,Phan Thị Hồng Gấm,369,45,12.20,Y,N,,0
-21226,Nguyễn Xuân Ngoan,51,420 HTP,Tống Xuân Quyền,58,7,12.07,N,N,,0
-14251,Nguyễn Thị Hiếu,144,168 NVC,Nguyễn Như Quỳnh,341,41,12.02,Y,N,,0
-19698,Nguyễn Thị Hiểu Ngân ,46,483 TN,Trịnh Văn Quang,92,11,11.96,N,N,,0
+19894,Lê Thị Mai Ly,204,401/1 NDT,Nguyễn Việt Cường,343,42,12.24,Y,N,,0
+15252,Nguyễn Hoàng Dương,192,264 LLQ,Phan Thị Hồng Gấm,91,11,12.09,N,N,,0
+20968,Trần Văn Cường,210,148 TD,Phan Thị Hồng Gấm,150,18,12.0,Y,N,,0
 20339,Vũ Thị Hiền,65,255 NAN,Nguyễn Việt Cường,160,19,11.88,Y,N,,0
-20800,Nguyễn Thị Mỹ Tiên,11,8 CVL,Nguyễn Thanh Sang,621,73,11.76,Y,N,,0
-19438,Trần Thị Kim Anh,12,12 LDT,Trịnh Văn Quang,349,41,11.75,Y,N,,0
-3565,Nguyễn Thu Thuỷ,144,168 NVC,Nguyễn Như Quỳnh,171,20,11.70,Y,N,,0
-9473,Nguyễn Phương Thảo,144,168 NVC,Nguyễn Như Quỳnh,351,41,11.68,Y,N,,0
-21177,Phạm Thị Thảo ,61,1180 QT,Trịnh Văn Quang,181,21,11.60,Y,N,,0
-20628,lan.sk99,250,173 TN,Phan Thị Hồng Gấm,121,14,11.57,N,N,,0
-19894,Lê Thị Mai Ly,204,401/1 NDT,Nguyễn Việt Cường,312,36,11.54,Y,N,,0
-19516,Nguyễn Thị Quỳnh Như,65,255 NAN,Nguyễn Việt Cường,227,26,11.45,Y,N,,0
-21328,Trần Thị Linh,244,11 PKT,Nguyễn Như Quỳnh,308,35,11.36,Y,N,,0
-8643,Ngô Văn Anh Thoại,46,483 TN,Trịnh Văn Quang,150,17,11.33,Y,N,,0
-7720,Lê Thị Nhi,283,A6 NAT,An NQ,80,9,11.25,N,N,,0
-10289,Ngô Mỹ Huyền ,274,32 NAT,Trịnh Văn Quang,98,11,11.22,N,N,,0
-18076,Vy Thị Trà Giang,302,362 NGT BN,Nguyễn Như Quỳnh,360,40,11.11,Y,N,,0
-18312,Trần Thị Kim Loan,61,1180 QT,Trịnh Văn Quang,153,17,11.11,Y,N,,0
-21593,(không có trong bi.staff),60,80 PL BD,Nguyễn Việt Cường,27,3,11.11,N,N,,0
-15768,Đoàn Thị Kiều Loan,245,55A NVL,Đoàn Trung Đức,273,30,10.99,Y,N,,0
-17780,Võ Ngọc Thy Nhã,145,237 NTT,Tống Xuân Quyền,201,22,10.95,Y,N,,0
-21219,Phạm Thị Loan,302,362 NGT BN,Nguyễn Như Quỳnh,202,22,10.89,Y,N,,0
-13728,Nguyễn Thị Khánh Linh,143,10 TP,Nguyễn Như Quỳnh,101,11,10.89,N,N,,0
-7548,Nguyễn Thụy Thùy Trang,145,237 NTT,Tống Xuân Quyền,212,23,10.85,Y,N,,0
-8186,Dương Thị Trà,179,50BT4 NPC LD,Phan Thị Hồng Gấm,37,4,10.81,N,N,,0
-20968,Trần Văn Cường,210,148 TD,Phan Thị Hồng Gấm,176,19,10.80,Y,N,,0
-20518,Phạm Thị Huyền My,197,65 CD,Đoàn Trung Đức,481,51,10.60,Y,N,,0
-20981,Ngô Hùng Dũng ,76,RESALEONLINE,(chưa gán),359,38,10.58,Y,N,,0
-14330,Phạm Thị Thương,201,4 LQD BN,Nguyễn Như Quỳnh,436,46,10.55,Y,N,,0
-21178,Võ Thị Trinh,12,12 LDT,Trịnh Văn Quang,210,22,10.48,Y,N,,0
-20658,Nguyễn Văn Mạnh,239,186 QT,Nguyễn Như Quỳnh,856,89,10.40,Y,N,,0
-11209,Ninh Công Lâm,144,168 NVC,Nguyễn Như Quỳnh,154,16,10.39,Y,N,,0
-20801,Nguyễn Thị Như Ý ,193,145 THT,Nguyễn Thanh Sang,572,59,10.31,Y,N,,0
-14010,Nguyễn Phan Thúy Hiền,184,36 N1 BD,Nguyễn Việt Cường,721,74,10.26,Y,N,,0
-19229,Nguyễn Thu Phương,196,202 DC,Phan Thị Hồng Gấm,497,51,10.26,Y,N,,0
-4887,Ngô Doãn Hiếu,179,50BT4 NPC LD,Phan Thị Hồng Gấm,151,15,9.93,Y,N,,0
-16100,Phạm Thị Giang Linh,230,290 QT TH,Nguyễn Thị Huệ,373,37,9.92,Y,N,,0
-4857,Nguyễn Anh Tú,63,29 HB,Nguyễn Việt Cường,232,23,9.91,Y,N,,0
-8555,Lê Hữu Hậu,145,237 NTT,Tống Xuân Quyền,183,18,9.84,Y,N,,0
-13977,Nguyễn Sơn Tùng,144,168 NVC,Nguyễn Như Quỳnh,112,11,9.82,N,N,,0
-21617,(không có trong bi.staff),197,65 CD,Đoàn Trung Đức,41,4,9.76,N,N,,0
-16479,Nguyễn Thị Hằng Nga,12,12 LDT,Trịnh Văn Quang,400,39,9.75,Y,N,,0
-12779,Huỳnh Thị Kim My,193,145 THT,Nguyễn Thanh Sang,249,24,9.64,Y,N,,0
+21177,Phạm Thị Thảo ,61,1180 QT,Trịnh Văn Quang,127,15,11.81,N,N,,0
+20788,Lê Thị Thu Trang,250,173 TN,Phan Thị Hồng Gấm,348,41,11.78,Y,N,,0
+18312,Trần Thị Kim Loan,61,1180 QT,Trịnh Văn Quang,119,14,11.76,N,N,,0
+19272,Nguyễn Thị Vân Anh,144,168 NVC,Nguyễn Như Quỳnh,162,19,11.73,Y,N,,0
+20265,Nguyễn Thị Ngọc Nhi,65,255 NAN,Nguyễn Việt Cường,290,34,11.72,Y,N,,0
+3064,Nguyễn Văn Hữu Nghị,61,1180 QT,Trịnh Văn Quang,111,13,11.71,N,N,,0
+13502,Nguyễn Lê Diệp Linh,193,145 THT,Nguyễn Thanh Sang,308,36,11.69,Y,N,,0
+20813,Nguyễn Thị Kim Ngân,204,401/1 NDT,Nguyễn Việt Cường,180,21,11.67,Y,N,,0
+20377,Tiền Anh Thư,12,12 LDT,Trịnh Văn Quang,283,33,11.66,Y,N,,0
+16108,Trần Thị Thu Hằng,2,346 KT,Phan Thị Hồng Gấm,207,24,11.59,Y,N,,0
+9473,Nguyễn Phương Thảo,144,168 NVC,Nguyễn Như Quỳnh,364,42,11.54,Y,N,,0
+21361,Hoàng Văn Quân,200,39 HBT,Phan Thị Hồng Gấm,52,6,11.54,N,N,,0
+20756,Nguyễn Thị Hồng Cẩm,204,401/1 NDT,Nguyễn Việt Cường,156,18,11.54,Y,N,,0
+15768,Đoàn Thị Kiều Loan,245,55A NVL,Đoàn Trung Đức,286,33,11.54,Y,N,,0
+18978,Phan Thị Mai Anh CTV Cuối Tuần,210,148 TD,Phan Thị Hồng Gấm,105,12,11.43,N,N,,0
+19424,Lưu Ngọc Châm,210,148 TD,Phan Thị Hồng Gấm,79,9,11.39,N,N,,0
+11209,Ninh Công Lâm,144,168 NVC,Nguyễn Như Quỳnh,158,18,11.39,Y,N,,0
+7548,Nguyễn Thụy Thùy Trang,145,237 NTT,Tống Xuân Quyền,212,24,11.32,Y,N,,0
+14330,Phạm Thị Thương,201,4 LQD BN,Nguyễn Như Quỳnh,373,42,11.26,Y,N,,0
+16479,Nguyễn Thị Hằng Nga,12,12 LDT,Trịnh Văn Quang,420,47,11.19,Y,N,,0
+9601,Trang Thị Hồng An,193,145 THT,Nguyễn Thanh Sang,242,27,11.16,Y,N,,0
+8643,Ngô Văn Anh Thoại,46,483 TN,Trịnh Văn Quang,171,19,11.11,Y,N,,0
+21226,Nguyễn Xuân Ngoan,51,420 HTP,Tống Xuân Quyền,81,9,11.11,N,N,,0
+1883,Đỗ Ngọc Trinh,274,32 NAT,Trịnh Văn Quang,45,5,11.11,N,N,,0
+20800,Nguyễn Thị Mỹ Tiên,11,8 CVL,Nguyễn Thanh Sang,596,64,10.74,Y,N,,0
+21178,Võ Thị Trinh,12,12 LDT,Trịnh Văn Quang,187,20,10.7,Y,N,,0
+858,Nguyễn Thị Mỹ Hường,193,145 THT,Nguyễn Thanh Sang,244,26,10.66,Y,N,,0
+13977,Nguyễn Sơn Tùng,144,168 NVC,Nguyễn Như Quỳnh,113,12,10.62,N,N,,0
+4887,Ngô Doãn Hiếu,179,50BT4 NPC LD,Phan Thị Hồng Gấm,170,18,10.59,Y,N,,0
+17662,Võ Thị Hồng,61,1180 QT,Trịnh Văn Quang,285,30,10.53,Y,N,,0
+20765,Nguyễn Thị Cẩm Hằng,11,8 CVL,Nguyễn Thanh Sang,38,4,10.53,N,N,,0
+19229,Nguyễn Thu Phương,196,202 DC,Phan Thị Hồng Gấm,496,52,10.48,Y,N,,0
+20981,Ngô Hùng Dũng ,244,11 PKT,Nguyễn Như Quỳnh,337,35,10.39,Y,N,,0
+21004,Nguyễn Thị Mỹ Duyên,72,113 THD AG,Tống Xuân Quyền,29,3,10.34,N,N,,0
+18590,Phạm Văn Đức,302,362 NGT BN,Nguyễn Như Quỳnh,254,26,10.24,Y,N,,0
+18942,Võ Thị Mỹ Ân,58,730 TL10,Nguyễn Thanh Sang,49,5,10.2,N,N,,0
+20518,Phạm Thị Huyền My,197,65 CD,Đoàn Trung Đức,347,35,10.09,Y,N,,0
+18481,Nguyễn Sơn Tường Vân,63,29 HB,Nguyễn Việt Cường,20,2,10.0,N,N,,0
+20143,Nguyễn Hoàng Triệu Vy,22,927 HG,Nguyễn Thanh Sang,50,5,10.0,N,N,,0
+14202,Lê Thị Hồng Nhi,72,113 THD AG,Tống Xuân Quyền,30,3,10.0,N,N,,0
+20818,Nguyễn Khánh Duy,106,76 PVH,Trịnh Văn Quang,331,33,9.97,Y,N,,0
+4857,Nguyễn Anh Tú,63,29 HB,Nguyễn Việt Cường,254,25,9.84,Y,N,,0
+17780,Võ Ngọc Thy Nhã,145,237 NTT,Tống Xuân Quyền,234,23,9.83,Y,N,,0
+913,Lê Thị Kim Tuyết,146,109 TQH,Đoàn Trung Đức,557,54,9.69,Y,N,,0
+20801,Nguyễn Thị Như Ý ,193,145 THT,Nguyễn Thanh Sang,620,60,9.68,Y,N,,0
+10304,Ngô Mỹ Xuyến,247,1371 PVT,Nguyễn Việt Cường,31,3,9.68,N,N,,0
+21003,Bùi Thị Thảo Nhy,46,483 TN,Trịnh Văn Quang,114,11,9.65,N,N,,0
 13760,Phạm Ngọc Lan Anh,196,202 DC,Phan Thị Hồng Gấm,83,8,9.64,N,N,,0
-2236,Trương Thái Lâm,46,483 TN,Trịnh Văn Quang,343,33,9.62,Y,N,,0
-20818,Nguyễn Khánh Duy,106,76 PVH,Trịnh Văn Quang,343,33,9.62,Y,N,,0
-1202,Ngô Đình Phúc,46,483 TN,Trịnh Văn Quang,230,22,9.57,Y,N,,0
-11285,Trần Hầu Xìm,46,483 TN,Trịnh Văn Quang,188,18,9.57,Y,N,,0
-19815,Ngô Thị Thuý Nga,51,420 HTP,Tống Xuân Quyền,461,44,9.54,Y,N,,0
-8353,Nguyễn Quốc Phương Vy,247,1371 PVT,Nguyễn Việt Cường,241,23,9.54,Y,N,,0
-20756,Nguyễn Thị Hồng Cẩm,204,401/1 NDT,Nguyễn Việt Cường,147,14,9.52,N,N,,0
-18481,Nguyễn Sơn Tường Vân,63,29 HB,Nguyễn Việt Cường,21,2,9.52,N,N,,0
-20877,Nguyễn Công Toản,2,346 KT,Phan Thị Hồng Gấm,284,27,9.51,Y,N,,0
-20962,Nguyễn Thị Hồng Ngân ,51,420 HTP,Tống Xuân Quyền,137,13,9.49,N,N,,0
-20826,Đỗ Thuỳ Linh,184,36 N1 BD,Nguyễn Việt Cường,624,59,9.46,Y,N,,0
-20343,Nguyễn Thị Ngọc Bích,46,483 TN,Trịnh Văn Quang,287,27,9.41,Y,N,,0
-9601,Trang Thị Hồng An,193,145 THT,Nguyễn Thanh Sang,309,29,9.39,Y,N,,0
-19424,Lưu Ngọc Châm,210,148 TD,Phan Thị Hồng Gấm,96,9,9.38,N,N,,0
-14100,Nguyễn Việt Hoàng ,144,168 NVC,Nguyễn Như Quỳnh,749,69,9.21,Y,N,,0
-21004,Nguyễn Thị Mỹ Duyên,72,113 THD AG,Tống Xuân Quyền,44,4,9.09,N,N,,0
-11954,Thiều Thị Linh Chi,250,173 TN,Phan Thị Hồng Gấm,155,14,9.03,Y,N,,0
-913,Lê Thị Kim Tuyết,146,109 TQH,Đoàn Trung Đức,707,63,8.91,Y,N,,0
-21264,Nguyễn Văn Hoàng,231,304 NT TH,Nguyễn Thị Huệ,281,25,8.90,Y,N,,0
-11536,Phạm Thị Tuyết Nhung,194,90 NH,Đoàn Trung Đức,263,23,8.75,Y,N,,0
-20453,Nguyễn Thị Cẩm Tiên,72,113 THD AG,Tống Xuân Quyền,80,7,8.75,N,N,,0
-858,Nguyễn Thị Mỹ Hường,193,145 THT,Nguyễn Thanh Sang,287,25,8.71,Y,N,,0
-19272,Nguyễn Thị Vân Anh,144,168 NVC,Nguyễn Như Quỳnh,207,18,8.70,Y,N,,0
-6607,Phạm Thị Lương,230,290 QT TH,Nguyễn Thị Huệ,46,4,8.70,N,N,,0
-20858,Huỳnh Thanh Tâm NQ,106,76 PVH,Trịnh Văn Quang,358,31,8.66,Y,N,,0
-15737,Nguyễn Ngọc Huyền Trang ,85,363 LNQ TN,Phan Thị Hồng Gấm,581,50,8.61,Y,N,,0
-20865,Nguyễn Thị Thùy Trang,147,99 TSN,Nguyễn Thanh Sang,117,10,8.55,N,N,,0
-21362,Võ Huyền Trân,247,1371 PVT,Nguyễn Việt Cường,364,31,8.52,Y,N,,0
-12173,Bùi Thị Hồng Lan,2,346 KT,Phan Thị Hồng Gấm,189,16,8.47,Y,N,,0
-21540,(không có trong bi.staff),232,80 TP TH,Nguyễn Thị Huệ,261,22,8.43,Y,N,,0
-17662,Võ Thị Hồng,61,1180 QT,Trịnh Văn Quang,393,33,8.40,Y,N,,0
-14683,Trương Thị Mạng Ngọc,283,A6 NAT,An NQ,60,5,8.33,N,N,,0
-18355,Phạm Ngọc Khánh Ly NQ,285,82 VTP,Đoàn Trung Đức,12,1,8.33,N,N,,0
-18649,Trương Phi Hà ,249,1146 KVC,Nguyễn Việt Cường,12,1,8.33,N,N,,0
-19937,Lý Hồng Nhung,2,346 KT,Phan Thị Hồng Gấm,157,13,8.28,Y,N,,0
-21548,(không có trong bi.staff),230,290 QT TH,Nguyễn Thị Huệ,145,12,8.28,N,N,,0
-21272,Nguyễn Lê Phương Nguyên ,188,190 HB,Nguyễn Thanh Sang,146,12,8.22,N,N,,0
-4134,Nguyễn Đồng Nhật Minh,144,168 NVC,Nguyễn Như Quỳnh,331,27,8.16,Y,N,,0
-19752,Nguyễn Thanh Huy,205,341 XVNT,An NQ,37,3,8.11,N,N,,0
-7836,Ngô Thị Ngà,85,363 LNQ TN,Phan Thị Hồng Gấm,310,25,8.06,Y,N,,0
-20362,Lâm Thị Hồng Ngọc,106,76 PVH,Trịnh Văn Quang,248,20,8.06,Y,N,,0
-21015,Nguyễn Thị Linh,12,12 LDT,Trịnh Văn Quang,126,10,7.94,N,N,,0
-14261,Vy Thị Vân,63,29 HB,Nguyễn Việt Cường,193,15,7.77,Y,N,,0
-21003,Bùi Thị Thảo Nhy,46,483 TN,Trịnh Văn Quang,129,10,7.75,N,N,,0
-19283,Nguyễn Thị Lành,143,10 TP,Nguyễn Như Quỳnh,155,12,7.74,Y,N,,0
-21183,Dương Thị Mai Huyền,197,65 CD,Đoàn Trung Đức,285,22,7.72,Y,N,,0
-21020,Nguyễn Thị Huế Trân,60,80 PL BD,Nguyễn Việt Cường,558,43,7.71,Y,N,,0
-21185,Lê Thị Hồng Dung,106,76 PVH,Trịnh Văn Quang,572,44,7.69,Y,N,,0
-15254,Dương Đức Huy,144,168 NVC,Nguyễn Như Quỳnh,355,27,7.61,Y,N,,0
-20849,Nguyễn Thị Tường Vi,141,236 DBT,Tống Xuân Quyền,449,34,7.57,Y,N,,0
-11317,Quản Thị Phương,232,80 TP TH,Nguyễn Thị Huệ,309,23,7.44,Y,N,,0
-21133,Nguyễn Thị Hưởng,201,4 LQD BN,Nguyễn Như Quỳnh,54,4,7.41,N,N,,0
-5368,Mai Ngọc Thắng,147,99 TSN,Nguyễn Thanh Sang,27,2,7.41,N,N,,0
-21243,Phạm Thị Thuỷ,302,362 NGT BN,Nguyễn Như Quỳnh,451,33,7.32,Y,N,,0
-2449,Nguyễn Xuân Phúc,244,11 PKT,Nguyễn Như Quỳnh,123,9,7.32,N,N,,0
-21267,Đỗ Bảo Trung,2,346 KT,Phan Thị Hồng Gấm,386,28,7.25,Y,N,,0
-4372,Nguyễn Trung Hiếu,2,346 KT,Phan Thị Hồng Gấm,378,27,7.14,Y,N,,0
+14100,Nguyễn Việt Hoàng ,144,168 NVC,Nguyễn Như Quỳnh,748,72,9.63,Y,N,,0
+20453,Nguyễn Thị Cẩm Tiên,72,113 THD AG,Tống Xuân Quyền,52,5,9.62,N,N,,0
+20877,Nguyễn Công Toản,2,346 KT,Phan Thị Hồng Gấm,293,28,9.56,Y,N,,0
+14010,Nguyễn Phan Thúy Hiền,184,36 N1 BD,Nguyễn Việt Cường,786,75,9.54,Y,N,,0
+4134,Nguyễn Đồng Nhật Minh,144,168 NVC,Nguyễn Như Quỳnh,263,25,9.51,Y,N,,0
+20658,Nguyễn Văn Mạnh,239,186 QT,Nguyễn Như Quỳnh,972,92,9.47,Y,N,,0
+12779,Huỳnh Thị Kim My,193,145 THT,Nguyễn Thanh Sang,212,20,9.43,Y,N,,0
+21264,Nguyễn Văn Hoàng,232,80 TP TH,Nguyễn Thị Huệ,319,30,9.4,Y,N,,0
+16100,Phạm Thị Giang Linh,230,290 QT TH,Nguyễn Thị Huệ,406,38,9.36,Y,N,,0
+1202,Ngô Đình Phúc,46,483 TN,Trịnh Văn Quang,193,18,9.33,Y,N,,0
+13728,Nguyễn Thị Khánh Linh,143,10 TP,Nguyễn Như Quỳnh,118,11,9.32,N,N,,0
+20343,Nguyễn Thị Ngọc Bích,46,483 TN,Trịnh Văn Quang,324,30,9.26,Y,N,,0
+15737,Nguyễn Ngọc Huyền Trang ,85,363 LNQ TN,Phan Thị Hồng Gấm,497,46,9.26,Y,N,,0
+8555,Lê Hữu Hậu,145,237 NTT,Tống Xuân Quyền,216,20,9.26,Y,N,,0
+21243,Phạm Thị Thuỷ,302,362 NGT BN,Nguyễn Như Quỳnh,304,28,9.21,Y,N,,0
+21629,Nguyễn Thị Kim Chi ,188,190 HB,Nguyễn Thanh Sang,87,8,9.2,N,N,,0
+2236,Trương Thái Lâm,46,483 TN,Trịnh Văn Quang,370,34,9.19,Y,N,,0
+11954,Thiều Thị Linh Chi,250,173 TN,Phan Thị Hồng Gấm,167,15,8.98,Y,N,,0
+19677,Hồ Thị Trúc Hà,58,730 TL10,Nguyễn Thanh Sang,168,15,8.93,Y,N,,0
+21548,Lê Thị Phượng,230,290 QT TH,Nguyễn Thị Huệ,157,14,8.92,Y,N,,0
+6607,Phạm Thị Lương,230,290 QT TH,Nguyễn Thị Huệ,45,4,8.89,N,N,,0
+11285,Trần Hầu Xìm,46,483 TN,Trịnh Văn Quang,214,19,8.88,Y,N,,0
+10544,Lừ Thị Nga ,144,168 NVC,Nguyễn Như Quỳnh,79,7,8.86,N,N,,0
+21453,Trầm Lê Gia Hân,63,29 HB,Nguyễn Việt Cường,34,3,8.82,N,N,,0
+20858,Huỳnh Thanh Tâm NQ,106,76 PVH,Trịnh Văn Quang,390,34,8.72,Y,N,,0
+10318,Bùi Gia Hạo,63,29 HB,Nguyễn Việt Cường,69,6,8.7,N,N,,0
+13433,Đỗ Thị Phương Mai,179,50BT4 NPC LD,Phan Thị Hồng Gấm,58,5,8.62,N,N,,0
+21272,Nguyễn Lê Phương Nguyên ,188,190 HB,Nguyễn Thanh Sang,152,13,8.55,Y,N,,0
+20826,Đỗ Thuỳ Linh,184,36 N1 BD,Nguyễn Việt Cường,740,63,8.51,Y,N,,0
+10498,Hoàng Bảo Ngọc,200,39 HBT,Phan Thị Hồng Gấm,59,5,8.47,N,N,,0
+19937,Lý Hồng Nhung,2,346 KT,Phan Thị Hồng Gấm,155,13,8.39,Y,N,,0
+7836,Ngô Thị Ngà,85,363 LNQ TN,Phan Thị Hồng Gấm,241,20,8.3,Y,N,,0
+3565,Nguyễn Thu Thuỷ,144,168 NVC,Nguyễn Như Quỳnh,157,13,8.28,Y,N,,0
+15254,Dương Đức Huy,144,168 NVC,Nguyễn Như Quỳnh,363,30,8.26,Y,N,,0
+21133,Nguyễn Thị Hưởng,201,4 LQD BN,Nguyễn Như Quỳnh,49,4,8.16,N,N,,0
+20362,Lâm Thị Hồng Ngọc,106,76 PVH,Trịnh Văn Quang,270,22,8.15,Y,N,,0
+17625,Nguyễn Thị Cẩm Ly,197,65 CD,Đoàn Trung Đức,222,18,8.11,Y,N,,0
+21317,Lương Thị Phượng,302,362 NGT BN,Nguyễn Như Quỳnh,272,22,8.09,Y,N,,0
+21267,Đỗ Bảo Trung,2,346 KT,Phan Thị Hồng Gấm,265,21,7.92,Y,N,,0
+11317,Quản Thị Phương,232,80 TP TH,Nguyễn Thị Huệ,329,26,7.9,Y,N,,0
+19997,Huỳnh Thị Phương Thảo,46,483 TN,Trịnh Văn Quang,152,12,7.89,Y,N,,0
+19283,Nguyễn Thị Lành,143,10 TP,Nguyễn Như Quỳnh,152,12,7.89,Y,N,,0
+21540,Nguyễn Thị Linh ,232,80 TP TH,Nguyễn Thị Huệ,307,24,7.82,Y,N,,0
+19396,Nguyễn Huy Thành,302,362 NGT BN,Nguyễn Như Quỳnh,103,8,7.77,N,N,,0
+21584,Nguyễn Hoàng Nghị,188,190 HB,Nguyễn Thanh Sang,440,34,7.73,Y,N,,0
+21183,Dương Thị Mai Huyền,197,65 CD,Đoàn Trung Đức,233,18,7.73,Y,N,,0
+21184,Ngụy Thị Phúc ,302,362 NGT BN,Nguyễn Như Quỳnh,117,9,7.69,N,N,,0
+19872,Nguyễn Thị Ngọc Tươi SMSUP,184,36 N1 BD,Nguyễn Việt Cường,13,1,7.69,N,N,,0
+21319,Thái Thị Như Mai SMST,47,708 LTT,Nguyễn Thanh Sang,13,1,7.69,N,N,,0
+19030,ngan.sksup,197,65 CD,Đoàn Trung Đức,614,47,7.65,Y,N,,0
+21020,Nguyễn Thị Huế Trân,60,80 PL BD,Nguyễn Việt Cường,594,45,7.58,Y,N,,0
+20962,Nguyễn Thị Hồng Ngân ,51,420 HTP,Tống Xuân Quyền,185,14,7.57,Y,N,,0
+17883,Phạm Thị Thu Hương,85,363 LNQ TN,Phan Thị Hồng Gấm,438,33,7.53,Y,N,,0
+11536,Phạm Thị Tuyết Nhung,194,90 NH,Đoàn Trung Đức,306,23,7.52,Y,N,,0
+21362,Võ Huyền Trân,247,1371 PVT,Nguyễn Việt Cường,293,22,7.51,Y,N,,0
+5407,Lành Văn Huy,179,50BT4 NPC LD,Phan Thị Hồng Gấm,27,2,7.41,N,N,,0
+11287,Vũ Hải Linh,144,168 NVC,Nguyễn Như Quỳnh,231,17,7.36,Y,N,,0
+21015,Nguyễn Thị Linh,12,12 LDT,Trịnh Văn Quang,123,9,7.32,N,N,,0
 16102,Trần Ngọc Hiếu,249,1146 KVC,Nguyễn Việt Cường,28,2,7.14,N,N,,0
-19030,ngan.sksup,197,65 CD,Đoàn Trung Đức,877,62,7.07,Y,N,,0
-12995,Võ Đức,61,1180 QT,Trịnh Văn Quang,144,10,6.94,N,N,,0
-18814,Cảnh Thị Thuỷ,201,4 LQD BN,Nguyễn Như Quỳnh,433,30,6.93,Y,N,,0
-5117,Nguyễn Kim Mùa SMSUP,65,255 NAN,Nguyễn Việt Cường,146,10,6.85,N,N,,0
-16590,Trang Thanh Duyên,249,1146 KVC,Nguyễn Việt Cường,73,5,6.85,N,N,,0
-11287,Vũ Hải Linh,144,168 NVC,Nguyễn Như Quỳnh,234,16,6.84,Y,N,,0
-20402,Chu Ngọc Vinh NQ,101,872 QL22,Trịnh Văn Quang,74,5,6.76,N,N,,0
-21212,Lương Văn Đại,63,29 HB,Nguyễn Việt Cường,150,10,6.67,Y,N,,0
-14202,Lê Thị Hồng Nhi,72,113 THD AG,Tống Xuân Quyền,45,3,6.67,N,N,,0
-5444,Trần Văn Đạt NQ,63,29 HB,Nguyễn Việt Cường,30,2,6.67,N,N,,0
-17883,Phạm Thị Thu Hương,85,363 LNQ TN,Phan Thị Hồng Gấm,421,28,6.65,Y,N,,0
-17625,Nguyễn Thị Cẩm Ly,197,65 CD,Đoàn Trung Đức,308,20,6.49,Y,N,,0
+14231,Nguyễn Thị Chinh,144,168 NVC,Nguyễn Như Quỳnh,238,17,7.14,Y,N,,0
+20537,Kiêm Thị Huỳnh,45,25 TD,Tống Xuân Quyền,28,2,7.14,N,N,,0
+20849,Nguyễn Thị Tường Vi,141,236 DBT,Tống Xuân Quyền,519,37,7.13,Y,N,,0
+2449,Nguyễn Xuân Phúc,244,11 PKT,Nguyễn Như Quỳnh,127,9,7.09,N,N,,0
+21185,Lê Thị Hồng Dung,106,76 PVH,Trịnh Văn Quang,638,45,7.05,Y,N,,0
+8186,Dương Thị Trà,179,50BT4 NPC LD,Phan Thị Hồng Gấm,57,4,7.02,N,N,,0
+20222,Mai Thị Kim Xuyến,72,113 THD AG,Tống Xuân Quyền,57,4,7.02,N,N,,0
+21333,Nguyễn Thị Kim Tuyến,302,362 NGT BN,Nguyễn Như Quỳnh,444,31,6.98,Y,N,,0
+19516,Nguyễn Thị Quỳnh Như,65,255 NAN,Nguyễn Việt Cường,130,9,6.92,N,N,,0
+4372,Nguyễn Trung Hiếu,2,346 KT,Phan Thị Hồng Gấm,406,28,6.9,Y,N,,0
+18814,Cảnh Thị Thuỷ,201,4 LQD BN,Nguyễn Như Quỳnh,445,30,6.74,Y,N,,0
+19753,Viên Yến Vy,21,575 AC,Nguyễn Thanh Sang,104,7,6.73,N,N,,0
+18519,Nguyễn Thanh Trúc,192,264 LLQ,Phan Thị Hồng Gấm,90,6,6.67,N,N,,0
+5444,Trần Văn Đạt,63,29 HB,Nguyễn Việt Cường,30,2,6.67,N,N,,0
+20997,Nguyễn Thị Hồng Hoa,244,11 PKT,Nguyễn Như Quỳnh,211,14,6.64,Y,N,,0
+12238,Nguyễn Thị Thu Thuỷ,106,76 PVH,Trịnh Văn Quang,475,31,6.53,Y,N,,0
+11032,Nguyễn Thành Huy,302,362 NGT BN,Nguyễn Như Quỳnh,232,15,6.47,Y,N,,0
+18843,Trương Thị Thuỳ,85,363 LNQ TN,Phan Thị Hồng Gấm,465,30,6.45,Y,N,,0
 10416,Nguyễn Thị Loan Anh,106,76 PVH,Trịnh Văn Quang,140,9,6.43,N,N,,0
-20997,Nguyễn Thị Hồng Hoa,244,11 PKT,Nguyễn Như Quỳnh,243,15,6.17,Y,N,,0
-21584,(không có trong bi.staff),188,190 HB,Nguyễn Thanh Sang,571,35,6.13,Y,N,,0
-20521,sk.kn87,194,90 NH,Đoàn Trung Đức,263,16,6.08,Y,N,,0
-12238,Nguyễn Thị Thu Thuỷ,106,76 PVH,Trịnh Văn Quang,445,27,6.07,Y,N,,0
-14231,Nguyễn Thị Chinh,144,168 NVC,Nguyễn Như Quỳnh,231,14,6.06,Y,N,,0
-21184,Ngụy Thị Phúc ,302,362 NGT BN,Nguyễn Như Quỳnh,166,10,6.02,Y,N,,0
-20835,Trần Ngọc Yến Nhi,205,341 XVNT,An NQ,83,5,6.02,N,N,,0
-11032,Nguyễn Thành Huy,302,362 NGT BN,Nguyễn Như Quỳnh,350,21,6.00,Y,N,,0
-18104,Trương Thị Kim Tuyền,193,145 THT,Nguyễn Thanh Sang,406,24,5.91,Y,N,,0
-5407,Lành Văn Huy,179,50BT4 NPC LD,Phan Thị Hồng Gấm,17,1,5.88,N,N,,0
-21592,(không có trong bi.staff),58,730 TL10,Nguyễn Thanh Sang,17,1,5.88,N,N,,0
-18590,Phạm Văn Đức,302,362 NGT BN,Nguyễn Như Quỳnh,409,24,5.87,Y,N,,0
-21333,Nguyễn Thị Kim Tuyến,302,362 NGT BN,Nguyễn Như Quỳnh,550,32,5.82,Y,N,,0
-14732,Nguyễn Thị Thái Vi,21,575 AC,Nguyễn Thanh Sang,138,8,5.80,N,N,,0
-21317,Lương Thị Phượng,302,362 NGT BN,Nguyễn Như Quỳnh,364,21,5.77,Y,N,,0
-21542,(không có trong bi.staff),85,363 LNQ TN,Phan Thị Hồng Gấm,382,22,5.76,Y,N,,0
-19396,Nguyễn Huy Thành,302,362 NGT BN,Nguyễn Như Quỳnh,158,9,5.70,Y,N,,0
-12082,Nguyễn Thị Hồng Hiền,201,4 LQD BN,Nguyễn Như Quỳnh,422,24,5.69,Y,N,,0
-19643,Nguyễn Thị Hương Giang ,144,168 NVC,Nguyễn Như Quỳnh,288,16,5.56,Y,N,,0
-20537,Kiêm Thị Huỳnh,45,25 TD,Tống Xuân Quyền,36,2,5.56,N,N,,0
-19633,Nguyễn Thị Ngọc Hân,47,708 LTT,Nguyễn Thanh Sang,163,9,5.52,Y,N,,0
-14293,Nguyễn Thị Thuỳ Trang,194,90 NH,Đoàn Trung Đức,408,22,5.39,Y,N,,0
-21371,Trần Thị Ngân,61,1180 QT,Trịnh Văn Quang,559,30,5.37,Y,N,,0
-15040,Lê Văn Hoàng Kiên,191,99 TP HT,Nguyễn Thị Huệ,56,3,5.36,N,N,,0
-13672,Đỗ Thị Thu Trang,194,90 NH,Đoàn Trung Đức,131,7,5.34,N,N,,0
-19753,Viên Yến Vy,21,575 AC,Nguyễn Thanh Sang,114,6,5.26,N,N,,0
-19997,Huỳnh Thị Phương Thảo,46,483 TN,Trịnh Văn Quang,212,11,5.19,Y,N,,0
-18843,Trương Thị Thuỳ,85,363 LNQ TN,Phan Thị Hồng Gấm,735,38,5.17,Y,N,,0
-19034,Nguyễn Ngọc Ánh,51,420 HTP,Tống Xuân Quyền,78,4,5.13,N,N,,0
+19034,Nguyễn Ngọc Ánh,51,420 HTP,Tống Xuân Quyền,109,7,6.42,N,N,,0
+19643,Nguyễn Thị Hương Giang ,144,168 NVC,Nguyễn Như Quỳnh,252,16,6.35,Y,N,,0
+1288,Tạ Văn Kiên,2,346 KT,Phan Thị Hồng Gấm,111,7,6.31,N,N,,0
+12995,Võ Đức,61,1180 QT,Trịnh Văn Quang,192,12,6.25,Y,N,,0
+14261,Vy Thị Vân,63,29 HB,Nguyễn Việt Cường,241,15,6.22,Y,N,,0
+18104,Trương Thị Kim Tuyền,193,145 THT,Nguyễn Thanh Sang,341,21,6.16,Y,N,,0
+13672,Đỗ Thị Thu Trang,194,90 NH,Đoàn Trung Đức,130,8,6.15,N,N,,0
+19605,Nguyễn Nhật Kim Ngân,45,25 TD,Tống Xuân Quyền,49,3,6.12,N,N,,0
+20835,Trần Ngọc Yến Nhi,145,237 NTT,Tống Xuân Quyền,116,7,6.03,N,N,,0
+20521,sk.kn87,194,90 NH,Đoàn Trung Đức,287,17,5.92,Y,N,,0
+21212,Lương Văn Đại,63,29 HB,Nguyễn Việt Cường,172,10,5.81,Y,N,,0
+18624,Diệp Trúc Quỳnh,247,1371 PVT,Nguyễn Việt Cường,69,4,5.8,N,N,,0
+12082,Nguyễn Thị Hồng Hiền,201,4 LQD BN,Nguyễn Như Quỳnh,295,17,5.76,Y,N,,0
+21443,Trần Minh Tiến SMST,72,113 THD AG,Tống Xuân Quyền,53,3,5.66,N,N,,0
+14293,Nguyễn Thị Thuỳ Trang,194,90 NH,Đoàn Trung Đức,408,23,5.64,Y,N,,0
+19854,Đinh Nguyễn Mai Uyên ,69,312 LVS,Nguyễn Thanh Sang,89,5,5.62,N,N,,0
+15763,Mai Thị Trang,179,50BT4 NPC LD,Phan Thị Hồng Gấm,18,1,5.56,N,N,,0
+15040,Lê Văn Hoàng Kiên,231,304 NT TH,Nguyễn Thị Huệ,55,3,5.45,N,N,,0
+14732,Nguyễn Thị Thái Vi,21,575 AC,Nguyễn Thanh Sang,93,5,5.38,N,N,,0
+3484,Lê Thị Thuỳ Trang,60,80 PL BD,Nguyễn Việt Cường,190,10,5.26,Y,N,,0
 20486,sup.kn77,244,11 PKT,Nguyễn Như Quỳnh,176,9,5.11,Y,N,,0
-19605,Nguyễn Nhật Kim Ngân,45,25 TD,Tống Xuân Quyền,60,3,5.00,N,N,,0
-21199,Vy Khánh Diễm NQ,198,411 NVT,Nhật NQ,60,3,5.00,N,N,,0
-21034,Lê Phan Hoàng Phúc,147,99 TSN,Nguyễn Thanh Sang,40,2,5.00,N,N,,0
-14823,Lương Thảo Anh,212,58 NVC NA,Nguyễn Thị Huệ,20,1,5.00,N,N,,0
-5787,Lý Văn Bắc,302,362 NGT BN,Nguyễn Như Quỳnh,388,19,4.90,Y,N,,0
-21453,Trầm Lê Gia Hân,249,1146 KVC,Nguyễn Việt Cường,41,2,4.88,N,N,,0
-20222,Mai Thị Kim Xuyến,72,113 THD AG,Tống Xuân Quyền,83,4,4.82,N,N,,0
-18394,Lê Quang Trường,232,80 TP TH,Nguyễn Thị Huệ,192,9,4.69,Y,N,,0
-18624,Diệp Trúc Quỳnh,247,1371 PVT,Nguyễn Việt Cường,86,4,4.65,N,N,,0
-19569,Thạch Thị Thanh ,45,25 TD,Tống Xuân Quyền,108,5,4.63,N,N,,0
-12206,Trần Duy Thông,188,190 HB,Nguyễn Thanh Sang,65,3,4.62,N,N,,0
-7597,Danh Thị Sa Ri,147,99 TSN,Nguyễn Thanh Sang,44,2,4.55,N,N,,0
-20570,Nguyễn Phương Linh,231,304 NT TH,Nguyễn Thị Huệ,22,1,4.55,N,N,,0
-17158,Lê Thị Anh,250,173 TN,Phan Thị Hồng Gấm,45,2,4.44,N,N,,0
-2483,Vũ Văn Nguyện,179,50BT4 NPC LD,Phan Thị Hồng Gấm,68,3,4.41,N,N,,0
+21268,Phạm Thị Thu Hương SMST,302,362 NGT BN,Nguyễn Như Quỳnh,118,6,5.08,N,N,,0
+5787,Lý Văn Bắc,302,362 NGT BN,Nguyễn Như Quỳnh,398,20,5.03,Y,N,,0
+14823,Lương Thảo Anh,212,58 NVC NA,Nguyễn Thị Huệ,20,1,5.0,N,N,,0
+20570,Nguyễn Phương Linh,231,304 NT TH,Nguyễn Thị Huệ,20,1,5.0,N,N,,0
+21542,Phạm Thu Thảo,85,363 LNQ TN,Phan Thị Hồng Gấm,224,11,4.91,Y,N,,0
+978,Nguyễn Văn Thức,240,68 LN NA,Nguyễn Thị Huệ,84,4,4.76,N,N,,0
+21592,Phạm Lê Tường Vy ,58,730 TL10,Nguyễn Thanh Sang,21,1,4.76,N,N,,0
+5500,Nguyễn Kiều Oanh,20,382 NT,Đoàn Trung Đức,84,4,4.76,N,N,,0
+18394,Lê Quang Trường,232,80 TP TH,Nguyễn Thị Huệ,219,10,4.57,Y,N,,0
+20856,Lương Thị Thảo Nhi,69,312 LVS,Nguyễn Thanh Sang,178,8,4.49,Y,N,,0
+14682,Nguyễn Thị Ngọc Ánh,302,362 NGT BN,Nguyễn Như Quỳnh,89,4,4.49,N,N,,0
 18511,Nguyễn Như Quỳnh,230,290 QT TH,Nguyễn Thị Huệ,23,1,4.35,N,N,,0
-20143,Nguyễn Hoàng Triệu Vy,22,927 HG,Nguyễn Thanh Sang,47,2,4.26,N,N,,0
-21539,(không có trong bi.staff),284,F33 HV PT,Nguyễn Thanh Sang,165,7,4.24,Y,N,,0
-21443,Trần Minh Tiến SMST,72,113 THD AG,Tống Xuân Quyền,71,3,4.23,N,N,,0
-21574,(không có trong bi.staff),249,1146 KVC,Nguyễn Việt Cường,97,4,4.12,N,N,,0
-21629,(không có trong bi.staff),188,190 HB,Nguyễn Thanh Sang,97,4,4.12,N,N,,0
-18942,Võ Thị Mỹ Ân,58,730 TL10,Nguyễn Thanh Sang,50,2,4.00,N,N,,0
-21270,Trần Thị Điểm,302,362 NGT BN,Nguyễn Như Quỳnh,353,14,3.97,Y,N,,0
+21270,Trần Thị Điểm,302,362 NGT BN,Nguyễn Như Quỳnh,286,12,4.2,Y,N,,0
+21466,Nguyễn Ngọc Bích Trâm ,22,927 HG,Nguyễn Thanh Sang,98,4,4.08,N,N,,0
+20558,Trần Lê Yến My,21,575 AC,Nguyễn Thanh Sang,152,6,3.95,Y,N,,0
+19760,Nguyễn Thị Huỳnh Như,69,312 LVS,Nguyễn Thanh Sang,306,12,3.92,Y,N,,0
 19696,Trần Văn Toàn SMSUP,51,420 HTP,Tống Xuân Quyền,102,4,3.92,N,N,,0
-14682,Nguyễn Thị Ngọc Ánh,302,362 NGT BN,Nguyễn Như Quỳnh,128,5,3.91,N,N,,0
-20856,Lương Thị Thảo Nhi,69,312 LVS,Nguyễn Thanh Sang,158,6,3.80,Y,N,,0
+11761,Huỳnh Thị Khánh Vân,45,25 TD,Tống Xuân Quyền,51,2,3.92,N,N,,0
+19569,Thạch Thị Thanh ,45,25 TD,Tống Xuân Quyền,128,5,3.91,N,N,,0
 20989,Nguyễn Thị Thu Xen,143,10 TP,Nguyễn Như Quỳnh,53,2,3.77,N,N,,0
-8638,Ngô Minh Hoàng,274,32 NAT,Trịnh Văn Quang,108,4,3.70,N,N,,0
-18519,Nguyễn Thanh Trúc,244,11 PKT,Nguyễn Như Quỳnh,85,3,3.53,N,N,,0
-21032,Trần Hữu Bắc,76,RESALEONLINE,(chưa gán),29,1,3.45,N,N,,0
-21268,Phạm Thị Thu Hương SMST,302,362 NGT BN,Nguyễn Như Quỳnh,117,4,3.42,N,N,,0
-19535,Đỗ Thị Trâm,143,10 TP,Nguyễn Như Quỳnh,177,6,3.39,Y,N,,0
-10498,Hoàng Bảo Ngọc,200,39 HBT,Phan Thị Hồng Gấm,59,2,3.39,N,N,,0
-13775,Nguyễn Lê Huyền Trân,21,575 AC,Nguyễn Thanh Sang,178,6,3.37,Y,N,,0
-10544,Lừ Thị Nga ,77,407 TC,Phan Thị Hồng Gấm,90,3,3.33,N,N,,0
-19854,Đinh Nguyễn Mai Uyên ,69,312 LVS,Nguyễn Thanh Sang,122,4,3.28,N,N,,0
-20765,Nguyễn Thị Cẩm Hằng,11,8 CVL,Nguyễn Thanh Sang,93,3,3.23,N,N,,0
+7456,Trần Hà Linh,200,39 HBT,Phan Thị Hồng Gấm,53,2,3.77,N,N,,0
+8638,Ngô Minh Hoàng,274,32 NAT,Trịnh Văn Quang,80,3,3.75,N,N,,0
+21370,Bùi Ngọc Hương Thơm,65,255 NAN,Nguyễn Việt Cường,404,15,3.71,Y,N,,0
+13775,Nguyễn Lê Huyền Trân,21,575 AC,Nguyễn Thanh Sang,162,6,3.7,Y,N,,0
+21583,Nguyễn Thị Đoan Trang,65,255 NAN,Nguyễn Việt Cường,110,4,3.64,N,N,,0
+19535,Đỗ Thị Trâm,143,10 TP,Nguyễn Như Quỳnh,197,7,3.55,Y,N,,0
+17158,Lê Thị Anh,250,173 TN,Phan Thị Hồng Gấm,57,2,3.51,N,N,,0
+18174,Phan Văn Duy Thanh,72,113 THD AG,Tống Xuân Quyền,29,1,3.45,N,N,,0
+2483,Vũ Văn Nguyện,179,50BT4 NPC LD,Phan Thị Hồng Gấm,88,3,3.41,N,N,,0
+13549,Lại Thị Xuân,194,90 NH,Đoàn Trung Đức,413,14,3.39,Y,N,,0
 21125,Lê Triệu Vy,188,190 HB,Nguyễn Thanh Sang,93,3,3.23,N,N,,0
-7605,Mai Thị Thanh Dư,184,36 N1 BD,Nguyễn Việt Cường,381,12,3.15,Y,N,,0
-21370,Bùi Ngọc Hương Thơm,65,255 NAN,Nguyễn Việt Cường,384,12,3.13,Y,N,,0
-20878,Ngô Thuỳ Phương ,22,927 HG,Nguyễn Thanh Sang,64,2,3.13,N,N,,0
-13549,Lại Thị Xuân,194,90 NH,Đoàn Trung Đức,402,12,2.99,Y,N,,0
-1288,Tạ Văn Kiên,2,346 KT,Phan Thị Hồng Gấm,101,3,2.97,N,N,,0
-978,Nguyễn Văn Thức,240,68 LN NA,Nguyễn Thị Huệ,68,2,2.94,N,N,,0
+20614,Nguyễn Thị Huệ,239,186 QT,Nguyễn Như Quỳnh,31,1,3.23,N,N,,0
+21302,Nguyễn Thị Yến Vy ,199,7 DTP LA,Tống Xuân Quyền,264,8,3.03,Y,N,,0
+21460,Nguyễn Thị Mỹ Nữ,141,236 DBT,Tống Xuân Quyền,67,2,2.99,N,N,,0
 20860,Bùi Thị Mỹ Tâm,145,237 NTT,Tống Xuân Quyền,34,1,2.94,N,N,,0
-7456,Trần Hà Linh,200,39 HBT,Phan Thị Hồng Gấm,71,2,2.82,N,N,,0
-21590,(không có trong bi.staff),22,927 HG,Nguyễn Thanh Sang,71,2,2.82,N,N,,0
-2074,Lê Thị Kim Ánh,233,595 BT TH,Nguyễn Thị Huệ,150,4,2.67,Y,N,,0
-18930,Thái Thị Hạnh,306,93 NTMK,Nguyễn Thị Huệ,38,1,2.63,N,N,,0
-21302,Nguyễn Thị Yến Vy ,199,7 DTP LA,Tống Xuân Quyền,235,6,2.55,Y,N,,0
-21460,Nguyễn Thị Mỹ Nữ,141,236 DBT,Tống Xuân Quyền,80,2,2.50,N,N,,0
-20810,Trần Thị Kim Cương NQ,283,A6 NAT,An NQ,40,1,2.50,N,N,,0
-21022,Trần Nguyễn Kỳ Nam NQ,101,872 QL22,Trịnh Văn Quang,40,1,2.50,N,N,,0
-21129,Huỳnh Thị Kim Mơ,141,236 DBT,Tống Xuân Quyền,362,9,2.49,Y,N,,0
-3484,Lê Thị Thuỳ Trang,60,80 PL BD,Nguyễn Việt Cường,286,7,2.45,Y,N,,0
-19760,Nguyễn Thị Huỳnh Như,69,312 LVS,Nguyễn Thanh Sang,246,6,2.44,Y,N,,0
+21269,Trần Thị Huỳnh Hoa,21,575 AC,Nguyễn Thanh Sang,174,5,2.87,Y,N,,0
+5866,Đỗ Thị Linh,22,927 HG,Nguyễn Thanh Sang,142,4,2.82,N,N,,0
+20130,Nguyễn Thị Phú Tài,69,312 LVS,Nguyễn Thanh Sang,142,4,2.82,N,N,,0
+15075,Phan Thanh Tuấn,72,113 THD AG,Tống Xuân Quyền,179,5,2.79,Y,N,,0
+18840,Nguyễn Thị Linh,240,68 LN NA,Nguyễn Thị Huệ,73,2,2.74,N,N,,0
+21032,Trần Hữu Bắc,244,11 PKT,Nguyễn Như Quỳnh,38,1,2.63,N,N,,0
+21180,Trương Như Luân,240,68 LN NA,Nguyễn Thị Huệ,39,1,2.56,N,N,,0
+7605,Mai Thị Thanh Dư,184,36 N1 BD,Nguyễn Việt Cường,480,12,2.5,Y,N,,0
 8336,Nguyễn Thị Hồng Ngọc,232,80 TP TH,Nguyễn Thị Huệ,41,1,2.44,N,N,,0
-13433,Đỗ Thị Phương Mai,179,50BT4 NPC LD,Phan Thị Hồng Gấm,41,1,2.44,N,N,,0
-21269,Trần Thị Huỳnh Hoa,21,575 AC,Nguyễn Thanh Sang,296,7,2.36,Y,N,,0
-20558,Trần Lê Yến My,21,575 AC,Nguyễn Thanh Sang,182,4,2.20,Y,N,,0
-20487,Đặng Thị Mỹ Nhân,69,312 LVS,Nguyễn Thanh Sang,94,2,2.13,N,N,,0
-20992,Nguyễn Thị Cúc,143,10 TP,Nguyễn Như Quỳnh,330,7,2.12,Y,N,,0
-19677,Hồ Thị Trúc Hà,58,730 TL10,Nguyễn Thanh Sang,145,3,2.07,N,N,,0
+7597,Danh Thị Sa Ri,147,99 TSN,Nguyễn Thanh Sang,42,1,2.38,N,N,,0
+12206,Trần Duy Thông,188,190 HB,Nguyễn Thanh Sang,85,2,2.35,N,N,,0
+8595,Uông Bội Linh,230,290 QT TH,Nguyễn Thị Huệ,172,4,2.33,Y,N,,0
+21129,Huỳnh Thị Kim Mơ,141,236 DBT,Tống Xuân Quyền,393,9,2.29,Y,N,,0
+2074,Lê Thị Kim Ánh,231,304 NT TH,Nguyễn Thị Huệ,175,4,2.29,Y,N,,0
+20992,Nguyễn Thị Cúc,143,10 TP,Nguyễn Như Quỳnh,365,8,2.19,Y,N,,0
+21371,Trần Thị Ngân,61,1180 QT,Trịnh Văn Quang,372,8,2.15,Y,N,,0
+21313,Trương Văn Ngà ,72,113 THD AG,Tống Xuân Quyền,146,3,2.05,N,N,,0
 20747,Nguyễn Lê Trung Tiến,233,595 BT TH,Nguyễn Thị Huệ,98,2,2.04,N,N,,0
-4451,Lê Trọng Trường,230,290 QT TH,Nguyễn Thị Huệ,149,3,2.01,N,N,,0
-18961,Lê Thị Thu Hiền SMSUP,309,TimesCity,Phan Thị Hồng Gấm,149,3,2.01,N,N,,0
-15075,Phan Thanh Tuấn,72,113 THD AG,Tống Xuân Quyền,253,5,1.98,Y,N,,0
-9317,Nguyễn Xuân Mạnh,232,80 TP TH,Nguyễn Thị Huệ,101,2,1.98,N,N,,0
-11521,Hồ Lê Ngọc Thông ,141,236 DBT,Tống Xuân Quyền,101,2,1.98,N,N,,0
-20986,Trần Thị Kim Uyên,141,236 DBT,Tống Xuân Quyền,101,2,1.98,N,N,,0
-5866,Đỗ Thị Linh,22,927 HG,Nguyễn Thanh Sang,102,2,1.96,N,N,,0
-7496,Nguyễn Thị Tình,232,80 TP TH,Nguyễn Thị Huệ,106,2,1.89,N,N,,0
-1870,Phạm Văn Tân,147,99 TSN,Nguyễn Thanh Sang,164,3,1.83,Y,N,,0
-6506,Châu Bảo Vinh,141,236 DBT,Tống Xuân Quyền,228,4,1.75,Y,N,,0
-21138,Lê Thị Ngọc Thanh NQ,101,872 QL22,Trịnh Văn Quang,58,1,1.72,N,N,,0
-21378,Phan Văn Trọng,212,58 NVC NA,Nguyễn Thị Huệ,58,1,1.72,N,N,,0
-947,Lê Sỹ Sơn,147,99 TSN,Nguyễn Thanh Sang,119,2,1.68,N,N,,0
-21313,Trương Văn Ngà ,72,113 THD AG,Tống Xuân Quyền,181,3,1.66,Y,N,,0
+20878,Ngô Thuỳ Phương ,22,927 HG,Nguyễn Thanh Sang,98,2,2.04,N,N,,0
+21590,Võ Thành Ngọc Anh,22,927 HG,Nguyễn Thanh Sang,99,2,2.02,N,N,,0
+20487,Đặng Thị Mỹ Nhân,69,312 LVS,Nguyễn Thanh Sang,104,2,1.92,N,N,,0
+20986,Trần Thị Kim Uyên,141,236 DBT,Tống Xuân Quyền,111,2,1.8,N,N,,0
+4451,Lê Trọng Trường,230,290 QT TH,Nguyễn Thị Huệ,170,3,1.76,Y,N,,0
+21607,Phó Nguyễn Thanh Thanh ,22,927 HG,Nguyễn Thanh Sang,58,1,1.72,N,N,,0
+21378,Phan Văn Trọng,240,68 LN NA,Nguyễn Thị Huệ,58,1,1.72,N,N,,0
+11521,Hồ Lê Ngọc Thông ,141,236 DBT,Tống Xuân Quyền,119,2,1.68,N,N,,0
+6506,Châu Bảo Vinh,141,236 DBT,Tống Xuân Quyền,239,4,1.67,Y,N,,0
+21375,Hồ Thị Lùng,21,575 AC,Nguyễn Thanh Sang,185,3,1.62,Y,N,,0
+7496,Nguyễn Thị Tình,232,80 TP TH,Nguyễn Thị Huệ,126,2,1.59,N,N,,0
 21404,VÕ THANH HẰNG ,63,29 HB,Nguyễn Việt Cường,63,1,1.59,N,N,,0
-18840,Nguyễn Thị Linh,240,68 LN NA,Nguyễn Thị Huệ,64,1,1.56,N,N,,0
+9016,Võ Tấn Vàng,47,708 LTT,Nguyễn Thanh Sang,585,9,1.54,Y,N,,0
 2064,Trần Đức Đình Trọng,240,68 LN NA,Nguyễn Thị Huệ,65,1,1.54,N,N,,0
-21180,Trương Như Luân,212,58 NVC NA,Nguyễn Thị Huệ,66,1,1.52,N,N,,0
-8595,Uông Bội Linh,230,290 QT TH,Nguyễn Thị Huệ,200,3,1.50,Y,N,,0
-20886,Phùng Hoàng Như Thảo ,21,575 AC,Nguyễn Thanh Sang,140,2,1.43,N,N,,0
-11761,Huỳnh Thị Khánh Vân,45,25 TD,Tống Xuân Quyền,70,1,1.43,N,N,,0
-21375,Hồ Thị Lùng,21,575 AC,Nguyễn Thanh Sang,220,3,1.36,Y,N,,0
-10345,Nguyễn Phan Như Ngọc,12,12 LDT,Trịnh Văn Quang,155,2,1.29,Y,N,,0
-14146,Cao Ngọc Huyền NQ,285,82 VTP,Đoàn Trung Đức,160,2,1.25,Y,N,,0
-20573,Nguyễn Đặng Khánh Băng,69,312 LVS,Nguyễn Thanh Sang,80,1,1.25,N,N,,0
-21466,Nguyễn Ngọc Bích Trâm ,22,927 HG,Nguyễn Thanh Sang,84,1,1.19,N,N,,0
-21324,Phạm Kim Loan,199,7 DTP LA,Tống Xuân Quyền,338,4,1.18,Y,N,,0
+9317,Nguyễn Xuân Mạnh,232,80 TP TH,Nguyễn Thị Huệ,131,2,1.53,N,N,,0
+19764,Trương Huỳnh Trung Nghĩa,47,708 LTT,Nguyễn Thanh Sang,133,2,1.5,N,N,,0
+14146,Cao Ngọc Huyền NQ,245,55A NVL,Đoàn Trung Đức,220,3,1.36,Y,N,,0
+947,Lê Sỹ Sơn,147,99 TSN,Nguyễn Thanh Sang,149,2,1.34,N,N,,0
+21324,Phạm Kim Loan,199,7 DTP LA,Tống Xuân Quyền,397,5,1.26,Y,N,,0
 13683,Bùi Thị Hằng,45,25 TD,Tống Xuân Quyền,87,1,1.15,N,N,,0
-19933,Ngô Thị Ngọc Ánh,22,927 HG,Nguyễn Thanh Sang,98,1,1.02,N,N,,0
-19764,Trương Huỳnh Trung Nghĩa,47,708 LTT,Nguyễn Thanh Sang,114,1,0.88,N,N,,0
-9016,Võ Tấn Vàng,47,708 LTT,Nguyễn Thanh Sang,505,4,0.79,Y,N,,0
-21583,(không có trong bi.staff),65,255 NAN,Nguyễn Việt Cường,140,1,0.71,N,N,,0
-20130,Nguyễn Thị Phú Tài,69,312 LVS,Nguyễn Thanh Sang,149,1,0.67,N,N,,0
-20342,Vũ Thị Hà Vi,194,90 NH,Đoàn Trung Đức,323,2,0.62,Y,N,,0
-5018,Nguyễn Thị Diễm CTV,69,312 LVS,Nguyễn Thanh Sang,280,0,0.00,Y,N,,0
-14745,Phạm Ngọc Xuyên,45,25 TD,Tống Xuân Quyền,151,0,0.00,Y,N,,0
-9672,Nguyễn Minh Sơn,44,103 TN,Nguyễn Việt Cường,127,0,0.00,N,N,,0
-8851,Lưu Huỳnh Đức,188,190 HB,Nguyễn Thanh Sang,121,0,0.00,N,N,,0
-20774,Nguyễn Hoàng Thái ,199,7 DTP LA,Tống Xuân Quyền,102,0,0.00,N,N,,0
-9540,Nguyễn Hữu Bảo NQ,285,82 VTP,Đoàn Trung Đức,100,0,0.00,N,N,,0
-9341,Nguyễn Thị Thúy Hằng,22,927 HG,Nguyễn Thanh Sang,84,0,0.00,N,N,,0
-14199,Nguyễn Thị Kiều Ngân,147,99 TSN,Nguyễn Thanh Sang,71,0,0.00,N,N,,0
-2611,Ngô Thế Dũng,38,1172 KVC,Nguyễn Việt Cường,70,0,0.00,N,N,,0
-11828,Đặng Thị Liễu,180,177 DVB,Nhật NQ,69,0,0.00,N,N,,0
-942,PHÙ THỊ HOÀNG UYÊN,22,927 HG,Nguyễn Thanh Sang,63,0,0.00,N,N,,0
-12277,Huỳnh Kiều Như ,45,25 TD,Tống Xuân Quyền,48,0,0.00,N,N,,0
-21249,Đinh Thị Kim Ngân ,199,7 DTP LA,Tống Xuân Quyền,46,0,0.00,N,N,,0
-19735,Cao Thị Kim Chi,22,927 HG,Nguyễn Thanh Sang,44,0,0.00,N,N,,0
-19013,Lương Thị Kim Nguyên,72,113 THD AG,Tống Xuân Quyền,41,0,0.00,N,N,,0
-18174,Phan Văn Duy Thanh,72,113 THD AG,Tống Xuân Quyền,39,0,0.00,N,N,,0
-9504,Phạm Thị Duyên,179,50BT4 NPC LD,Phan Thị Hồng Gấm,37,0,0.00,N,N,,0
-20455,Hà Quang Duy,106,76 PVH,Trịnh Văn Quang,37,0,0.00,N,N,,0
-15763,Mai Thị Trang,179,50BT4 NPC LD,Phan Thị Hồng Gấm,31,0,0.00,N,N,,0
-20614,Nguyễn Thị Huệ,239,186 QT,Nguyễn Như Quỳnh,31,0,0.00,N,N,,0
-21251, Lưu Trí Quốc SMSUP,52,451 PVT,Nguyễn Việt Cường,30,0,0.00,N,N,,0
-21374,Nguyễn Thị Hoài Thư,65,255 NAN,Nguyễn Việt Cường,30,0,0.00,N,N,,0
-20769,Võ Thị Thuý Khuyên NQ,221,27A NVL,An NQ,28,0,0.00,N,N,,0
-21607,(không có trong bi.staff),22,927 HG,Nguyễn Thanh Sang,28,0,0.00,N,N,,0
-10830,Nguyễn Thị Hồng Duyên,192,264 LLQ,Phan Thị Hồng Gấm,26,0,0.00,N,N,,0
-21430,Nguyễn Thị Ngọc Linh ,65,255 NAN,Nguyễn Việt Cường,23,0,0.00,N,N,,0
-20483,Điều Thị Quỳnh Anh NQ,295,152 NO,An NQ,21,0,0.00,N,N,,0
-20750,Nguyễn Ngọc Thảo Vy ,199,7 DTP LA,Tống Xuân Quyền,21,0,0.00,N,N,,0
-21557,(không có trong bi.staff),212,58 NVC NA,Nguyễn Thị Huệ,21,0,0.00,N,N,,0
-21194,Trương Thị Quỳnh Như,212,58 NVC NA,Nguyễn Thị Huệ,20,0,0.00,N,N,,0
-21632,(không có trong bi.staff),85,363 LNQ TN,Phan Thị Hồng Gấm,20,0,0.00,N,N,,0
-13782,Nguyễn Văn Tiến,230,290 QT TH,Nguyễn Thị Huệ,17,0,0.00,N,N,,0
-18966,Ngô Thị Chí Hương,69,312 LVS,Nguyễn Thanh Sang,17,0,0.00,N,N,,0
-19918,Trần Thị Thanh Nga,212,58 NVC NA,Nguyễn Thị Huệ,15,0,0.00,N,N,,0
-19964,Trần Nguyễn Minh Thư,51,420 HTP,Tống Xuân Quyền,14,0,0.00,N,N,,0
-14344,Vũ Văn Lương,232,80 TP TH,Nguyễn Thị Huệ,12,0,0.00,N,N,,0
-16004,Nguyễn Văn Thắng,212,58 NVC NA,Nguyễn Thị Huệ,11,0,0.00,N,N,,0
-21312,Hà Thị Thuỳ Dung,179,50BT4 NPC LD,Phan Thị Hồng Gấm,11,0,0.00,N,N,,0
-9678,Nguyễn Thị Ánh Tuyết NQ,180,177 DVB,Nhật NQ,10,0,0.00,N,N,,0
-19525,Nguyễn Thị Phượng,233,595 BT TH,Nguyễn Thị Huệ,10,0,0.00,N,N,,0
-20983,Nguyễn Thanh Vy NQ,101,872 QL22,Trịnh Văn Quang,10,0,0.00,N,N,,0
-18535,SM26TT,289,26 TT,Đoàn Trung Đức,9,0,0.00,N,N,,0
-17788,Nguyễn Xuân Toàn,61,1180 QT,Trịnh Văn Quang,7,0,0.00,N,N,,0
-21560,(không có trong bi.staff),47,708 LTT,Nguyễn Thanh Sang,4,0,0.00,N,N,,0
-4602,Phạm Văn Quý,179,50BT4 NPC LD,Phan Thị Hồng Gấm,3,0,0.00,N,N,,0
-5921,Nguyễn Viết Văn,239,186 QT,Nguyễn Như Quỳnh,2,0,0.00,N,N,,0
-589,Nguyễn Minh Thắng NQ,285,82 VTP,Đoàn Trung Đức,1,0,0.00,N,N,,0
-9965,Phạm Trọng Long,228,62 LH,Đoàn Trung Đức,1,0,0.00,N,N,,0
-11787,Thạch Thị Thanh Bình NQ,283,A6 NAT,An NQ,1,0,0.00,N,N,,0
-18811,Nguyễn Thị Hồng Hà ,44,103 TN,Nguyễn Việt Cường,1,0,0.00,N,N,,0
-19879,Lê Hoàng Phúc SMST,106,76 PVH,Trịnh Văn Quang,1,0,0.00,N,N,,0
-21573,(không có trong bi.staff),250,173 TN,Phan Thị Hồng Gấm,1,0,0.00,N,N,,0`;
+10345,Nguyễn Phan Như Ngọc,12,12 LDT,Trịnh Văn Quang,183,2,1.09,Y,N,,0
+942,PHÙ THỊ HOÀNG UYÊN,22,927 HG,Nguyễn Thanh Sang,93,1,1.08,N,N,,0
+1870,Phạm Văn Tân,147,99 TSN,Nguyễn Thanh Sang,96,1,1.04,N,N,,0
+2611,Ngô Thế Dũng,244,11 PKT,Nguyễn Như Quỳnh,112,1,0.89,N,N,,0
+19933,Ngô Thị Ngọc Ánh,22,927 HG,Nguyễn Thanh Sang,127,1,0.79,N,N,,0
+14745,Phạm Ngọc Xuyên,45,25 TD,Tống Xuân Quyền,135,1,0.74,N,N,,0
+5018,Nguyễn Thị Diễm CTV,69,312 LVS,Nguyễn Thanh Sang,331,2,0.6,Y,N,,0
+20342,Vũ Thị Hà Vi,194,90 NH,Đoàn Trung Đức,354,2,0.56,Y,N,,0
+21374,Nguyễn Thị Hoài Thư,65,255 NAN,Nguyễn Việt Cường,30,0,0.0,N,N,,0
+8851,Lưu Huỳnh Đức,188,190 HB,Nguyễn Thanh Sang,74,0,0.0,N,N,,0
+21604,Nguyễn Thị Thuý,244,11 PKT,Nguyễn Như Quỳnh,15,0,0.0,N,N,,0
+9540,Nguyễn Hữu Bảo NQ,144,168 NVC,Nguyễn Như Quỳnh,125,0,0.0,N,N,,0
+14199,Nguyễn Thị Kiều Ngân,147,99 TSN,Nguyễn Thanh Sang,55,0,0.0,N,N,,0
+12277,Huỳnh Kiều Như ,45,25 TD,Tống Xuân Quyền,29,0,0.0,N,N,,0
+9341,Nguyễn Thị Thúy Hằng,22,927 HG,Nguyễn Thanh Sang,127,0,0.0,N,N,,0
+19918,Trần Thị Thanh Nga,212,58 NVC NA,Nguyễn Thị Huệ,15,0,0.0,N,N,,0
+20573,Nguyễn Đặng Khánh Băng,69,312 LVS,Nguyễn Thanh Sang,84,0,0.0,N,N,,0
+21617,Nguyễn Thị Mai Hương,197,65 CD,Đoàn Trung Đức,38,0,0.0,N,N,,0
+17788,Nguyễn Xuân Toàn,61,1180 QT,Trịnh Văn Quang,7,0,0.0,N,N,,0
+20455,Hà Quang Duy,106,76 PVH,Trịnh Văn Quang,72,0,0.0,N,N,,0
+16459,Nguyễn Hải My,47,708 LTT,Nguyễn Thanh Sang,18,0,0.0,N,N,,0
+9504,Phạm Thị Duyên,179,50BT4 NPC LD,Phan Thị Hồng Gấm,37,0,0.0,N,N,,0
+21557,Nguyễn Văn Thắng,212,58 NVC NA,Nguyễn Thị Huệ,17,0,0.0,N,N,,0
+21632,Ngô Thu Hằng,85,363 LNQ TN,Phan Thị Hồng Gấm,10,0,0.0,N,N,,0
+19735,Cao Thị Kim Chi,22,927 HG,Nguyễn Thanh Sang,50,0,0.0,N,N,,0
+21194,Trương Thị Quỳnh Như,212,58 NVC NA,Nguyễn Thị Huệ,16,0,0.0,N,N,,0
+19013,Lương Thị Kim Nguyên,72,113 THD AG,Tống Xuân Quyền,26,0,0.0,N,N,,0
+21312,Hà Thị Thuỳ Dung,179,50BT4 NPC LD,Phan Thị Hồng Gấm,31,0,0.0,N,N,,0
+10830,Nguyễn Thị Hồng Duyên,192,264 LLQ,Phan Thị Hồng Gấm,26,0,0.0,N,N,,0
+13782,Nguyễn Văn Tiến,231,304 NT TH,Nguyễn Thị Huệ,17,0,0.0,N,N,,0
+21249,Đinh Thị Kim Ngân ,199,7 DTP LA,Tống Xuân Quyền,46,0,0.0,N,N,,0
+21430,Nguyễn Thị Ngọc Linh ,65,255 NAN,Nguyễn Việt Cường,42,0,0.0,N,N,,0
+18966,Ngô Thị Chí Hương,69,312 LVS,Nguyễn Thanh Sang,31,0,0.0,N,N,,0
+19964,Trần Nguyễn Minh Thư,51,420 HTP,Tống Xuân Quyền,15,0,0.0,N,N,,0
+19525,Nguyễn Thị Phượng,233,595 BT TH,Nguyễn Thị Huệ,10,0,0.0,N,N,,0
+9672,Nguyễn Minh Sơn,44,103 TN,Nguyễn Việt Cường,1,0,0.0,N,N,,0
+1813,Nguyễn Hoàng Anh Tuấn,188,190 HB,Nguyễn Thanh Sang,20,0,0.0,N,N,,0
+14344,Vũ Văn Lương,232,80 TP TH,Nguyễn Thị Huệ,12,0,0.0,N,N,,0
+16004,Nguyễn Văn Thắng,212,58 NVC NA,Nguyễn Thị Huệ,11,0,0.0,N,N,,0
+961,Lê Thanh Thuận,44,103 TN,Nguyễn Việt Cường,2,0,0.0,N,N,,0
+20750,Nguyễn Ngọc Thảo Vy ,61,1180 QT,Trịnh Văn Quang,19,0,0.0,N,N,,0
+4602,Phạm Văn Quý,179,50BT4 NPC LD,Phan Thị Hồng Gấm,3,0,0.0,N,N,,0
+19879,Lê Hoàng Phúc SMST,106,76 PVH,Trịnh Văn Quang,2,0,0.0,N,N,,0
+10390,Võ Trung Hậu SMSUP,12,12 LDT,Trịnh Văn Quang,1,0,0.0,N,N,,0
+11828,Đặng Thị Liễu,249,1146 KVC,Nguyễn Việt Cường,1,0,0.0,N,N,,0
+589,Nguyễn Minh Thắng NQ,250,173 TN,Phan Thị Hồng Gấm,1,0,0.0,N,N,,0
+5921,Nguyễn Viết Văn,239,186 QT,Nguyễn Như Quỳnh,2,0,0.0,N,N,,0
+9708,Nguyễn Diệu Hiền,182,186 DTH,Tống Xuân Quyền,2,0,0.0,N,N,,0
+12173,Bùi Thị Hồng Lan,2,346 KT,Phan Thị Hồng Gấm,1,0,0.0,N,N,,0
+16590,Trang Thanh Duyên,249,1146 KVC,Nguyễn Việt Cường,1,0,0.0,N,N,,0
+21573,Hoàng Thị Hương,250,173 TN,Phan Thị Hồng Gấm,1,0,0.0,N,N,,0
+3194,Nguyễn Thuỳ Dương (1),274,32 NAT,Trịnh Văn Quang,1,0,0.0,N,N,,0
+20774,Nguyễn Hoàng Thái ,199,7 DTP LA,Tống Xuân Quyền,1,0,0.0,N,N,,0
+9965,Phạm Trọng Long,228,62 LH,Đoàn Trung Đức,1,0,0.0,N,N,,0`;
 
   var AOV_RELAX_CSV = `salon_id,salon_name,gdkv,bang,aov_t9,aov_tb_t6_t8,ty_le_tang_truong_pct,min_yeu_cau,dat_min,xep_hang_trong_bang,thuong_vnd
 302,362 NGT BN,Nguyễn Như Quỳnh,A,154507,143379,7.76,136000,Y,1,1000000
