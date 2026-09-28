@@ -2538,6 +2538,71 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
     });
   }
 
+
+  function initTip4Tab(){
+    var total = tip4Rows.length;
+    var sum = function(key){ return tip4Rows.reduce(function(s,r){ return s+r[key]; },0); };
+    document.getElementById("k6-total").textContent = total;
+    document.getElementById("k6-tip12").textContent = fmtVnd(sum("tipNhom12"));
+    document.getElementById("k6-tip10").textContent = fmtVnd(sum("tipNhom10"));
+    document.getElementById("k6-thuongthem").textContent = fmtVnd(sum("thuongThem"));
+
+    var top20 = tip4Rows.filter(function(r){ return r.xepHang; }).sort(function(a,b){ return a.xepHang-b.xepHang; }).slice(0,20);
+    document.getElementById("k6-winner-sub").textContent = "Top 20 / " + total + " người bán có dòng sản phẩm";
+    var tbWin = document.querySelector("#tip4-winner-table tbody");
+    tbWin.innerHTML = "";
+    top20.forEach(function(r){
+      var tr = document.createElement("tr");
+      tr.className = podiumClass(r.xepHang);
+      var rankCell = r.xepHang<=3
+        ? '<span class="rank-big '+rankBigClass(r.xepHang)+'">'+r.xepHang+'</span>'
+        : '<span class="rank">'+r.xepHang+'</span>';
+      tr.innerHTML =
+        '<td>'+rankCell+'</td>'+
+        '<td>'+(r.xepHang<=3?'<span class="medal-badge">'+medal(r.xepHang)+'</span>':'')+r.name+'</td>'+
+        '<td>'+r.viTri+'</td><td>'+r.salonName+'</td><td>'+shortGdkv(r.gdkv)+'</td>'+
+        '<td class="num">'+fmtVnd(r.ds6Nhan)+'</td>'+
+        '<td class="num">'+fmtVnd(r.tipHeThong)+'</td>'+
+        '<td class="num">'+fmtVnd(r.tipCtdl)+'</td>'+
+        '<td class="num"><b>'+fmtVnd(r.thuongThem)+'</b></td>';
+      tbWin.appendChild(tr);
+    });
+
+    renderTip4Table(tip4Rows);
+    var searchInput = document.getElementById("tip4-search");
+    searchInput.addEventListener("input", function(){
+      var q = searchInput.value.trim().toLowerCase();
+      var filtered = tip4Rows.filter(function(r){
+        return r.name.toLowerCase().indexOf(q)>-1 || r.salonName.toLowerCase().indexOf(q)>-1 || r.gdkv.toLowerCase().indexOf(q)>-1;
+      });
+      renderTip4Table(filtered);
+    });
+  }
+
+  function renderTip4Table(rows){
+    var sorted = rows.slice().sort(function(a,b){ return b.thuongThem-a.thuongThem; });
+    var tbody = document.querySelector("#tip4-table tbody");
+    tbody.innerHTML = "";
+    sorted.forEach(function(r,i){
+      var tr = document.createElement("tr");
+      if (r.thuongThem>0) tr.className = "win";
+      tr.innerHTML =
+        '<td>'+(i+1)+'</td>'+
+        '<td>'+r.name+'</td>'+
+        '<td>'+r.viTri+'</td>'+
+        '<td>'+r.salonName+'</td>'+
+        '<td>'+shortGdkv(r.gdkv)+'</td>'+
+        '<td class="num">'+fmtVnd(r.ds6Nhan)+'</td>'+
+        '<td class="num">'+fmtVnd(r.tipNhom12)+'</td>'+
+        '<td class="num">'+fmtVnd(r.tipNhom10)+'</td>'+
+        '<td class="num">'+fmtVnd(r.tipHeThong)+'</td>'+
+        '<td class="num">'+fmtVnd(r.tipCtdl)+'</td>'+
+        '<td class="num"><b>'+fmtVnd(r.thuongThem)+'</b></td>';
+      tbody.appendChild(tr);
+    });
+    document.getElementById("tip4-count").textContent = sorted.length + " người";
+  }
+
 })();
 </script>
 <script>
