@@ -2528,11 +2528,6 @@ footer p{color:var(--text-faint); font-size:11.5px; line-height:1.6;}
 
   function initTip4Tab(){
     var total = tip4Rows.length;
-    var sum = function(key){ return tip4Rows.reduce(function(s,r){ return s+r[key]; },0); };
-    document.getElementById("k6-total").textContent = total;
-    document.getElementById("k6-tip12").textContent = fmtVnd(sum("tipNhom12"));
-    document.getElementById("k6-tip10").textContent = fmtVnd(sum("tipNhom10"));
-    document.getElementById("k6-thuongthem").textContent = fmtVnd(sum("thuongThem"));
 
     var top20 = tip4Rows.filter(function(r){ return r.xepHang; }).sort(function(a,b){ return a.xepHang-b.xepHang; }).slice(0,20);
     document.getElementById("k6-winner-sub").textContent = "Top 20 / " + total + " người bán có dòng sản phẩm";
